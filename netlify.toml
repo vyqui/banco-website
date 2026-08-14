@@ -39,3 +39,22 @@ force = false
   [redirects.conditions]
 
   [redirects.headers]
+
+# Reservation landing page (bilingual RO/EN) — pretty URLs for ads & QR codes
+[[redirects]]
+from = "/rezervare"
+to = "/rezervare.html"
+status = 200
+force = false
+
+[[redirects]]
+from = "/reserve"
+to = "/rezervare.html"
+status = 200
+force = false
+
+[[redirects]]
+from = "/book"
+to = "/rezervare.html"
+status = 200
+force = false

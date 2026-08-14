@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L22DR3ZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X1L22DR3ZF');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>Rezervă o masă la BANCO — Restaurant Mediteranean, București</title>
+  <meta name="description" content="Rezervă online o masă la BANCO, One Verdi Park, București. Bucătărie mediteraneană, cocktailuri de autor, deschis zilnic 10:00 — 22:00. Rezervări până la 30 de zile în avans." />
+  <link rel="canonical" href="https://banco-restaurant.ro/rezervare" />
+  <meta name="theme-color" content="#2B2B2B" />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="RO-B" />
+  <meta name="geo.placename" content="Bucharest" />
+  <meta name="geo.position" content="44.46940;26.11022" />
+  <meta name="ICBM" content="44.46940, 26.11022" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BANCO" />
+  <meta property="og:title" content="Rezervă o masă la BANCO — București" />
+  <meta property="og:description" content="Rezervare online în câțiva pași. Bucătărie mediteraneană și cocktailuri de autor, în One Verdi Park. Deschis zilnic 10:00 — 22:00." />
+  <meta property="og:url" content="https://banco-restaurant.ro/rezervare" />
+  <meta property="og:image" content="https://banco-restaurant.ro/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ro_RO" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rezervă o masă la BANCO — București" />
+  <meta name="twitter:description" content="Rezervare online în câțiva pași. Bucătărie mediteraneană și cocktailuri de autor, în One Verdi Park." />
+  <meta name="twitter:image" content="https://banco-restaurant.ro/img/og.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://ialoc.ro" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="img/hero_poster_desktop.jpg" media="(min-width: 901px)" />
+  <link rel="preload" as="image" href="img/hero_poster.jpg" media="(max-width: 900px)" />
+
+  <style>
+    /* ─── TOKENS (official BANCO brand) ──────────────────────── */
+    :root {
+      --ivory:   #EAE7E1;
+      --charcoal:#2B2B2B;
+      --sand:    #D8D2C8;
+      --bronze:  #C6A96B;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Manrope', sans-serif;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100%; scroll-padding-top: 84px; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      max-width: 100%;
+      width: 100%;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+    .section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    /* Paper grain, matched to the main site */
+    .texture-paper { position: relative; }
+    .texture-paper::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23p)'/%3E%3C/svg%3E");
+      background-size: 280px 280px;
+    }
+    .texture-paper > * { position: relative; z-index: 2; }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── HEADER (minimal — landing pages keep exits low) ─────── */
+    header.lp-nav {
+      position: sticky; top: 0; z-index: 90;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(234,231,225,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand);
+    }
+    .lp-logo {
+      font-family: var(--font-display);
+      font-weight: 500; font-size: 1.05rem; letter-spacing: 0.25em;
+    }
+    .lp-nav-right { display: flex; align-items: center; gap: 14px; }
+
+    .lang-switch { display: flex; border: 1px solid rgba(43,43,43,0.25); }
+    .lang-switch button {
+      background: none; border: 0; padding: 7px 12px;
+      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(43,43,43,0.55); transition: all 0.25s;
+    }
+    .lang-switch button[aria-pressed="true"] { background: var(--charcoal); color: var(--ivory); }
+
+    .lp-phone {
+      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+      border: 1px solid rgba(43,43,43,0.35); padding: 9px 20px; transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .lp-phone:hover { background: var(--charcoal); color: var(--ivory); border-color: var(--charcoal); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 72px 0 80px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('img/hero_poster_desktop.jpg') center/cover no-repeat;
+      opacity: 0.28;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(43,43,43,0.92) 0%, rgba(43,43,43,0.78) 45%, rgba(43,43,43,0.6) 100%);
+    }
+    .hero > * { position: relative; z-index: 2; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .hero-copy .section-label { color: var(--bronze); }
+    .hero-copy h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-copy .lede {
+      font-size: 0.95rem; line-height: 1.85;
+      color: rgba(234,231,225,0.72);
+      max-width: 44ch;
+      margin-bottom: 32px;
+    }
+    .hero-points { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 34px; }
+    .hero-points li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 0.85rem; line-height: 1.6; color: rgba(234,231,225,0.85);
+    }
+    .hero-points li::before {
+      content: '—'; color: var(--bronze); flex: none; line-height: 1.6;
+    }
+    .hero-alt {
+      border-top: 1px solid rgba(234,231,225,0.18);
+      padding-top: 24px;
+      font-size: 0.8rem; line-height: 1.8; color: rgba(234,231,225,0.6);
+    }
+    .hero-alt a { color: var(--ivory); border-bottom: 1px solid var(--bronze); padding-bottom: 1px; }
+
+    /* ─── WIDGET CARD ────────────────────────────────────────── */
+    .booking-card {
+      background: var(--ivory);
+      color: var(--charcoal);
+      padding: 28px 28px 24px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+      width: 100%; max-width: 100%;
+    }
+    .booking-card h2 {
+      font-family: var(--font-display);
+      font-weight: 400; font-size: 1.35rem; margin-bottom: 6px;
+    }
+    .booking-card .card-sub {
+      font-size: 0.76rem; line-height: 1.7; color: rgba(43,43,43,0.6);
+      margin-bottom: 20px;
+    }
+    .reserve-widget { width: 100%; max-width: 100%; overflow: hidden; min-height: 480px; }
+    .reserve-widget #ialocWidgetContainer { width: 100%; max-width: 100%; }
+    .reserve-widget iframe {
+      width: 100% !important; max-width: 100% !important; border: 0;
+      -webkit-user-select: none; user-select: none;
+    }
+    iframe[src*="ialoc.ro"] { max-width: 100% !important; }
+
+    /* Transparent scroll guard: page scroll passes over the widget until tapped */
+    .ialoc-shell { position: relative; width: 100%; max-width: 100%; }
+    .ialoc-guard {
+      position: absolute; inset: 0; z-index: 5;
+      background: transparent; border: 0; padding: 0;
+      display: flex; align-items: flex-end; justify-content: center;
+      transition: opacity 0.25s;
+    }
+    .ialoc-guard-hint {
+      background: var(--charcoal); color: var(--ivory);
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 9px 18px; margin-bottom: 10px;
+    }
+    .ialoc-shell.active .ialoc-guard { opacity: 0; pointer-events: none; }
+    .widget-fallback {
+      font-size: 0.8rem; line-height: 1.8; color: rgba(43,43,43,0.7);
+      border: 1px solid var(--sand); padding: 18px;
+    }
+    .widget-fallback a { border-bottom: 1px solid var(--bronze); }
+
+    /* ─── TRUST BAR ──────────────────────────────────────────── */
+    .trust { background: var(--ivory); border-bottom: 1px solid var(--sand); padding: 34px 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .trust-item h3 {
+      font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(43,43,43,0.45); font-weight: 500; margin-bottom: 8px;
+    }
+    .trust-item p { font-size: 0.85rem; line-height: 1.6; }
+
+    /* ─── WHY / EXPERIENCE ───────────────────────────────────── */
+    .why { padding: 88px 0; }
+    .sec-head { max-width: 620px; margin-bottom: 48px; }
+    .sec-head h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.3; margin-bottom: 16px;
+    }
+    .sec-head p { font-size: 0.9rem; line-height: 1.9; color: rgba(43,43,43,0.6); }
+
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .why-card figure { overflow: hidden; margin-bottom: 18px; }
+    .why-card img { height: 300px; transition: transform 0.9s var(--ease); }
+    .why-card:hover img { transform: scale(1.04); }
+    .why-card h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; margin-bottom: 10px; }
+    .why-card p { font-size: 0.84rem; line-height: 1.85; color: rgba(43,43,43,0.62); }
+
+    /* ─── DISH STRIP ─────────────────────────────────────────── */
+    .dishes { padding: 0 0 88px; }
+    .dish-rail {
+      display: grid; grid-auto-flow: column; grid-auto-columns: 260px;
+      gap: 16px; overflow-x: auto; padding-bottom: 14px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .dish-rail::-webkit-scrollbar { height: 4px; }
+    .dish-rail::-webkit-scrollbar-thumb { background: var(--sand); }
+    .dish-card { position: relative; scroll-snap-align: start; }
+    .dish-card img { height: 300px; }
+    .dish-card span {
+      position: absolute; left: 12px; bottom: 12px;
+      background: rgba(43,43,43,0.82); color: var(--ivory);
+      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 7px 12px;
+    }
+    .menu-link { display: inline-block; margin-top: 28px; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid var(--bronze); padding-bottom: 4px; }
+
+    /* ─── MID CTA ────────────────────────────────────────────── */
+    .midcta { background: var(--charcoal); color: var(--ivory); padding: 76px 0; text-align: center; }
+    .midcta h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 16px; }
+    .midcta p { font-size: 0.88rem; line-height: 1.9; color: rgba(234,231,225,0.65); max-width: 52ch; margin: 0 auto 32px; }
+    .btn-solid {
+      display: inline-block;
+      background: var(--bronze); color: var(--charcoal);
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500;
+      padding: 17px 42px; transition: all 0.3s;
+    }
+    .btn-solid:hover { background: var(--ivory); }
+    .midcta .sub-link { display: block; margin-top: 20px; font-size: 0.78rem; color: rgba(234,231,225,0.6); }
+    .midcta .sub-link a { border-bottom: 1px solid rgba(198,169,107,0.7); }
+
+    /* ─── LOCATION ───────────────────────────────────────────── */
+    .location { padding: 88px 0 0; }
+    .location .container { text-align: center; }
+    .map-directions {
+      display: inline-block; margin-top: 18px;
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      border-bottom: 1px solid var(--bronze); padding-bottom: 4px;
+    }
+    .map-wrap { margin-top: 44px; }
+    .map-wrap iframe { width: 100%; height: 420px; border: 0; display: block; }
+
+    /* ─── FAQ ────────────────────────────────────────────────── */
+    .faq { padding: 88px 0; }
+    .faq-list { max-width: 780px; margin: 0 auto; border-top: 1px solid var(--sand); }
+    .faq-item { border-bottom: 1px solid var(--sand); }
+    .faq-q {
+      width: 100%; background: none; border: 0; text-align: left;
+      padding: 24px 40px 24px 0; position: relative;
+      font-family: var(--font-body); font-size: 0.92rem; font-weight: 400; color: var(--charcoal);
+    }
+    .faq-q::after {
+      content: '+'; position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+      font-size: 1.1rem; color: var(--bronze); transition: transform 0.3s;
+    }
+    .faq-item.open .faq-q::after { content: '−'; }
+    .faq-a { display: none; padding: 0 40px 26px 0; font-size: 0.85rem; line-height: 1.9; color: rgba(43,43,43,0.65); }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a a { border-bottom: 1px solid var(--bronze); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer { background: var(--charcoal); color: rgba(234,231,225,0.6); padding: 56px 0 40px; }
+    .f-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .f-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.28em; color: var(--ivory); display: block; margin-bottom: 14px; }
+    footer h4 { font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(234,231,225,0.45); font-weight: 500; margin-bottom: 14px; }
+    footer ul { list-style: none; font-size: 0.82rem; line-height: 2; }
+    footer a:hover { color: var(--ivory); }
+    .f-bottom {
+      border-top: 1px solid rgba(234,231,225,0.14); padding-top: 24px;
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      font-size: 0.72rem;
+    }
+
+    /* ─── STICKY MOBILE CTA ──────────────────────────────────── */
+    .sticky-cta {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 95;
+      display: none; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(234,231,225,0.97);
+      border-top: 1px solid var(--sand);
+      backdrop-filter: blur(12px);
+    }
+    .sticky-cta a {
+      flex: 1; text-align: center; padding: 15px 10px;
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .sticky-cta .s-book { background: var(--charcoal); color: var(--ivory); }
+    .sticky-cta .s-call { border: 1px solid rgba(43,43,43,0.35); flex: 0 0 38%; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-grid { gap: 40px; }
+      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+    @media (max-width: 900px) {
+      .container { padding: 0 20px; }
+      header.lp-nav { padding: 12px 20px; }
+      .lp-phone { display: none; }
+      .hero { padding: 40px 0 48px; }
+      .hero::before { background-image: url('img/hero_poster.jpg'); }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-copy h1 { font-size: clamp(1.85rem, 7vw, 2.3rem); }
+      .hero-copy .lede { margin-bottom: 24px; font-size: 0.9rem; }
+      .hero-points { gap: 11px; margin-bottom: 26px; }
+      .hero-alt { display: none; }
+      .booking-card { padding: 20px 16px 18px; }
+      .why, .faq { padding: 60px 0; }
+      .dishes { padding-bottom: 60px; }
+      .location { padding-top: 60px; }
+      .midcta { padding: 60px 0; }
+      .map-wrap iframe { height: 320px; }
+      .dish-rail { grid-auto-columns: 200px; }
+      .dish-card img, .why-card img { height: 230px; }
+      .f-grid { grid-template-columns: 1fr; gap: 28px; }
+      .sticky-cta { display: flex; }
+      body { padding-bottom: 74px; }
+    }
+    @media (max-width: 420px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── HEADER ──────────────────────────────────── -->
+  <header class="lp-nav">
+    <a href="/" class="lp-logo" translate="no" aria-label="BANCO">BANCO</a>
+    <div class="lp-nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang-btn="ro" aria-pressed="true">RO</button>
+        <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="lp-phone" href="tel:+40773261721" data-i18n="nav.phone">Sună: +40 773 261 721</a>
+    </div>
+  </header>
+
+  <!-- ─── HERO + BOOKING WIDGET ───────────────────── -->
+  <section class="hero" id="rezerva">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+          <span class="section-label" data-i18n="hero.label">Rezervări</span>
+          <h1 data-i18n="hero.h1">Rezervă o masă la BANCO</h1>
+          <p class="lede" data-i18n="hero.lede">
+            Bucătărie mediteraneană reinterpretată și cocktailuri de autor, într-un spațiu cu
+            influențe milaneze. În One Verdi Park, Barbu Văcărescu.
+          </p>
+          <ul class="hero-points">
+            <li data-i18n="hero.p1">Deschis zilnic, 10:00 — 22:00: mic dejun, prânz, aperitivo și cină.</li>
+            <li data-i18n="hero.p2">Rezervări online cu până la 30 de zile în avans.</li>
+            <li data-i18n="hero.p3">Grupuri de 8 persoane sau mai mari: te rugăm să ne contactezi direct.</li>
+            <li data-i18n="hero.p4">One Verdi Park, Corp A, Parter — Sector 2, București.</li>
+          </ul>
+          <p class="hero-alt" data-i18n-html="hero.alt">
+            Preferi să vorbești cu noi? Sună la <a href="tel:+40773261721">+40 773 261 721</a>
+            sau scrie-ne la <a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a>.
+          </p>
+        </div>
+
+        <div class="booking-card">
+          <h2 data-i18n="card.h2">Rezervare online</h2>
+          <p class="card-sub" data-i18n="card.sub">Alege data, ora și numărul de persoane. Rezervarea ajunge direct la noi.</p>
+
+          <!-- iAloc reservation widget (venue 4575) — inline; bookings go straight to the iAloc app -->
+          <div class="reserve-widget">
+            <!-- ialoc-shell: a transparent "scroll guard" sits over the widget so page scroll passes
+                 through and the widget's internal scroll never hijacks it. Tap/click to interact. -->
+            <div class="ialoc-shell" id="ialocShell">
+              <div id="ialocWidgetContainer"></div>
+              <button type="button" class="ialoc-guard" id="ialocGuard" data-i18n-aria="widget.guardAria" aria-label="Activează widget-ul de rezervare">
+                <span class="ialoc-guard-hint" data-i18n="widget.guardHint">Apasă pentru a rezerva</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Shown only if the iAloc widget fails to render (blocked script, offline, ad-blocker) -->
+          <div class="widget-fallback" id="widgetFallback" hidden data-i18n-html="widget.fallback">
+            Rezervarea online nu se poate încărca în acest moment. Sună-ne la
+            <a href="tel:+40773261721">+40 773 261 721</a> și îți rezervăm noi masa.
+          </div>
+
+          <noscript>
+            <div class="widget-fallback">
+              Rezervarea online are nevoie de JavaScript. Sună-ne la
+              <a href="tel:+40773261721">+40 773 261 721</a> și îți rezervăm noi masa.
+            </div>
+          </noscript>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST BAR ───────────────────────────────── -->
+  <section class="trust texture-paper">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <h3 data-i18n="trust.hours.k">Program</h3>
+          <p data-i18n="trust.hours.v">Zilnic, 10:00 — 22:00</p>
+        </div>
+        <div class="trust-item">
+          <h3 data-i18n="trust.place.k">Locație</h3>
+          <p data-i18n="trust.place.v">One Verdi Park, Barbu Văcărescu 164E</p>
+        </div>
+        <div class="trust-item">
+          <h3 data-i18n="trust.kitchen.k">Bucătărie</h3>
+          <p data-i18n="trust.kitchen.v">Mediteraneană &amp; europeană contemporană</p>
+        </div>
+        <div class="trust-item">
+          <h3 data-i18n="trust.book.k">Rezervări</h3>
+          <p data-i18n="trust.book.v">Online sau la +40 773 261 721</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY BANCO ───────────────────────────────── -->
+  <section class="why texture-paper">
+    <div class="container">
+      <div class="sec-head fade-in">
+        <span class="section-label" data-i18n="why.label">Experiența</span>
+        <h2 data-i18n="why.h2">Un prânz lung, un aperitivo, o cină care nu se grăbește</h2>
+        <p data-i18n="why.sub">
+          BANCO este un restaurant mediteranean premium casual, construit în jurul clasicelor
+          reinterpretate și al băuturilor de autor — gândit pentru mese lungi și seri sociale.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card fade-in">
+          <figure><img src="img/loc2.jpg" alt="Sala de mese și barul BANCO" loading="lazy" /></figure>
+          <h3 data-i18n="why.c1.h">Spațiul</h3>
+          <p data-i18n="why.c1.p">Influențe milaneze contemporane, materiale calde și o atmosferă relaxată — la fel de potrivită pentru o întâlnire de business ca pentru o cină cu prietenii.</p>
+        </div>
+        <div class="why-card fade-in">
+          <figure><img src="img/dish_signature.jpg" alt="Preparat semnătură BANCO" loading="lazy" /></figure>
+          <h3 data-i18n="why.c2.h">Bucătăria</h3>
+          <p data-i18n="why.c2.p">Clasice mediteraneene reinterpretate: paste făcute în casă, pește la grătar, burrata, tartar de vită și preparate de împărțit.</p>
+        </div>
+        <div class="why-card fade-in">
+          <figure><img src="img/drink_pornstar.jpg" alt="Cocktail de autor la barul BANCO" loading="lazy" /></figure>
+          <h3 data-i18n="why.c3.h">Barul</h3>
+          <p data-i18n="why.c3.p">Interpretări proprii ale cocktailurilor clasice, o carte de vinuri europene și șampanie la pahar — de la ora aperitivo-ului până seara târziu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DISH RAIL ───────────────────────────────── -->
+  <section class="dishes texture-paper">
+    <div class="container">
+      <div class="sec-head fade-in">
+        <span class="section-label" data-i18n="dish.label">Din bucătărie</span>
+        <h2 data-i18n="dish.h2">Preparate selectate</h2>
+      </div>
+      <div class="dish-rail fade-in">
+        <div class="dish-card"><img src="img/menu_tartufo.jpg" alt="Paccheri al tartufo" loading="lazy" /><span>Paccheri al Tartufo</span></div>
+        <div class="dish-card"><img src="img/menu_tartare.jpg" alt="Tartar de vită" loading="lazy" /><span data-i18n="dish.tartare">Tartar de Vită</span></div>
+        <div class="dish-card"><img src="img/menu_burrata.jpg" alt="Legume coapte și burrata" loading="lazy" /><span data-i18n="dish.burrata">Legume &amp; Burrata</span></div>
+        <div class="dish-card"><img src="img/menu_gamberi.jpg" alt="Paste cu creveți" loading="lazy" /><span>Gamberi</span></div>
+        <div class="dish-card"><img src="img/menu_cacio.jpg" alt="Cacio e pepe" loading="lazy" /><span>Cacio e Pepe</span></div>
+        <div class="dish-card"><img src="img/menu_arancini.jpg" alt="Arancini" loading="lazy" /><span>Arancini</span></div>
+        <div class="dish-card"><img src="img/menu_dessert.jpg" alt="Tarte tatin" loading="lazy" /><span>Tarte Tatin</span></div>
+      </div>
+      <a class="menu-link" href="/#menu" data-i18n="dish.link">Vezi meniul complet →</a>
+    </div>
+  </section>
+
+  <!-- ─── MID CTA ─────────────────────────────────── -->
+  <section class="midcta">
+    <div class="container">
+      <h2 data-i18n="mid.h2">Masa ta te așteaptă</h2>
+      <p data-i18n="mid.p">Rezervă în câțiva pași, cu până la 30 de zile în avans. Pentru grupuri de 8 persoane sau mai mari, sună-ne și organizăm împreună.</p>
+      <a href="#rezerva" class="btn-solid" data-cta="mid" data-i18n="mid.btn">Rezervă o masă</a>
+      <span class="sub-link" data-i18n-html="mid.sub">Sau sună la <a href="tel:+40773261721">+40 773 261 721</a></span>
+    </div>
+  </section>
+
+  <!-- ─── LOCATION ────────────────────────────────── -->
+  <section class="location texture-paper">
+    <div class="container">
+      <span class="section-label" data-i18n="loc.label">Unde ne găsești</span>
+      <h2 class="sec-head" style="margin:0 auto 12px;font-family:var(--font-display);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);" data-i18n="loc.h2">One Verdi Park, București</h2>
+      <p style="font-size:0.88rem;line-height:1.9;color:rgba(43,43,43,0.6);" data-i18n="loc.addr">Strada Barbu Văcărescu 164E, Corp A, Parter · Sector 2, 020285</p>
+      <a class="map-directions" href="https://www.google.com/maps/search/?api=1&amp;query=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest" target="_blank" rel="noopener" data-i18n="loc.dir">Deschide în Google Maps →</a>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        title="BANCO — One Verdi Park, București pe Google Maps"
+        src="https://www.google.com/maps?q=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest&amp;output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─────────────────────────────────────── -->
+  <section class="faq texture-paper">
+    <div class="container">
+      <div class="sec-head fade-in" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <span class="section-label" data-i18n="faq.label">Întrebări frecvente</span>
+        <h2 data-i18n="faq.h2">Bine de știut înainte de rezervare</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q1">Cu cât timp înainte pot rezerva?</button>
+          <div class="faq-a" data-i18n="faq.a1">Primim rezervări cu până la 30 de zile în avans. Pentru aceeași zi, îți recomandăm să rezervi online cât mai devreme sau să ne suni.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q2">Care este programul?</button>
+          <div class="faq-a" data-i18n="faq.a2">Suntem deschiși în fiecare zi, între 10:00 și 22:00 — pentru mic dejun, prânz, aperitivo și cină.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q3">Cum rezerv pentru un grup mare?</button>
+          <div class="faq-a" data-i18n-html="faq.a3">Pentru grupuri de 8 persoane sau mai mari, te rugăm să ne contactezi direct la <a href="tel:+40773261721">+40 773 261 721</a> sau la <a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a>, ca să găsim cea mai bună variantă de așezare.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q4">Pot modifica sau anula rezervarea?</button>
+          <div class="faq-a" data-i18n-html="faq.a4">Da. Sună-ne la <a href="tel:+40773261721">+40 773 261 721</a> sau scrie-ne la <a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a> și ne ocupăm noi de modificare.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q5">Ce fel de bucătărie serviți?</button>
+          <div class="faq-a" data-i18n-html="faq.a5">Bucătărie mediteraneană și europeană contemporană — clasice reinterpretate, cu influențe milaneze — alături de cocktailuri de autor și o carte de vinuri europene. <a href="/#menu">Vezi meniul complet</a>.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q6">Unde vă aflați exact?</button>
+          <div class="faq-a" data-i18n-html="faq.a6">În One Verdi Park, Strada Barbu Văcărescu 164E, Corp A, Parter, Sector 2, București. <a href="https://www.google.com/maps/search/?api=1&amp;query=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest" target="_blank" rel="noopener">Deschide traseul în Google Maps</a>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ──────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="f-grid">
+        <div>
+          <span class="f-logo" translate="no">BANCO</span>
+          <p style="font-size:0.82rem;line-height:1.9;" data-i18n="foot.tag">Bucătărie mediteraneană contemporană.<br/>Un echilibru între gust, atmosferă și design.</p>
+        </div>
+        <div>
+          <h4 data-i18n="foot.visit">Vizitează</h4>
+          <ul>
+            <li>Strada Barbu Văcărescu 164E</li>
+            <li>One Verdi Park, Corp A, Parter</li>
+            <li>Sector 2, 020285, București</li>
+            <li style="margin-top:14px"><a href="tel:+40773261721">+40 773 261 721</a></li>
+            <li><a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="foot.more">Mai multe</h4>
+          <ul>
+            <li><a href="/" data-i18n="foot.site">Site-ul BANCO</a></li>
+            <li><a href="/#menu" data-i18n="foot.menu">Meniu</a></li>
+            <li><a href="#rezerva" data-i18n="foot.book">Rezervă o masă</a></li>
+            <li><a href="https://www.instagram.com/bancorestaurant" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <span>&copy; 2024 BANCO</span>
+        <span data-i18n="foot.hours">Deschis zilnic 10:00 — 22:00</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── STICKY MOBILE CTA ───────────────────────── -->
+  <div class="sticky-cta">
+    <a class="s-book" href="#rezerva" data-cta="sticky" data-i18n="sticky.book">Rezervă masă</a>
+    <a class="s-call" href="tel:+40773261721" data-i18n="sticky.call">Sună</a>
+  </div>
+
+  <!-- ─── i18N ────────────────────────────────────── -->
+  <script>
+  /* Romanian is baked into the markup; English is applied on demand.
+     Order of precedence for the initial language: ?lang= → localStorage → browser language. */
+  var I18N = {
+    en: {
+      "nav.phone": "Call: +40 773 261 721",
+      "hero.label": "Reservations",
+      "hero.h1": "Book a table at BANCO",
+      "hero.lede": "Reinterpreted Mediterranean cooking and signature cocktails, in a space with contemporary Milanese influences. At One Verdi Park, Barbu Văcărescu.",
+      "hero.p1": "Open daily, 10:00 — 22:00: breakfast, lunch, aperitivo and dinner.",
+      "hero.p2": "Online reservations up to 30 days in advance.",
+      "hero.p3": "Parties of 8 or more: please contact us directly.",
+      "hero.p4": "One Verdi Park, Corp A, ground floor — Sector 2, Bucharest.",
+      "hero.alt": "Rather talk to us? Call <a href=\"tel:+40773261721\">+40 773 261 721</a> or write to <a href=\"mailto:contact@banco-restaurant.ro\">contact@banco-restaurant.ro</a>.",
+      "card.h2": "Book online",
+      "card.sub": "Pick a date, a time and the number of guests. Your reservation comes straight to us.",
+      "widget.guardHint": "Tap to book",
+      "widget.guardAria": "Activate the reservation widget",
+      "widget.fallback": "Online booking can't load right now. Call us at <a href=\"tel:+40773261721\">+40 773 261 721</a> and we'll book your table.",
+      "trust.hours.k": "Hours",
+      "trust.hours.v": "Every day, 10:00 — 22:00",
+      "trust.place.k": "Location",
+      "trust.place.v": "One Verdi Park, Barbu Văcărescu 164E",
+      "trust.kitchen.k": "Kitchen",
+      "trust.kitchen.v": "Mediterranean &amp; contemporary European",
+      "trust.book.k": "Reservations",
+      "trust.book.v": "Online or at +40 773 261 721",
+      "why.label": "The experience",
+      "why.h2": "A long lunch, an aperitivo, a dinner that takes its time",
+      "why.sub": "BANCO is a Mediterranean premium casual restaurant built around reinterpreted classics and signature drinks — designed for long tables and social evenings.",
+      "why.c1.h": "The space",
+      "why.c1.p": "Contemporary Milanese influences, warm materials and a relaxed atmosphere — as suited to a business lunch as to dinner with friends.",
+      "why.c2.h": "The kitchen",
+      "why.c2.p": "Mediterranean classics, reinterpreted: house-made pasta, grilled fish, burrata, beef tartare and plates made for sharing.",
+      "why.c3.h": "The bar",
+      "why.c3.p": "Our own takes on classic cocktails, a European wine list and champagne by the glass — from aperitivo hour into the evening.",
+      "dish.label": "From the kitchen",
+      "dish.h2": "Selected dishes",
+      "dish.tartare": "Beef Tartare",
+      "dish.burrata": "Roasted Veg &amp; Burrata",
+      "dish.link": "See the full menu →",
+      "mid.h2": "Your table is waiting",
+      "mid.p": "Book in a few steps, up to 30 days in advance. For parties of 8 or more, call us and we'll arrange it together.",
+      "mid.btn": "Book a table",
+      "mid.sub": "Or call <a href=\"tel:+40773261721\">+40 773 261 721</a>",
+      "loc.label": "Find us",
+      "loc.h2": "One Verdi Park, Bucharest",
+      "loc.addr": "Strada Barbu Văcărescu 164E, Corp A, ground floor · Sector 2, 020285",
+      "loc.dir": "Open in Google Maps →",
+      "faq.label": "FAQ",
+      "faq.h2": "Good to know before you book",
+      "faq.q1": "How far ahead can I book?",
+      "faq.a1": "We take reservations up to 30 days in advance. For same-day tables, book online as early as you can or give us a call.",
+      "faq.q2": "What are your opening hours?",
+      "faq.a2": "We are open every day between 10:00 and 22:00 — for breakfast, lunch, aperitivo and dinner.",
+      "faq.q3": "How do I book for a large group?",
+      "faq.a3": "For parties of 8 or more, please contact us directly at <a href=\"tel:+40773261721\">+40 773 261 721</a> or <a href=\"mailto:contact@banco-restaurant.ro\">contact@banco-restaurant.ro</a> so we can find the best seating for you.",
+      "faq.q4": "Can I change or cancel my reservation?",
+      "faq.a4": "Yes. Call us at <a href=\"tel:+40773261721\">+40 773 261 721</a> or write to <a href=\"mailto:contact@banco-restaurant.ro\">contact@banco-restaurant.ro</a> and we'll take care of it.",
+      "faq.q5": "What kind of cuisine do you serve?",
+      "faq.a5": "Mediterranean and contemporary European cooking — reinterpreted classics with Milanese influences — alongside signature cocktails and a European wine list. <a href=\"/#menu\">See the full menu</a>.",
+      "faq.q6": "Where exactly are you?",
+      "faq.a6": "At One Verdi Park, Strada Barbu Văcărescu 164E, Corp A, ground floor, Sector 2, Bucharest. <a href=\"https://www.google.com/maps/search/?api=1&amp;query=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest\" target=\"_blank\" rel=\"noopener\">Open directions in Google Maps</a>.",
+      "foot.tag": "Contemporary Mediterranean dining.<br/>A balance of taste, atmosphere and design.",
+      "foot.visit": "Visit",
+      "foot.more": "More",
+      "foot.site": "BANCO website",
+      "foot.menu": "Menu",
+      "foot.book": "Book a table",
+      "foot.hours": "Open daily 10:00 — 22:00",
+      "sticky.book": "Book a table",
+      "sticky.call": "Call",
+      "_title": "Book a table at BANCO — Mediterranean Restaurant in Bucharest",
+      "_desc": "Book a table online at BANCO, One Verdi Park, Bucharest. Mediterranean cooking, signature cocktails, open daily 10:00 — 22:00. Reservations up to 30 days in advance."
+    }
+  };
+
+  /* Romanian originals are captured from the DOM on first load, so RO stays a single source of truth. */
+  var RO_SNAPSHOT = null;
+  function snapshotRO() {
+    RO_SNAPSHOT = { _title: document.title, _desc: (document.querySelector('meta[name="description"]') || {}).content };
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { RO_SNAPSHOT[el.dataset.i18n] = el.innerHTML; });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) { RO_SNAPSHOT[el.dataset.i18nHtml] = el.innerHTML; });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) { RO_SNAPSHOT[el.dataset.i18nAria] = el.getAttribute('aria-label'); });
+  }
+
+  function applyLang(lang) {
+    var dict = lang === 'en' ? I18N.en : RO_SNAPSHOT;
+    if (!dict) return;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var v = dict[el.dataset.i18n]; if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var v = dict[el.dataset.i18nHtml]; if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var v = dict[el.dataset.i18nAria]; if (v != null) el.setAttribute('aria-label', v);
+    });
+    if (dict._title) document.title = dict._title;
+    var md = document.querySelector('meta[name="description"]');
+    if (md && dict._desc) md.setAttribute('content', dict._desc);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.langBtn === lang));
+    });
+    try { localStorage.setItem('banco_lang', lang); } catch (e) {}
+  }
+
+  function initialLang() {
+    var q = null;
+    try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (q === 'ro' || q === 'en') return q;
+    var stored = null;
+    try { stored = localStorage.getItem('banco_lang'); } catch (e) {}
+    if (stored === 'ro' || stored === 'en') return stored;
+    return (navigator.language || '').toLowerCase().indexOf('ro') === 0 ? 'ro' : 'en';
+  }
+
+  var currentLang = 'ro';
+  snapshotRO();
+  currentLang = initialLang();
+  if (currentLang !== 'ro') applyLang(currentLang);
+
+  document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var lang = btn.dataset.langBtn;
+      if (lang === currentLang) return;
+      currentLang = lang;
+      applyLang(lang);
+      try { window.bancoTrack && window.bancoTrack('lp_lang_switch', { lang: lang }); } catch (e) {}
+      mountWidget(lang);
+    });
+  });
+  </script>
+
+  <!-- ─── iALOC WIDGET ────────────────────────────── -->
+  <script type="text/javascript">
+    !function(e,t,i,n,s,o,c,a,d,r){if(!e[n]){for(;a<c.length;)s(o,c[a++]);(d=t.createElement(i)).async=1,d.src="https://ialoc.ro/assets/widget-v2/embed.min.js",(r=t.getElementsByTagName(i)[0]).parentNode.insertBefore(d,r),e[n]=o}}(window,document,"script","ialocEmbedWidget",function(e,t){e[t]=function(){e._q.push([t,arguments])}},{_q:[]},"init show hide".split(" "),0);
+
+    /* Mounts (or re-mounts, on a language switch) the iAloc widget for venue 4575.
+       If a re-mount leaves the container empty, we reload with ?lang= so the widget
+       always initialises cleanly in the selected locale. */
+    function mountWidget(locale) {
+      var box = document.getElementById('ialocWidgetContainer');
+      if (!box) return;
+      var remount = box.children.length > 0;
+      if (remount) box.innerHTML = '';
+      try {
+        ialocEmbedWidget.init({
+          source: 'ialoc-widget-embed',
+          locale: locale === 'en' ? 'en' : 'ro',
+          embedMode: 'inline',
+          venueId: '4575',
+          onWidgetReady: function () { ialocEmbedWidget.show(); },
+          /* iAloc fires reservationCompleted when a booking goes through */
+          callback: function (v) {
+            try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch (e) {}
+          }
+        });
+      } catch (e) {
+        if (remount) location.search = 'lang=' + locale;
+        return;
+      }
+      if (remount) {
+        setTimeout(function () {
+          if (box.children.length === 0) location.search = 'lang=' + locale;
+        }, 2500);
+        return;
+      }
+      /* First mount: if nothing rendered, fall back to the phone number rather than
+         leaving the visitor staring at an empty card. */
+      setTimeout(function () {
+        if (box.children.length > 0) return;
+        var fb = document.getElementById('widgetFallback');
+        var guard = document.getElementById('ialocGuard');
+        var wrap = document.querySelector('.reserve-widget');
+        if (fb) fb.hidden = false;
+        if (guard) guard.style.display = 'none';
+        if (wrap) wrap.style.minHeight = '0';
+        try { window.bancoTrack && window.bancoTrack('lp_widget_failed'); } catch (e) {}
+      }, 8000);
+    }
+    mountWidget(document.documentElement.lang === 'en' ? 'en' : 'ro');
+
+    /* Scroll-guard: the page scrolls freely over the widget until the user taps it.
+       Re-arms when the pointer leaves or the widget scrolls out of view. */
+    (function () {
+      var shell = document.getElementById('ialocShell');
+      var guard = document.getElementById('ialocGuard');
+      if (!shell || !guard) return;
+      guard.addEventListener('click', function () { shell.classList.add('active'); });
+      shell.addEventListener('mouseleave', function () { shell.classList.remove('active'); });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.intersectionRatio < 0.6) shell.classList.remove('active'); });
+        }, { threshold: [0, 0.6, 1] }).observe(shell);
+      }
+    })();
+  </script>
+
+  <!-- ─── PAGE JS ─────────────────────────────────── -->
+  <script>
+    // Fade-ins
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry, i) {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i % 3) * 0.1 + 's';
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-in').forEach(function (el) { io.observe(el); });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(function (q) {
+      q.addEventListener('click', function () {
+        var item = q.parentElement;
+        var open = item.classList.toggle('open');
+        q.setAttribute('aria-expanded', String(open));
+        if (open) { try { window.bancoTrack && window.bancoTrack('lp_faq_open'); } catch (e) {} }
+      });
+    });
+  </script>
+
+  <!-- Structured data: Restaurant + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "BANCO",
+    "image": "https://banco-restaurant.ro/img/og.jpg",
+    "url": "https://banco-restaurant.ro/",
+    "description": "BANCO is a Mediterranean premium casual restaurant built around reinterpreted Mediterranean classics and signature takes on classic cocktails, in One Verdi Park, Bucharest.",
+    "servesCuisine": ["Mediterranean", "European"],
+    "priceRange": "$$$",
+    "acceptsReservations": "https://banco-restaurant.ro/rezervare",
+    "telephone": "+40773261721",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Strada Barbu Văcărescu 164E, One Verdi Park, Corp A, Parter",
+      "addressLocality": "Bucharest",
+      "addressRegion": "Sector 2",
+      "postalCode": "020285",
+      "addressCountry": "RO"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 44.46940, "longitude": 26.11022 },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Banco+Restaurant+One+Verdi+Park+Bucuresti",
+    "sameAs": ["https://www.instagram.com/bancorestaurant"],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:00", "closes": "22:00" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Cu cât timp înainte pot rezerva?", "acceptedAnswer": { "@type": "Answer", "text": "Primim rezervări cu până la 30 de zile în avans. Pentru aceeași zi, îți recomandăm să rezervi online cât mai devreme sau să ne suni la +40 773 261 721." } },
+      { "@type": "Question", "name": "Care este programul BANCO?", "acceptedAnswer": { "@type": "Answer", "text": "Suntem deschiși în fiecare zi, între 10:00 și 22:00 — pentru mic dejun, prânz, aperitivo și cină." } },
+      { "@type": "Question", "name": "Cum rezerv pentru un grup mare?", "acceptedAnswer": { "@type": "Answer", "text": "Pentru grupuri de 8 persoane sau mai mari, te rugăm să ne contactezi direct la +40 773 261 721 sau la contact@banco-restaurant.ro." } },
+      { "@type": "Question", "name": "Pot modifica sau anula rezervarea?", "acceptedAnswer": { "@type": "Answer", "text": "Da. Sună la +40 773 261 721 sau scrie la contact@banco-restaurant.ro și ne ocupăm noi de modificare." } },
+      { "@type": "Question", "name": "Ce fel de bucătărie serviți?", "acceptedAnswer": { "@type": "Answer", "text": "Bucătărie mediteraneană și europeană contemporană — clasice reinterpretate, cu influențe milaneze — alături de cocktailuri de autor și o carte de vinuri europene." } },
+      { "@type": "Question", "name": "Unde se află BANCO?", "acceptedAnswer": { "@type": "Answer", "text": "În One Verdi Park, Strada Barbu Văcărescu 164E, Corp A, Parter, Sector 2, 020285, București." } }
+    ]
+  }
+  </script>
+
+  <!-- BANCO Analytics — privacy-first, fără cookies (doar un id de sesiune efemer în sessionStorage) -->
+  <script>
+  (function(){
+    try {
+      var SB_URL = "https://uzmfcndntbctuuqnhkpd.supabase.co";
+      var SB_KEY = "sb_publishable_8vbZCx61DS6HbZclLj7bZg_GuImxOj5";
+      if (navigator.webdriver) return; // sari peste boți/prerender
+      var sid = null;
+      try {
+        sid = sessionStorage.getItem('banco_sid');
+        if (!sid) { sid = Date.now().toString(36) + Math.random().toString(36).slice(2,10); sessionStorage.setItem('banco_sid', sid); }
+      } catch(e){}
+      var w = window.innerWidth || (screen && screen.width) || 0;
+      var device = w <= 768 ? 'mobile' : (w <= 1024 ? 'tablet' : 'desktop');
+      var refHost = null;
+      try { if (document.referrer) { var u = new URL(document.referrer); if (u.hostname && u.hostname !== location.hostname) refHost = u.hostname; } } catch(e){}
+      var payload = {
+        path: location.pathname + (location.search || ''),
+        referrer_host: refHost,
+        device: device,
+        screen_w: w,
+        lang: (navigator.language || '').slice(0,5) || null,
+        tz: null,
+        session_id: sid
+      };
+      try { payload.tz = Intl.DateTimeFormat().resolvedOptions().timeZone || null; } catch(e){}
+      fetch(SB_URL + "/rest/v1/banco_pageviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Prefer": "return=minimal" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(function(){});
+
+      /* ── Evenimente (rezervări, tel, direcții) ─────────────── */
+      window.bancoTrack = function(type, meta){
+        try {
+          fetch(SB_URL + "/rest/v1/banco_events", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Prefer": "return=minimal" },
+            body: JSON.stringify({ type: type, session_id: sid, device: device, meta: meta || null }),
+            keepalive: true
+          }).catch(function(){});
+          if (typeof window.gtag === 'function') window.gtag('event', type);
+        } catch(e){}
+      };
+      document.addEventListener('click', function(e){
+        try {
+          var el = e.target && e.target.closest ? e.target.closest('a,button') : null;
+          if (!el) return;
+          if (el.id === 'ialocGuard') window.bancoTrack('reserve_widget_tap');
+          else if (el.classList.contains('map-directions')) window.bancoTrack('directions_click');
+          else if (el.dataset && el.dataset.cta) window.bancoTrack('lp_reserve_cta_click', { placement: el.dataset.cta });
+          else if ((el.getAttribute('href') || '').indexOf('tel:') === 0) window.bancoTrack('phone_click');
+        } catch(e){}
+      }, true);
+    } catch(e){}
+  })();
+  </script>
+</body>
+</html>
