@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>BANCO · Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{ --ivory:#F4F1EA; --charcoal:#2B2A28; --sub:#6b675f; --line:#e4dfd4; --gold:#C6A96B; --card:#fff; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--charcoal);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+  h1,h2{font-family:'Playfair Display',serif;font-weight:600;margin:0}
+  /* login */
+  #gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .login{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:40px 34px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(43,42,40,.08)}
+  .login .brand{font-family:'Playfair Display',serif;font-size:30px;letter-spacing:.18em;margin-bottom:4px}
+  .login .k{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--sub);margin-bottom:26px}
+  .login input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:10px;font-size:15px;text-align:center;letter-spacing:.05em;outline:none}
+  .login input:focus{border-color:var(--gold)}
+  .login button{width:100%;margin-top:14px;padding:14px;border:none;border-radius:10px;background:var(--charcoal);color:var(--ivory);font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+  .login .err{color:#b23a2a;font-size:13px;margin-top:12px;min-height:18px}
+  /* dashboard */
+  #app{display:none}
+  .top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:26px}
+  .top .brand{font-family:'Playfair Display',serif;font-size:26px;letter-spacing:.14em}
+  .top .meta{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
+  .top .actions button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 14px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin-left:8px;color:var(--charcoal)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .kpi .n{font-family:'Playfair Display',serif;font-size:34px;line-height:1}
+  .kpi .l{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sub);margin-top:8px}
+  .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .panel h2{font-size:16px;margin-bottom:16px}
+  .row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f0ece2;font-size:14px}
+  .row:last-child{border-bottom:none}
+  .row .v{font-weight:600}
+  .row .lbl{color:var(--charcoal);max-width:75%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bar{height:6px;border-radius:4px;background:var(--gold);opacity:.85}
+  .muted{color:var(--sub);font-size:13px}
+  @media(max-width:860px){ .kpis{grid-template-columns:1fr 1fr} .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <form class="login" id="loginForm" autocomplete="off">
+    <div class="brand">BANCO</div>
+    <div class="k">Admin · Statistici</div>
+    <input type="password" id="pw" placeholder="Parolă" autofocus />
+    <button type="submit">Intră</button>
+    <div class="err" id="err"></div>
+  </form>
+</div>
+
+<div id="app">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="brand">BANCO</div>
+        <div class="meta" id="updated">Se încarcă…</div>
+      </div>
+      <div class="actions">
+        <button id="refresh">Reîmprospătează</button>
+        <button id="logout">Ieși</button>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="n" id="k_total">–</div><div class="l">Vizualizări total</div></div>
+      <div class="kpi"><div class="n" id="k_sessions">–</div><div class="l">Sesiuni unice</div></div>
+      <div class="kpi"><div class="n" id="k_7d">–</div><div class="l">Ultimele 7 zile</div></div>
+      <div class="kpi"><div class="n" id="k_30d">–</div><div class="l">Ultimele 30 zile</div></div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="n" id="k_res_total">–</div><div class="l">Rezervări total</div></div>
+      <div class="kpi"><div class="n" id="k_res_30d">–</div><div class="l">Rezervări 30 zile</div></div>
+      <div class="kpi"><div class="n" id="k_gmb_rating">–</div><div class="l">Rating Google</div></div>
+      <div class="kpi"><div class="n" id="k_gmb_count">–</div><div class="l">Recenzii Google</div></div>
+    </div>
+
+    <div class="panel" style="margin-bottom:18px">
+      <h2>Trafic (ultimele 30 de zile)</h2>
+      <canvas id="chart" height="110"></canvas>
+    </div>
+
+    <div class="grid" style="margin-bottom:18px">
+      <div class="panel">
+        <h2>Rezervări &amp; acțiuni (30 de zile)</h2>
+        <div id="events"></div>
+        <div class="muted" style="margin-top:10px" id="events_note"></div>
+      </div>
+      <div class="panel">
+        <h2>Recenzii Google</h2>
+        <div id="gmb"></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <h2>Cele mai vizitate pagini</h2>
+        <div id="paths"></div>
+      </div>
+      <div>
+        <div class="panel" style="margin-bottom:18px">
+          <h2>Dispozitive</h2>
+          <div id="devices"></div>
+        </div>
+        <div class="panel">
+          <h2>Surse de trafic</h2>
+          <div id="referrers"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script>
+(function(){
+  var SB_URL="https://uzmfcndntbctuuqnhkpd.supabase.co";
+  var SB_KEY="sb_publishable_8vbZCx61DS6HbZclLj7bZg_GuImxOj5";
+  // SHA-256 hash of the admin password.
+  var PW_HASH="a033168c03a6e7e7a033e786b17158bafe94b776fc878d49b3fa8ce9c3d6b00b";
+  var chart=null;
+
+  async function sha256(s){
+    var b=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
+  }
+  function unlock(){ document.getElementById('gate').style.display='none'; document.getElementById('app').style.display='block'; load(); }
+
+  document.getElementById('loginForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    var h=await sha256(document.getElementById('pw').value);
+    if(h===PW_HASH){ try{sessionStorage.setItem('banco_admin_ok','1')}catch(_){}; unlock(); }
+    else { document.getElementById('err').textContent='Parolă greșită.'; }
+  });
+  try{ if(sessionStorage.getItem('banco_admin_ok')==='1') unlock(); }catch(_){}
+
+  document.getElementById('refresh').addEventListener('click', load);
+  document.getElementById('logout').addEventListener('click', function(){ try{sessionStorage.removeItem('banco_admin_ok')}catch(_){}; location.reload(); });
+
+  function nfmt(n){ return (n||0).toLocaleString('ro-RO'); }
+  function rows(el, items, labelKey, valKey){
+    var max=Math.max.apply(null, items.map(function(i){return i[valKey]}).concat([1]));
+    el.innerHTML = items.length ? items.map(function(i){
+      var pct=Math.round((i[valKey]/max)*100);
+      var lbl=(i[labelKey]==null||i[labelKey]==='')?'(direct)':i[labelKey];
+      return '<div class="row"><span class="lbl" title="'+lbl+'">'+lbl+'</span><span class="v">'+nfmt(i[valKey])+'</span></div>'+
+             '<div class="bar" style="width:'+pct+'%;margin-bottom:8px"></div>';
+    }).join('') : '<div class="muted">Nicio dată încă.</div>';
+  }
+
+  async function fetchGA(){
+    var r=await fetch('/.netlify/functions/ga-stats');
+    if(!r.ok) throw new Error('ga http '+r.status);
+    var d=await r.json();
+    if(d && d.error) throw new Error(d.error);
+    if(!d || !d.total_views) throw new Error('ga empty'); // 0 = fără date încă → fallback
+    return d;
+  }
+  async function fetchSupabase(){
+    var r=await fetch(SB_URL+'/rest/v1/rpc/banco_admin_stats',{
+      method:'POST', headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}, body:'{}'
+    });
+    return await r.json();
+  }
+
+  var EVENT_LABELS={ reservation_completed:'Rezervări finalizate (iAloc)', reserve_widget_tap:'Interacțiuni cu widgetul de rezervare', reserve_nav_click:'Click-uri pe „Reservation"', phone_click:'Apeluri (click pe telefon)', directions_click:'Click-uri „Get directions"' };
+
+  async function loadEvents(){
+    var el=document.getElementById('events');
+    try{
+      var r=await fetch(SB_URL+'/rest/v1/rpc/banco_events_stats',{
+        method:'POST', headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}, body:'{}'
+      });
+      var d=await r.json();
+      document.getElementById('k_res_total').textContent=nfmt(d.reservations_total);
+      document.getElementById('k_res_30d').textContent=nfmt(d.reservations_30d);
+      var items=(d.by_type_30d||[]).map(function(x){ return { label: EVENT_LABELS[x.type]||x.type, n: x.n }; });
+      rows(el, items, 'label','n');
+      document.getElementById('events_note').textContent = items.length ? '' : 'Datele se strâng de la următorul deploy încolo — istoricul pornește de azi.';
+    }catch(e){ el.innerHTML='<div class="muted">Eroare la încărcarea evenimentelor.</div>'; }
+  }
+
+  async function loadGMB(){
+    var el=document.getElementById('gmb');
+    try{
+      var r=await fetch('/.netlify/functions/gmb-stats');
+      var d=await r.json();
+      if(!r.ok || d.error) throw new Error(d.error||('http '+r.status));
+      document.getElementById('k_gmb_rating').textContent=(d.rating!=null?d.rating.toFixed(1):'–');
+      document.getElementById('k_gmb_count').textContent=nfmt(d.review_count);
+      el.innerHTML=(d.reviews||[]).map(function(rv){
+        var stars='★★★★★'.slice(0,rv.rating)+'☆☆☆☆☆'.slice(0,5-rv.rating);
+        return '<div class="row" style="align-items:flex-start;flex-direction:column;gap:4px">'+
+          '<span style="color:#C6A96B;letter-spacing:2px">'+stars+'</span>'+
+          '<span class="lbl" style="white-space:normal;max-width:100%">'+(rv.text?rv.text.slice(0,180):'')+'</span>'+
+          '<span class="muted">'+(rv.author||'')+' · '+(rv.when||'')+'</span></div>';
+      }).join('') || '<div class="muted">Nicio recenzie de afișat.</div>';
+    }catch(e){ el.innerHTML='<div class="muted">Neconfigurat încă — necesită cheie Google Places.</div>'; }
+  }
+
+  async function load(){
+    document.getElementById('updated').textContent='Se încarcă…';
+    loadEvents(); loadGMB();
+    var d, src;
+    try{ d=await fetchGA(); src='Google Analytics'; }
+    catch(e){
+      try{ d=await fetchSupabase(); src='tracker propriu'; }
+      catch(e2){ document.getElementById('updated').textContent='Eroare la încărcare.'; return; }
+    }
+    try{
+      document.getElementById('k_total').textContent=nfmt(d.total_views);
+      document.getElementById('k_sessions').textContent=nfmt(d.total_sessions);
+      document.getElementById('k_7d').textContent=nfmt(d.views_7d);
+      document.getElementById('k_30d').textContent=nfmt(d.views_30d);
+      rows(document.getElementById('paths'), d.top_paths||[], 'path','views');
+      rows(document.getElementById('devices'), d.by_device||[], 'device','views');
+      rows(document.getElementById('referrers'), d.top_referrers||[], 'referrer','views');
+      var days=d.by_day||[];
+      var labels=days.map(function(x){return x.day.slice(5)});
+      var views=days.map(function(x){return x.views});
+      var ctx=document.getElementById('chart');
+      if(chart) chart.destroy();
+      chart=new Chart(ctx,{ type:'line', data:{ labels:labels, datasets:[{ label:'Vizualizări', data:views, borderColor:'#C6A96B', backgroundColor:'rgba(198,169,107,.15)', fill:true, tension:.32, pointRadius:2 }]},
+        options:{ plugins:{legend:{display:false}}, scales:{ y:{beginAtZero:true, grid:{color:'#f0ece2'}}, x:{grid:{display:false}} } } });
+      var t=new Date(); document.getElementById('updated').textContent='Sursă: '+src+' · Actualizat '+t.toLocaleString('ro-RO');
+    }catch(e){ document.getElementById('updated').textContent='Eroare la afișare.'; }
+  }
+})();
+</script>
+</body>
+</html>

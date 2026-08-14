@@ -1,0 +1,41 @@
+functionsDirectory = "/Users/rares/Documents/Claude/banco/netlify/functions"
+functionsDirectoryOrigin = "config-v1"
+redirectsOrigin = "config"
+plugins = []
+headers = []
+
+[build]
+publish = "/Users/rares/Documents/Claude/banco/_publish"
+publishOrigin = "config"
+functions = "/Users/rares/Documents/Claude/banco/netlify/functions"
+
+  [build.environment]
+
+  [build.processing]
+
+    [build.processing.css]
+
+    [build.processing.html]
+
+    [build.processing.images]
+
+    [build.processing.js]
+
+  [build.services]
+
+[functions]
+
+  [functions."*"]
+  node_bundler = "esbuild"
+
+[[redirects]]
+from = "/admin"
+to = "/admin.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]

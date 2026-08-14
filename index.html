@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L22DR3ZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X1L22DR3ZF');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>BANCO — Mediterranean Restaurant in Bucharest</title>
+  <meta name="description" content="BANCO is a Mediterranean premium casual restaurant built around reinterpreted Mediterranean classics and signature takes on classic cocktails. With contemporary Milanese influences and a relaxed atmosphere, BANCO is designed for long lunches, dinners, aperitivo moments and social dining experiences." />
+  <link rel="canonical" href="https://banco-restaurant.ro/" />
+  <meta name="theme-color" content="#2B2B2B" />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="RO-B" />
+  <meta name="geo.placename" content="Bucharest" />
+  <meta name="geo.position" content="44.46940;26.11022" />
+  <meta name="ICBM" content="44.46940, 26.11022" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph (WhatsApp / Facebook / LinkedIn link preview) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BANCO" />
+  <meta property="og:title" content="BANCO — Mediterranean Restaurant in Bucharest" />
+  <meta property="og:description" content="BANCO is a Mediterranean premium casual restaurant built around reinterpreted Mediterranean classics and signature takes on classic cocktails. With contemporary Milanese influences and a relaxed atmosphere, designed for long lunches, dinners, aperitivo moments and social dining." />
+  <meta property="og:url" content="https://banco-restaurant.ro/" />
+  <meta property="og:image" content="https://banco-restaurant.ro/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ro_RO" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BANCO — Mediterranean Restaurant in Bucharest" />
+  <meta name="twitter:description" content="BANCO is a Mediterranean premium casual restaurant built around reinterpreted Mediterranean classics and signature takes on classic cocktails. With contemporary Milanese influences and a relaxed atmosphere, designed for long lunches, dinners, aperitivo moments and social dining." />
+  <meta name="twitter:image" content="https://banco-restaurant.ro/img/og.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS (official BANCO brand) ──────────────────────── */
+    :root {
+      --ivory:   #EAE7E1;   /* Bej — backgrounds, airy zones (70%) */
+      --charcoal:#2B2B2B;   /* Charcoal — text, titles, logo (25%) */
+      --olive:   #2B2B2B;   /* dark sections remapped to charcoal */
+      --sand:    #D8D2C8;   /* warm beige — borders, dividers */
+      --bronze:  #C6A96B;   /* Gold — accents only (5%) */
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-logo:    'Playfair Display', Georgia, serif;
+      --font-body:    'Manrope', sans-serif;
+
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100%; overscroll-behavior-x: none; touch-action: pan-y pinch-zoom; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden; /* kill any horizontal page scroll (iOS Safari + embedded iframe) */
+      max-width: 100%;
+      width: 100%;
+      position: relative;
+      overscroll-behavior-x: none;
+      touch-action: pan-y pinch-zoom; /* lock horizontal drag on iOS, keep vertical scroll + pinch zoom */
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── UTILITIES ──────────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px;
+      transition: background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(244, 241, 234, 0.96);
+      backdrop-filter: blur(12px);
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .nav-logo {
+      font-family: var(--font-logo);
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.25em;
+      color: var(--charcoal);
+      transition: color 0.4s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(43,42,40,0.5);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-reserve {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      border: 1px solid rgba(43,42,40,0.35);
+      padding: 10px 22px;
+      transition: all 0.3s;
+    }
+    .nav-reserve:hover {
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-color: var(--charcoal);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    /* Tall scroll track; the hero pins inside it while the camera move scrubs */
+    .hero-pin {
+      position: relative;
+      height: 260vh;
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+
+    /* Cinematic media layer (video / poster) with parallax travel room */
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-media video,
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.0) brightness(0.97) contrast(1.0);
+    }
+
+    /* ~18-20% dark gradient wash over the whole clip (legibility for the watermark) */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(20,20,20,0.34) 0%, rgba(20,20,20,0.15) 28%, rgba(20,20,20,0.15) 68%, rgba(20,20,20,0.34) 100%);
+    }
+
+    /* Centered BANCO watermark + slogan */
+    .hero-scroll {
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      transition: opacity 0.5s var(--ease);
+    }
+    .hero-scroll span {
+      font-family: var(--font-body);
+      font-size: 0.56rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.78);
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 46px;
+      background: rgba(244,241,234,0.22);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 45%;
+      background: rgba(244,241,234,0.95);
+      animation: scrollPulse 1.8s var(--ease) infinite;
+    }
+    @keyframes scrollPulse {
+      0%   { transform: translateY(-100%); }
+      100% { transform: translateY(230%); }
+    }
+
+    /* BANCO logo card revealed (in HTML) when the hero clip finishes */
+    .hero-endlogo {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--ivory);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.9s var(--ease);
+      pointer-events: none;
+    }
+    .hero-endlogo.show { opacity: 1; visibility: visible; }
+    .hero-endlogo .el-mark {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(3rem, 13vw, 5.2rem);
+      letter-spacing: 0.18em;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .hero-endlogo .el-sub {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-top: 18px;
+    }
+    .hero-endlogo .el-url {
+      position: absolute;
+      bottom: 48px;
+      font-family: var(--font-body);
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
+      color: var(--bronze);
+    }
+
+    /* Subtle paper grain */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top rule */
+    .hero-rule {
+      width: 1px;
+      height: 64px;
+      background: linear-gradient(to bottom, transparent, rgba(244,241,234,0.45));
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 0.2s forwards;
+    }
+
+    .hero-logo {
+      font-family: var(--font-logo);
+      font-weight: 600;
+      font-size: clamp(4rem, 12vw, 9.5rem);
+      letter-spacing: 0.18em;
+      color: var(--ivory);
+      line-height: 1;
+      text-shadow: 0 2px 40px rgba(43,42,40,0.45);
+      opacity: 0;
+      animation: fadeUp 1.4s var(--ease) 0.05s forwards;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.42em;
+      color: rgba(244,241,234,0.82);
+      margin-top: 22px;
+      padding-left: 0.42em;
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 0.5s forwards;
+    }
+
+    /* Bottom rule */
+    .hero-rule-bottom {
+      width: 1px;
+      height: 64px;
+      background: linear-gradient(to bottom, rgba(244,241,234,0.45), transparent);
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 0.7s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.2s forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.5);
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(244,241,234,0.5), transparent);
+      animation: lineGrow 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes lineGrow {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.7); transform-origin: top; }
+      50%       { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
+    }
+
+    /* ─── INTRO ──────────────────────────────────────────────── */
+    .intro {
+      padding: 80px 0 72px;
+      background: var(--ivory);
+    }
+    .intro-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 48px;
+    }
+    .section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 32px;
+      display: block;
+    }
+    .intro h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.45;
+      color: var(--charcoal);
+      margin-bottom: 32px;
+    }
+    .intro p {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: rgba(43,42,40,0.6);
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── MATERIAL TEXTURES ─────────────────────────────────── */
+
+    /* HÂRTIE GROASĂ — paper grain on all ivory sections */
+    .texture-paper {
+      position: relative;
+    }
+    .texture-paper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23p)'/%3E%3C/svg%3E");
+      background-size: 280px 280px;
+    }
+    .texture-paper > * { position: relative; z-index: 2; }
+
+    /* PIATRĂ MATĂ — coarse matte stone on dark sections */
+    .texture-stone {
+      position: relative;
+    }
+    .texture-stone::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.3 0.5' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23s)'/%3E%3C/svg%3E");
+      background-size: 400px 400px;
+    }
+    .texture-stone > * { position: relative; z-index: 2; }
+
+    /* IN / BUMBAC — linen weave on sand elements */
+    .texture-linen {
+      background-image:
+        repeating-linear-gradient(0deg,   rgba(43,42,40,0.028) 0px, transparent 1px, transparent 3px, rgba(43,42,40,0.028) 4px),
+        repeating-linear-gradient(90deg,  rgba(43,42,40,0.028) 0px, transparent 1px, transparent 3px, rgba(43,42,40,0.028) 4px);
+      background-size: 4px 4px;
+    }
+
+    /* LEMN NATURAL DESCHIS — warm wood grain lines */
+    .texture-wood {
+      background-image:
+        repeating-linear-gradient(
+          92deg,
+          transparent 0px,
+          transparent 6px,
+          rgba(176,141,87,0.06) 6px,
+          rgba(176,141,87,0.06) 7px,
+          transparent 7px,
+          transparent 14px,
+          rgba(176,141,87,0.035) 14px,
+          rgba(176,141,87,0.035) 15px
+        );
+    }
+
+    /* METAL PERIAT — brushed horizontal lines for bronze accents */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(176,141,87,0.4) 10%,
+        var(--bronze) 30%,
+        rgba(176,141,87,0.9) 50%,
+        var(--bronze) 70%,
+        rgba(176,141,87,0.4) 90%,
+        transparent 100%
+      );
+      margin: 40px auto;
+      width: 60px;
+    }
+
+    /* ─── MENU SECTION ───────────────────────────────────────── */
+    .menu-section {
+      padding: 64px 0 72px;
+      background: var(--charcoal);
+      position: relative;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .menu-header .section-label { color: rgba(176,141,87,0.6); }
+    .menu-header h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      color: var(--ivory);
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 64px;
+      border-bottom: 1px solid rgba(244,241,234,0.1);
+    }
+    .menu-tab {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.35);
+      padding: 16px 32px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.3s;
+    }
+    .menu-tab.active {
+      color: var(--ivory);
+      border-bottom-color: var(--bronze);
+    }
+    .menu-tab:hover { color: rgba(244,241,234,0.7); }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      padding: 32px 40px;
+      border-bottom: 1px solid rgba(244,241,234,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 24px;
+    }
+    .menu-item:nth-child(odd) { border-right: 1px solid rgba(244,241,234,0.06); }
+
+    .menu-item-info h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: var(--ivory);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .menu-item-info p {
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: rgba(244,241,234,0.38);
+      letter-spacing: 0.02em;
+    }
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--bronze);
+      white-space: nowrap;
+      font-weight: 300;
+    }
+
+    /* full-width sub-category heading inside a menu panel */
+    .menu-sub {
+      grid-column: 1 / -1;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      padding: 36px 40px 14px;
+    }
+    .menu-sub:first-child { padding-top: 6px; }
+    .menu-note {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234,231,225,0.4);
+    }
+
+    .menu-cta {
+      text-align: center;
+      margin-top: 64px;
+    }
+    .btn-outline-light {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      border: 1px solid rgba(244,241,234,0.25);
+      padding: 16px 40px;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    .btn-outline-light:hover {
+      background: rgba(244,241,234,0.08);
+      border-color: rgba(244,241,234,0.5);
+    }
+
+    /* ─── ATMOSPHERE ─────────────────────────────────────────── */
+    .atmosphere {
+      padding: 72px 0;
+      background: var(--ivory);
+    }
+    .atmosphere-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .atmosphere-header h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      color: var(--charcoal);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 340px 240px;
+      gap: 12px;
+    }
+
+    .photo-item {
+      overflow: hidden;
+      background: var(--sand);
+      position: relative;
+    }
+    .photo-item:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s var(--ease);
+      filter: saturate(0.88) brightness(0.97);
+    }
+    .photo-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .ph-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.55);
+      z-index: 2;
+      background: rgba(43,42,40,0.3);
+      padding: 5px 10px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ─── DISHES GALLERY ─────────────────────────────────────── */
+    .dishes-section { padding: 40px 0 100px; background: var(--ivory); }
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .dish-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--sand);
+    }
+    .dish-card img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.7s var(--ease);
+      filter: saturate(0.88) brightness(0.97);
+    }
+    .dish-card:hover img { transform: scale(1.04); }
+    @media (max-width: 600px) {
+      .dish-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── PHILOSOPHY ─────────────────────────────────────────── */
+    .philosophy {
+      padding: 80px 0;
+      background: var(--olive);
+    }
+    .philosophy-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px;
+      text-align: center;
+    }
+    .philosophy blockquote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      line-height: 1.55;
+      color: var(--ivory);
+      margin-bottom: 40px;
+    }
+    .philosophy cite {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.35);
+      font-style: normal;
+    }
+
+    /* ─── RESERVE ────────────────────────────────────────────── */
+    .reserve {
+      padding: 80px 0;
+      background: var(--ivory);
+    }
+    .reserve-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .reserve-text h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.3;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+    .reserve-text p {
+      font-size: 0.85rem;
+      line-height: 1.9;
+      color: rgba(43,42,40,0.55);
+      margin-bottom: 16px;
+    }
+    .reserve-text .info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .info-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--olive);
+      min-width: 70px;
+    }
+    .info-value {
+      font-size: 0.82rem;
+      color: var(--charcoal);
+    }
+
+    .reserve-form { display: flex; flex-direction: column; gap: 16px; }
+    /* Reservation widget (iAloc inline) */
+    .reserve-widget { width: 100%; max-width: 100%; overflow: hidden; display: flex; flex-direction: column; gap: 14px; min-height: 480px; }
+    .reserve-widget .reserve-online {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      text-align: center;
+    }
+    .reserve-widget #ialocWidgetContainer { width: 100%; max-width: 100%; }
+    .reserve-widget iframe { width: 100% !important; max-width: 100% !important; border: 0; -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+    iframe[src*="ialoc.ro"] { max-width: 100% !important; }
+    /* Scroll guard: lets the page scroll over the widget; one tap activates it for booking */
+    .ialoc-shell { position: relative; width: 100%; max-width: 100%; }
+    .ialoc-guard {
+      position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%;
+      margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer;
+      display: flex; align-items: flex-end; justify-content: center;
+      touch-action: pan-y pinch-zoom; transition: opacity .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ialoc-guard-hint {
+      margin-bottom: 16px; font-family: var(--font-body); font-size: 0.6rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: #fff;
+      background: rgba(43,42,40,0.82); padding: 9px 17px; border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18); pointer-events: none; transition: opacity .2s ease;
+    }
+    .ialoc-shell.active .ialoc-guard { opacity: 0; pointer-events: none; }
+
+    /* ─── LOCATION / MAP ─────────────────────────────────────── */
+    .location { background: var(--ivory); }
+    .location-head { text-align: center; padding: 64px 20px 30px; }
+    .location-head h2 {
+      font-family: var(--font-display); font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--charcoal);
+      margin: 12px 0 8px;
+    }
+    .location-head p { font-size: 0.85rem; line-height: 1.8; color: rgba(43,42,40,0.55); margin: 0; }
+    .map-directions {
+      display: inline-block; margin-top: 18px; font-family: var(--font-body);
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--bronze); text-decoration: none; border-bottom: 1px solid currentColor;
+      padding-bottom: 3px; transition: opacity .2s ease;
+    }
+    .map-directions:hover { opacity: 0.6; }
+    .map-wrap { width: 100%; line-height: 0; }
+    .map-wrap iframe { width: 100%; height: 460px; border: 0; display: block; }
+    @media (max-width: 900px) { .map-wrap iframe { height: 360px; } .location-head { padding: 48px 20px 26px; } }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(43,42,40,0.45);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--sand);
+      padding: 12px 0;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.3s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--charcoal);
+    }
+    .form-group textarea { resize: none; height: 80px; }
+    .form-group select { cursor: pointer; background: transparent; }
+
+    .btn-primary {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: var(--charcoal);
+      border: none;
+      padding: 18px 48px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: var(--font-body);
+      font-weight: 400;
+      margin-top: 8px;
+      align-self: start;
+    }
+    .btn-primary:hover { background: var(--olive); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      padding: 56px 0 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(244,241,234,0.08);
+      margin-bottom: 40px;
+    }
+    .footer-brand .f-logo {
+      font-family: var(--font-logo);
+      font-weight: 400;
+      font-size: 1.3rem;
+      letter-spacing: 0.25em;
+      color: var(--ivory);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: rgba(244,241,234,0.35);
+    }
+
+    .footer-col h5 {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(176,141,87,0.6);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li {
+      font-size: 0.78rem;
+      color: rgba(244,241,234,0.4);
+      margin-bottom: 10px;
+      line-height: 1.5;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    .footer-col ul li:hover { color: rgba(244,241,234,0.7); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 0.68rem;
+      color: rgba(244,241,234,0.2);
+      letter-spacing: 0.05em;
+    }
+    .social-links { display: flex; gap: 24px; }
+    .social-links a {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.25);
+      transition: color 0.3s;
+    }
+    .social-links a:hover { color: rgba(244,241,234,0.6); }
+
+    /* ─── MOBILE ─────────────────────────────────────────────── */
+    /* ─── HAMBURGER ─────────────────────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 200;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--charcoal);
+      transition: all 0.3s var(--ease);
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--ivory);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      transition: opacity 0.3s var(--ease);
+    }
+    .mobile-menu.open { opacity: 1; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+    .mobile-menu a:hover { color: var(--olive); }
+    .mobile-menu .mobile-reserve {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid var(--charcoal);
+      padding: 14px 36px;
+      margin-top: 16px;
+    }
+
+    /* ─── TABLET 768–1024 ────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .container { padding: 0 36px; }
+      .photo-grid {
+        grid-template-columns: 1.2fr 1fr 1fr;
+        grid-template-rows: 280px 200px;
+      }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .footer-brand { grid-column: 1 / 3; }
+    }
+
+    /* ─── MOBILE ≤ 900 ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      /* Nav */
+      nav { padding: 18px 20px; }
+      nav.scrolled { padding: 13px 20px; }
+      .nav-links { display: none; }
+      .nav-reserve { display: none; }
+      .nav-hamburger { display: flex; }
+      .container { padding: 0 20px; }
+
+      /* Hero — stays pinned on mobile too (video autoplay-loops while pinned); shorter hold */
+      .hero-pin { height: 175vh; }
+      .hero { min-height: 520px; padding: 0 20px; }
+      .hero-content { width: 100%; text-align: center; padding: 0 4px; }
+      .hero-logo { font-size: clamp(3rem, 17vw, 5rem); letter-spacing: 0.1em; }
+      .hero-tagline { font-size: 0.88rem; letter-spacing: 0.07em; margin-top: 14px; }
+
+      /* Intro */
+      .intro { padding: 56px 0 52px; }
+      .intro-inner { padding: 0 20px; text-align: center; }
+      .intro h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); line-height: 1.35; margin-bottom: 20px; }
+      .intro p { text-align: center; font-size: 0.92rem; line-height: 1.8; }
+
+      /* Full-width photo banner */
+      .photo-banner { height: 52vw; min-height: 220px; }
+
+      /* Menu */
+      .menu-section { padding: 56px 0 64px; }
+      .menu-header { text-align: center; margin-bottom: 32px; }
+      .menu-header h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
+      .menu-tabs {
+        overflow-x: hidden;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 8px;
+        gap: 0 2px;
+        margin-bottom: 44px;
+      }
+      .menu-tab { padding: 11px 11px; white-space: nowrap; font-size: 0.6rem; letter-spacing: 0.12em; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-item { padding: 18px 0; flex-direction: row; align-items: center; }
+      .menu-item:nth-child(odd) { border-right: none; }
+      .menu-item h4 { font-size: 1rem; }
+      .menu-item p { font-size: 0.78rem; }
+      .menu-item-price { font-size: 0.9rem; flex-shrink: 0; }
+      .menu-cta { margin-top: 40px; }
+
+      /* Atmosphere */
+      .atmosphere { padding: 56px 0 52px; }
+      .atmosphere-header { text-align: center; margin-bottom: 24px; }
+      .atmosphere-header h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 52vw 38vw 38vw;
+        gap: 6px;
+      }
+      .photo-item:first-child { grid-row: 1 / 2; grid-column: 1 / 3; }
+
+      /* Philosophy */
+      .philosophy { padding: 64px 0; }
+      .philosophy-inner { padding: 0 20px; text-align: center; }
+      .philosophy blockquote { font-size: clamp(1.3rem, 4.5vw, 1.7rem); line-height: 1.55; text-align: center; }
+      .philosophy cite { text-align: center; display: block; }
+
+      /* Reserve */
+      .reserve { padding: 56px 0 52px; }
+      .reserve-inner { grid-template-columns: 1fr; gap: 36px; }
+      .reserve-text { text-align: center; }
+      .reserve-text h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+      .reserve-text p { font-size: 0.88rem; }
+      .info-row { flex-direction: column; gap: 2px; text-align: center; }
+      .info-label { min-width: unset; font-size: 0.62rem; }
+      .info-value { font-size: 0.82rem; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .form-group input,
+      .form-group select,
+      .form-group textarea { padding: 14px 0; font-size: 16px; } /* 16px prevents iOS zoom */
+      .btn-primary { width: 100%; text-align: center; padding: 16px 24px; font-size: 0.72rem; }
+
+      /* Footer */
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-brand { grid-column: auto; text-align: center; }
+      .footer-brand p { margin: 0 auto; }
+      .footer-col h4 { font-size: 0.62rem; }
+      .footer-col a, .footer-col p { font-size: 0.82rem; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .social-links { justify-content: center; }
+
+      /* Section labels */
+      .section-label { font-size: 0.55rem; }
+    }
+
+    /* ─── SMALL MOBILE ≤ 390 ─────────────────────────────────── */
+    @media (max-width: 390px) {
+      .hero-logo { font-size: 14vw; }
+      .photo-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70vw 52vw 52vw 52vw 52vw;
+        gap: 6px;
+      }
+      .photo-item:first-child { grid-row: auto; grid-column: auto; }
+      .menu-item { flex-direction: column; gap: 4px; align-items: flex-start; }
+    }
+    /* ─── NAV OVER DARK HERO ─────────────────────────────────── */
+    /* At top, nav floats over the cinematic hero → light text.
+       Once scrolled onto ivory, .scrolled restores charcoal.      */
+    .nav-logo,
+    .nav-links a { color: var(--ivory); }
+    .nav-links a::after { background: var(--ivory); }
+    .nav-reserve {
+      color: var(--ivory);
+      border-color: rgba(244,241,234,0.45);
+    }
+    .nav-reserve:hover {
+      background: var(--ivory);
+      color: var(--charcoal);
+      border-color: var(--ivory);
+    }
+    .nav-hamburger span { background: var(--ivory); }
+
+    nav.scrolled .nav-logo,
+    nav.scrolled .nav-links a { color: var(--charcoal); }
+    nav.scrolled .nav-links a::after { background: var(--charcoal); }
+    nav.scrolled .nav-reserve {
+      color: var(--charcoal);
+      border-color: rgba(43,42,40,0.35);
+    }
+    nav.scrolled .nav-reserve:hover {
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-color: var(--charcoal);
+    }
+    nav.scrolled .nav-hamburger span { background: var(--charcoal); }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ────────────────────────────────────── -->
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu"       onclick="closeMenu()">Menu</a>
+    <a href="#atmosphere" onclick="closeMenu()">Atmosphere</a>
+    <a href="#reserve"    onclick="closeMenu()">Reserve</a>
+    <a href="#contact"    onclick="closeMenu()">Contact</a>
+    <a href="#reserve" class="mobile-reserve" onclick="closeMenu()">Make a Reservation</a>
+  </div>
+
+  <nav id="navbar">
+    <a href="#" class="nav-logo" translate="no">BANCO</a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#atmosphere">Atmosphere</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#reserve" class="nav-reserve">Reservation</a>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ─── HERO (autoplay loop; BANCO watermark + slogan + scroll cue) ─────── -->
+  <section class="hero">
+    <div class="hero-media">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero_poster.jpg"></video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-logo" translate="no">BANCO</h1>
+      <p class="hero-tagline">Mediterranean Cuisine</p>
+    </div>
+    <div class="hero-scroll" id="heroScroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── INTRO ───────────────────────────────────── -->
+  <section class="intro texture-paper">
+    <div class="intro-inner">
+      <span class="section-label fade-in">The Restaurant</span>
+      <h2 class="fade-in">An experience<br/>in balance</h2>
+      <p class="fade-in">
+        BANCO is a contemporary restaurant in the casual premium space, built on the
+        balance between elegance and comfort. We draw from modern European dining, with
+        attention to detail, atmosphere, and the quality of every plate. A refined yet
+        relaxed setting to gather, taste, and stay a while.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── FULL-WIDTH PHOTO BANNER ─────────────────── -->
+  <div class="photo-banner" style="height:56vh; min-height:260px; overflow:hidden; position:relative;">
+    <img src="img/dish_signature.jpg" alt="BANCO signature: dry-aged bistecca with beef tartare" sizes="100vw" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(43,43,43,0) 55%, rgba(43,43,43,0.28) 100%);"></div>
+  </div>
+
+  <!-- ─── MENU ────────────────────────────────────── -->
+  <section class="menu-section texture-stone" id="menu">
+    <div class="container">
+      <div class="menu-header fade-in">
+        <span class="section-label">Bar &amp; Cellar</span>
+        <h2>The Menu</h2>
+      </div>
+
+      <div class="menu-tabs fade-in">
+        <div class="menu-tab active" data-panel="food">Food</div>
+        <div class="menu-tab" data-panel="cocktails">Cocktails</div>
+        <div class="menu-tab" data-panel="wine">Wine</div>
+        <div class="menu-tab" data-panel="spirits">Spirits</div>
+        <div class="menu-tab" data-panel="more">Coffee &amp; More</div>
+      </div>
+
+      <div class="menu-panel active" id="panel-food">
+        <div class="menu-grid">
+          <div class="menu-sub">Breakfast</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Eggs Your Way</h4>
+              <p>Omelette, fried or scrambled, salad, dressing, focaccia</p>
+            </div>
+            <span class="menu-item-price">44</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Calabrian Eggs</h4>
+              <p>Poached eggs, nduja, confit &amp; cherry tomatoes, burrata, focaccia</p>
+            </div>
+            <span class="menu-item-price">64</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Florentine Eggs</h4>
+              <p>Poached eggs, spinach, creamy parmesan sauce, focaccia</p>
+            </div>
+            <span class="menu-item-price">58</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Steak &amp; Eggs</h4>
+              <p>Beef tenderloin, fried eggs, salad, focaccia</p>
+            </div>
+            <span class="menu-item-price">98</span>
+          </div>
+          <div class="menu-sub">Starters</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Olives (vg)</h4>
+              <p>Dolce Sicilia</p>
+            </div>
+            <span class="menu-item-price">22</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Shrimp Saganaki</h4>
+              <p>Black tiger prawns, tomato, garlic, feta, focaccia</p>
+            </div>
+            <span class="menu-item-price">72</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Beef Tartare</h4>
+              <p>Beef tenderloin, capers, shallots, Dijon, confit egg yolk, focaccia</p>
+            </div>
+            <span class="menu-item-price">88</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Burrata</h4>
+              <p>Cherry &amp; sun-dried tomatoes, capers, basil, focaccia (+ truffle)</p>
+            </div>
+            <span class="menu-item-price">58</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Greek Salad (sharing)</h4>
+              <p>Tomato, cucumber, feta, shallots, Kalamata olives, croutons</p>
+            </div>
+            <span class="menu-item-price">62</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Arancini Nduja</h4>
+              <p>Risotto, mozzarella, panko</p>
+            </div>
+            <span class="menu-item-price">42</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Arancini Truffle</h4>
+              <p>Risotto, parmesan, panko</p>
+            </div>
+            <span class="menu-item-price">42</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Tuna Tartare</h4>
+              <p>Red tuna, avocado, chives, yuzu</p>
+            </div>
+            <span class="menu-item-price">84</span>
+          </div>
+          <div class="menu-sub">Pasta</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Carbonara Icon</h4>
+              <p>Paccheri, guanciale, parmesan, confit egg yolk</p>
+            </div>
+            <span class="menu-item-price">78</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Cacio e Pepe</h4>
+              <p>Tonnarelli, pecorino, parmesan, pepper</p>
+            </div>
+            <span class="menu-item-price">64</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Short Ribs &amp; Nduja Ragù</h4>
+              <p>Pappardelle, beef ragù, nduja, parmesan</p>
+            </div>
+            <span class="menu-item-price">82</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Gamberi</h4>
+              <p>Tonnarelli, black tiger prawns, zucchini, garlic, shallots</p>
+            </div>
+            <span class="menu-item-price">68</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Truffle (sharing)</h4>
+              <p>Paccheri, truffle, parmesan</p>
+            </div>
+            <span class="menu-item-price">98</span>
+          </div>
+          <div class="menu-sub">Special</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Truffle Pizza</h4>
+              <p>Mozzarella, truffle cream, parmesan (+ truffle extra)</p>
+            </div>
+            <span class="menu-item-price">88</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Moules Marini&egrave;res</h4>
+              <p>Mussels, white wine, butter, garlic, parsley, focaccia</p>
+            </div>
+            <span class="menu-item-price">72</span>
+          </div>
+          <div class="menu-sub">Mains</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Branzino</h4>
+              <p>Sea bass fillet, broccolini, butter, lemon</p>
+            </div>
+            <span class="menu-item-price">106</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Beef Tenderloin</h4>
+              <p>Beef tenderloin, broccolini, butter, lemon</p>
+            </div>
+            <span class="menu-item-price">148</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Cotoletta di Maiale (sharing)</h4>
+              <p>Crispy bone-in pork schnitzel, fennel, sweet mustard, yoghurt &amp; celeriac</p>
+            </div>
+            <span class="menu-item-price">108</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Banco Signature</h4>
+              <p>T-bone steak, beef tartare, confit egg yolk</p>
+            </div>
+            <span class="menu-item-price">56 /100g</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Grilled Octopus</h4>
+              <p>Octopus, crushed potato, lemon, olive oil</p>
+            </div>
+            <span class="menu-item-price">108</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Tacchino al Limone</h4>
+              <p>Turkey breast, creamy lemon sauce</p>
+            </div>
+            <span class="menu-item-price">72</span>
+          </div>
+          <div class="menu-sub">Sides</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Baby Cos Salad</h4>
+              <p>Cos lettuce, radish, walnuts, Dijon vinaigrette</p>
+            </div>
+            <span class="menu-item-price">28</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Broccolini</h4>
+              <p>Garlic, lemon, olive oil</p>
+            </div>
+            <span class="menu-item-price">42</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Fries</h4>
+            </div>
+            <span class="menu-item-price">26</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Truffle Fries</h4>
+              <p>Parmesan, truffle paste</p>
+            </div>
+            <span class="menu-item-price">36</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Pimientos de Padr&oacute;n</h4>
+              <p>Padr&oacute;n peppers, Maldon salt</p>
+            </div>
+            <span class="menu-item-price">34</span>
+          </div>
+          <div class="menu-sub">Dessert</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Chocolate Mousse</h4>
+              <p>Dark chocolate, extra-virgin olive oil, Maldon salt</p>
+            </div>
+            <span class="menu-item-price">48</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Zeppole</h4>
+              <p>Doughnuts, icing sugar (+ seasonal jam or Nutella)</p>
+            </div>
+            <span class="menu-item-price">54</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Pear Tarte Tatin</h4>
+              <p>Caramelized pear, salted caramel, Bourbon vanilla ice cream</p>
+            </div>
+            <span class="menu-item-price">58</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Ice Cream Mara Mura &times; Albush</h4>
+              <p>Assorted flavours</p>
+            </div>
+            <span class="menu-item-price">32</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="panel-cocktails">
+        <div class="menu-grid">
+          <div class="menu-sub">Negroni Selection</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Iris Negroni</h4>
+              <p>Servaj iris gin, Venegazzu vermouth, Campari, orange peel</p>
+            </div>
+            <span class="menu-item-price">55</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Cacao Negroni</h4>
+              <p>Tanqueray gin, vermouth rosso, Fusetti cacao bitter, coffee beans</p>
+            </div>
+            <span class="menu-item-price">50</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Classic Negroni</h4>
+              <p>Tanqueray gin, Campari, vermouth rosso</p>
+            </div>
+            <span class="menu-item-price">45</span>
+          </div>
+          <div class="menu-sub">Spritz</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Aperol Spritz</h4>
+              <p>Aperol, prosecco, soda, orange</p>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Campari Spritz</h4>
+              <p>Campari, prosecco, soda, orange</p>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Hugo</h4>
+              <p>Prosecco, elderflower, mint, lime</p>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+          <div class="menu-sub">Classics</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Pornstar Martini</h4>
+              <p>Vodka, passion fruit, vanilla, prosecco shot</p>
+            </div>
+            <span class="menu-item-price">46</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Mediterranean Gin &amp; Tonic</h4>
+              <p>Servaj iris gin, Sicilian lemon tonic</p>
+            </div>
+            <span class="menu-item-price">45</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Espresso Martini</h4>
+              <p>Vodka, espresso, coffee liqueur</p>
+            </div>
+            <span class="menu-item-price">45</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Margarita</h4>
+              <p>Tequila, triple sec, lime, sea salt</p>
+            </div>
+            <span class="menu-item-price">42</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Paloma</h4>
+              <p>Tequila, grapefruit soda, tajin</p>
+            </div>
+            <span class="menu-item-price">42</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Amaretto Sour</h4>
+              <p>Disaronno amaretto, lemon juice, egg white</p>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Gin &amp; Tonic</h4>
+              <p>Tanqueray &mdash; 0% available</p>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="panel-wine">
+        <div class="menu-grid">
+          <div class="menu-sub">White</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Davino Ceptura Blanc</h4>
+              <p>Romania &middot; Sauvignon Blanc / Chardonnay / Riesling</p>
+            </div>
+            <span class="menu-item-price">270</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Recaș Solo Quinta</h4>
+              <p>Romania &middot; Chardonnay / Fetească Regală / Muscat Ottonel / Sauvignon Blanc / Cadarcă</p>
+            </div>
+            <span class="menu-item-price">250</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Banfi San Angelo</h4>
+              <p>Italy &middot; Pinot Grigio</p>
+            </div>
+            <span class="menu-item-price">240</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Sole Chardonnay</h4>
+              <p>Romania &middot; Chardonnay</p>
+            </div>
+            <span class="menu-item-price">210</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Lugana Ca' dei Frati</h4>
+              <p>Italy &middot; Turbiana</p>
+            </div>
+            <span class="menu-item-price">210</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Banfi La Pettegola</h4>
+              <p>Italy &middot; Vermentino</p>
+            </div>
+            <span class="menu-item-price">190</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Scaia Chardonnay</h4>
+              <p>Italy &middot; Chardonnay</p>
+            </div>
+            <span class="menu-item-price">180</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Montemajor Greco di Tufo</h4>
+              <p>Italy &middot; Greco</p>
+            </div>
+            <span class="menu-item-price">170</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Ronco di Sassi</h4>
+              <p>Italy &middot; Chardonnay</p>
+            </div>
+            <span class="menu-item-price">160</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Novaripa Monatic Pecorino</h4>
+              <p>Italy &middot; Pecorino</p>
+            </div>
+            <span class="menu-item-price">160</span>
+          </div>
+          <div class="menu-sub">Rosé</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Minuty</h4>
+              <p>France &middot; Grenache / Cinsault / Syrah</p>
+            </div>
+            <span class="menu-item-price">190</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Eau de Provence</h4>
+              <p>France &middot; Grenache / Cinsault</p>
+            </div>
+            <span class="menu-item-price">180</span>
+          </div>
+          <div class="menu-sub">Red</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Masi Costasera Amarone Classico</h4>
+              <p>Italy &middot; Corvina / Rondinella / Molinara</p>
+            </div>
+            <span class="menu-item-price">420</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Recaș Cuvée Überland</h4>
+              <p>Romania &middot; Cabernet Sauvignon / Merlot</p>
+            </div>
+            <span class="menu-item-price">340</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>MilestoneAGE</h4>
+              <p>Romania &middot; Fetească Neagră / Cabernet Franc / Petit Verdot</p>
+            </div>
+            <span class="menu-item-price">320</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Bodegas Muga</h4>
+              <p>Spain &middot; Tempranillo / Garnacha / Mazuelo</p>
+            </div>
+            <span class="menu-item-price">270</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Papale</h4>
+              <p>Italy &middot; Primitivo</p>
+            </div>
+            <span class="menu-item-price">220</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Elettra Negroamaro&ndash;Primitivo</h4>
+              <p>Italy &middot; Negroamaro / Primitivo</p>
+            </div>
+            <span class="menu-item-price">190</span>
+          </div>
+          <div class="menu-sub">Sparkling &amp; Champagne</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Dom Pérignon</h4>
+              <p>France &middot; Chardonnay / Pinot Noir</p>
+            </div>
+            <span class="menu-item-price">2200</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Ruinart Blanc de Blancs</h4>
+              <p>France &middot; Chardonnay</p>
+            </div>
+            <span class="menu-item-price">890</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Veuve Clicquot</h4>
+              <p>France &middot; Pinot Noir / Chardonnay / Meunier</p>
+            </div>
+            <span class="menu-item-price">540</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Jane Ventura</h4>
+              <p>Spain &middot; Xarel&middot;lo</p>
+            </div>
+            <span class="menu-item-price">200</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Père Ventura Cava Brut</h4>
+              <p>Spain &middot; Macabeo / Xarel&middot;lo / Parellada</p>
+            </div>
+            <span class="menu-item-price">170</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Foss Marai Prosecco Brut</h4>
+              <p>Italy &middot; Glera</p>
+            </div>
+            <span class="menu-item-price">160</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Col del Mar Prosecco</h4>
+              <p>Italy &middot; Glera</p>
+            </div>
+            <span class="menu-item-price">160</span>
+          </div>
+          <div class="menu-sub">By the Glass</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Elettra Negroamaro Primitivo</h4>
+              <p>Italy &middot; Red</p>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Novaripa Terre di Chieti Pecorino</h4>
+              <p>Italy &middot; White</p>
+            </div>
+            <span class="menu-item-price">35</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Col del Mar Prosecco</h4>
+              <p>Italy &middot; Sparkling</p>
+            </div>
+            <span class="menu-item-price">35</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="panel-spirits">
+        <div class="menu-grid">
+          <div class="menu-sub">Gin &mdash; 40ml</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Servaj Iris</h4>
+            </div>
+            <span class="menu-item-price">48</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Monkey 47</h4>
+            </div>
+            <span class="menu-item-price">42</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Hendrick's</h4>
+            </div>
+            <span class="menu-item-price">38</span>
+          </div>
+          <div class="menu-sub">Vodka &mdash; 40ml</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Grey Goose</h4>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Beluga Noble</h4>
+            </div>
+            <span class="menu-item-price">38</span>
+          </div>
+          <div class="menu-sub">Whisky &mdash; 40ml</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Lagavulin 16</h4>
+            </div>
+            <span class="menu-item-price">58</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>The Macallan Double Cask 12</h4>
+            </div>
+            <span class="menu-item-price">50</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Glenfiddich Single Malt 15</h4>
+            </div>
+            <span class="menu-item-price">45</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Glenfiddich Single Malt 12</h4>
+            </div>
+            <span class="menu-item-price">34</span>
+          </div>
+          <div class="menu-sub">Rum &mdash; 40ml</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Diplomático Reserva Exclusiva</h4>
+            </div>
+            <span class="menu-item-price">40</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Don Papa Masskara</h4>
+            </div>
+            <span class="menu-item-price">35</span>
+          </div>
+          <div class="menu-sub">Tequila &mdash; 30ml</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Clase Azul Reposado</h4>
+            </div>
+            <span class="menu-item-price">100</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Don Julio 1942</h4>
+            </div>
+            <span class="menu-item-price">90</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Casamigos Añejo</h4>
+            </div>
+            <span class="menu-item-price">30</span>
+          </div>
+          <div class="menu-sub">Digestifs &mdash; 40ml</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Amaro</h4>
+            </div>
+            <span class="menu-item-price">25</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Limoncello</h4>
+            </div>
+            <span class="menu-item-price">25</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Disaronno Amaretto</h4>
+            </div>
+            <span class="menu-item-price">25</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Jägermeister</h4>
+            </div>
+            <span class="menu-item-price">25</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="panel-more">
+        <div class="menu-grid">
+          <div class="menu-sub">Coffee</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Espresso / Doppio</h4>
+            </div>
+            <span class="menu-item-price">14 / 17</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Macchiato</h4>
+            </div>
+            <span class="menu-item-price">17</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Americano</h4>
+            </div>
+            <span class="menu-item-price">17</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Cappuccino</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Flat White</h4>
+            </div>
+            <span class="menu-item-price">22</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Latte</h4>
+            </div>
+            <span class="menu-item-price">24</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Iced Latte</h4>
+            </div>
+            <span class="menu-item-price">27</span>
+          </div>
+          <div class="menu-sub">Tea</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Black</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Green</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Mint</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Chamomile</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Forest Fruits</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Apple</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-sub">Fresh &amp; Lemonade</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Classic / Mint Lemonade</h4>
+            </div>
+            <span class="menu-item-price">22</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Orange / Grapefruit</h4>
+            </div>
+            <span class="menu-item-price">29</span>
+          </div>
+          <div class="menu-sub">Beer</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Baladin Isaac</h4>
+            </div>
+            <span class="menu-item-price">28</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Birra Moretti Sale di Mare</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Birra Moretti Zero</h4>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Birra Moretti</h4>
+            </div>
+            <span class="menu-item-price">18</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Heineken</h4>
+            </div>
+            <span class="menu-item-price">18</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Heineken Draught</h4>
+            </div>
+            <span class="menu-item-price">15</span>
+          </div>
+          <div class="menu-sub">Soft Drinks</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Tonica Lemon</h4>
+              <p>0.275L</p>
+            </div>
+            <span class="menu-item-price">20</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Coca-Cola / Zero</h4>
+            </div>
+            <span class="menu-item-price">15</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Fanta / Sprite</h4>
+            </div>
+            <span class="menu-item-price">15</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Schweppes Tonic / Pink</h4>
+            </div>
+            <span class="menu-item-price">15</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Fuze Tea</h4>
+            </div>
+            <span class="menu-item-price">15</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Cappy Nectar</h4>
+            </div>
+            <span class="menu-item-price">15</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Artisan Skinny / Pink Tonic</h4>
+            </div>
+            <span class="menu-item-price">18</span>
+          </div>
+          <div class="menu-sub">Water</div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>San Benedetto / Perrier</h4>
+              <p>0.75L</p>
+            </div>
+            <span class="menu-item-price">25</span>
+          </div>
+          <div class="menu-item fade-in">
+            <div class="menu-item-info">
+              <h4>Dorna Still / Sparkling</h4>
+              <p>0.75L / 0.33L</p>
+            </div>
+            <span class="menu-item-price">20 / 15</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="menu-note fade-in">All prices in lei (RON)</p>
+      <div class="menu-cta fade-in">
+        <a href="#reserve" class="btn-outline-light">Reserve a Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ATMOSPHERE ───────────────────────────────── -->
+  <section class="atmosphere texture-paper" id="atmosphere">
+    <div class="container">
+      <div class="atmosphere-header fade-in">
+        <span class="section-label">The Experience</span>
+        <h2>The space &amp; the table</h2>
+      </div>
+      <div class="photo-grid fade-in">
+        <div class="photo-item">
+          <img src="img/loc2.jpg" alt="The BANCO dining room and bar" loading="lazy" sizes="(max-width:900px) 100vw, 40vw" />
+          <span class="ph-label">The Room</span>
+        </div>
+        <div class="photo-item">
+          <img src="img/dish_branzino.jpg" alt="Branzino, charred broccolini, beurre blanc" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
+          <span class="ph-label">Branzino</span>
+        </div>
+        <div class="photo-item">
+          <img src="img/dish_cottoletta.jpg" alt="Cottoletta di Maiale" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
+          <span class="ph-label">Cottoletta di Maiale</span>
+        </div>
+        <div class="photo-item">
+          <img src="img/dish_eggs.jpg" alt="Calabrian Eggs with burrata and grilled sourdough" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
+          <span class="ph-label">Calabrian Eggs</span>
+        </div>
+        <div class="photo-item">
+          <img src="img/drink_pornstar.jpg" alt="Pornstar Martini" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
+          <span class="ph-label">Pornstar Martini</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DISHES GALLERY ──────────────────────────── -->
+  <section class="dishes-section texture-paper" id="dishes" aria-label="Selected dishes">
+    <div class="container">
+      <div class="atmosphere-header fade-in">
+        <span class="section-label">From the kitchen</span>
+        <h2>Selected dishes</h2>
+      </div>
+      <div class="dish-grid fade-in">
+        <div class="dish-card"><img src="img/menu_arancini.jpg" alt="Arancini" loading="lazy" /><span class="ph-label">Arancini</span></div>
+        <div class="dish-card"><img src="img/menu_tartare.jpg" alt="Beef tartare with egg yolk" loading="lazy" /><span class="ph-label">Beef Tartare</span></div>
+        <div class="dish-card"><img src="img/menu_tartufo.jpg" alt="Paccheri with black truffle" loading="lazy" /><span class="ph-label">Paccheri al Tartufo</span></div>
+        <div class="dish-card"><img src="img/menu_risotto.jpg" alt="Risotto" loading="lazy" /><span class="ph-label">Risotto</span></div>
+        <div class="dish-card"><img src="img/menu_cacio.jpg" alt="Cacio e pepe" loading="lazy" /><span class="ph-label">Cacio e Pepe</span></div>
+        <div class="dish-card"><img src="img/menu_gamberi.jpg" alt="Pasta with prawns" loading="lazy" /><span class="ph-label">Gamberi</span></div>
+        <div class="dish-card"><img src="img/menu_broccolini.jpg" alt="Charred broccolini" loading="lazy" /><span class="ph-label">Broccolini</span></div>
+        <div class="dish-card"><img src="img/menu_burrata.jpg" alt="Roasted vegetables and burrata" loading="lazy" /><span class="ph-label">Roasted Veg &amp; Burrata</span></div>
+        <div class="dish-card"><img src="img/menu_fries.jpg" alt="Truffle fries" loading="lazy" /><span class="ph-label">Truffle Fries</span></div>
+        <div class="dish-card"><img src="img/menu_dessert.jpg" alt="Tarte tatin" loading="lazy" /><span class="ph-label">Tarte Tatin</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WOOD STRIP ──────────────────────────────── -->
+
+
+  <!-- ─── PHILOSOPHY ──────────────────────────────── -->
+  <section class="philosophy texture-stone">
+    <div class="philosophy-inner">
+      <blockquote class="fade-in">
+        "A balanced experience between taste, atmosphere, and design."
+      </blockquote>
+      <cite class="fade-in" translate="no">BANCO</cite>
+    </div>
+  </section>
+
+  <!-- ─── RESERVE ─────────────────────────────────── -->
+  <section class="reserve texture-paper" id="reserve">
+    <div class="container">
+      <div class="reserve-inner">
+        <div class="reserve-text fade-in">
+          <span class="section-label">Reservations</span>
+          <h2>Book your<br/>table</h2>
+          <p>
+            We take reservations up to 30 days in advance. For parties of 8 or more,
+            please contact us directly.
+          </p>
+          <p>Serving breakfast, lunch, aperitivo and dinner daily, 10:00 — 22:00.</p>
+          <div class="info-row">
+            <span class="info-label">Address</span>
+            <span class="info-value">Strada Barbu Văcărescu 164E, One Verdi Park, Corp A, Parter &middot; Sector 2, Bucharest</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Hours</span>
+            <span class="info-value">Every day &nbsp; 10:00 — 22:00</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value"><a href="tel:+40773261721" style="color:inherit;text-decoration:none;">+40 773 261 721</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Email</span>
+            <span class="info-value">contact@banco-restaurant.ro</span>
+          </div>
+        </div>
+
+        <!-- iAloc reservation widget (venue 4575) — inline; bookings go straight to your iAloc app -->
+        <div class="reserve-widget">
+          <span class="reserve-online">Online reservations</span>
+          <!-- ialoc-shell: a transparent "scroll guard" sits over the widget so page scroll passes
+               through and the widget's internal scroll never hijacks it. Tap/click to interact. -->
+          <div class="ialoc-shell" id="ialocShell">
+            <div id="ialocWidgetContainer"></div>
+            <button type="button" class="ialoc-guard" id="ialocGuard" aria-label="Activează widget-ul de rezervare">
+              <span class="ialoc-guard-hint">Apasă pentru a rezerva</span>
+            </button>
+          </div>
+        </div>
+        <script type="text/javascript">
+          !function(e,t,i,n,s,o,c,a,d,r){if(!e[n]){for(;a<c.length;)s(o,c[a++]);(d=t.createElement(i)).async=1,d.src="https://ialoc.ro/assets/widget-v2/embed.min.js",(r=t.getElementsByTagName(i)[0]).parentNode.insertBefore(d,r),e[n]=o}}(window,document,"script","ialocEmbedWidget",function(e,t){e[t]=function(){e._q.push([t,arguments])}},{_q:[]},"init show hide".split(" "),0);
+          ialocEmbedWidget.init({ source: 'ialoc-widget-embed', locale: 'ro', embedMode: 'inline', venueId: '4575', onWidgetReady: function(){ ialocEmbedWidget.show(); },
+            /* iAloc trimite evenimentul reservationCompleted când o rezervare e finalizată */
+            callback: function(v){ try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch(e){} } });
+
+          /* Scroll-guard logic: page scrolls freely over the widget until the user taps it.
+             Re-arms automatically when the mouse leaves or the section scrolls out of view,
+             so passive scrolling never gets hijacked by the widget's internal scroll. */
+          (function(){
+            var shell = document.getElementById('ialocShell');
+            var guard = document.getElementById('ialocGuard');
+            if(!shell || !guard) return;
+            function activate(){ shell.classList.add('active'); }
+            function rearm(){ shell.classList.remove('active'); }
+            guard.addEventListener('click', activate);
+            shell.addEventListener('mouseleave', rearm);
+            if('IntersectionObserver' in window){
+              new IntersectionObserver(function(entries){
+                entries.forEach(function(en){ if(en.intersectionRatio < 0.6) rearm(); });
+              }, { threshold: [0, 0.6, 1] }).observe(shell);
+            }
+          })();
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LOCATION / MAP ──────────────────────────── -->
+  <section class="location" id="location" aria-label="Location">
+    <div class="location-head">
+      <span class="section-label">Find us</span>
+      <h2>One Verdi Park, Bucharest</h2>
+      <p>Strada Barbu Văcărescu 164E, Corp A, Parter &middot; Sector 2, 020285</p>
+      <a class="map-directions" href="https://www.google.com/maps/search/?api=1&amp;query=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest" target="_blank" rel="noopener">Get directions →</a>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        title="BANCO — One Verdi Park, Bucharest on Google Maps"
+        src="https://www.google.com/maps?q=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest&amp;output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ──────────────────────────────────── -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="f-logo" translate="no">BANCO</span>
+          <p>Contemporary European dining.<br/>A balance of taste, atmosphere,<br/>and design.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Visit</h5>
+          <ul>
+            <li>Strada Barbu Văcărescu 164E</li>
+            <li>One Verdi Park, Corp A, Parter</li>
+            <li>Sector 2, 020285, Bucharest</li>
+            <li style="margin-top:16px">+40 773 261 721</li>
+            <li>contact@banco-restaurant.ro</li>
+            <li>banco-restaurant.ro</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Hours</h5>
+          <ul>
+            <li>Every day</li>
+            <li>10:00 – 22:00</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#atmosphere">The Space</a></li>
+            <li><a href="#reserve">Reserve</a></li>
+            <li>Private Events</li>
+            <li>Press</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 BANCO All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/bancorestaurant" target="_blank" rel="noopener">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">TripAdvisor</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── JS ──────────────────────────────────────── -->
+  <script>
+    // Mobile menu
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburger  = document.getElementById('hamburger');
+
+    function toggleMenu() {
+      const open = mobileMenu.style.display === 'flex' && mobileMenu.classList.contains('open');
+      if (open) {
+        closeMenu();
+      } else {
+        mobileMenu.style.display = 'flex';
+        requestAnimationFrame(() => mobileMenu.classList.add('open'));
+        hamburger.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
+    }
+
+    // Nav state + hero video (autoplay loop, plays normally)
+    const navbar     = document.getElementById('navbar');
+    const heroVideo  = document.querySelector('.hero-video');
+    const heroScroll = document.getElementById('heroScroll');
+    const isMob = window.matchMedia('(max-width: 900px)').matches;
+
+    if (heroVideo) {
+      // Mobile → vertical montage; desktop → horizontal camera-move through the venue.
+      heroVideo.poster = isMob ? 'img/hero_poster.jpg' : 'img/hero_poster_desktop.jpg';
+      const s = document.createElement('source');
+      s.src  = isMob ? 'img/hero.mp4' : 'img/hero_desktop.mp4';
+      s.type = 'video/mp4';
+      heroVideo.appendChild(s);
+      heroVideo.loop = true;
+      heroVideo.load();
+      const playIt = () => heroVideo.play().catch(() => {});
+      heroVideo.addEventListener('loadeddata', playIt);
+      playIt();
+
+      // Bulletproof un-freeze on return: try play, and if it's still paused or the
+      // playhead hasn't advanced shortly after, hard-reset the element (load + play).
+      let kicking = false;
+      const hardReset = () => { try { heroVideo.load(); heroVideo.play().catch(() => {}); } catch (e) {} };
+      const resumeHero = () => {
+        if (kicking) return; kicking = true;
+        const t0 = heroVideo.currentTime;
+        const p = heroVideo.play();
+        if (p && p.catch) p.catch(hardReset);
+        setTimeout(() => { if (heroVideo.paused || heroVideo.currentTime === t0) hardReset(); kicking = false; }, 500);
+      };
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') resumeHero(); });
+      window.addEventListener('pageshow', (e) => { if (e.persisted) hardReset(); else resumeHero(); });
+      window.addEventListener('focus', resumeHero);
+    }
+
+    let ticking = false;
+    function onScroll() {
+      const y = window.scrollY;
+      // Nav light over the hero, flips to solid once you scroll past it.
+      navbar.classList.toggle('scrolled', y > window.innerHeight - 80);
+      // Fade the scroll cue out as soon as you start scrolling.
+      if (heroScroll) heroScroll.style.opacity = y > 30 ? '0' : '1';
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+    }, { passive: true });
+
+    // Intersection Observer for fade-ins
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i % 4) * 0.1 + 's';
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Menu tabs
+    document.querySelectorAll('.menu-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+        // Re-observe new items
+        document.querySelectorAll('.menu-panel.active .fade-in').forEach(el => {
+          el.classList.remove('visible');
+          observer.observe(el);
+        });
+      });
+    });
+
+    // Reservation form
+    function handleReserve(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-primary');
+      btn.textContent = 'Request Sent';
+      btn.style.background = 'var(--olive)';
+      setTimeout(() => {
+        btn.textContent = 'Request Reservation';
+        btn.style.background = '';
+      }, 3000);
+    }
+  </script>
+
+  <!-- Structured data: Restaurant (Google rich results / local SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "BANCO",
+    "image": "https://banco-restaurant.ro/img/og.jpg",
+    "url": "https://banco-restaurant.ro/",
+    "description": "BANCO is a Mediterranean premium casual restaurant built around reinterpreted Mediterranean classics and signature takes on classic cocktails. With contemporary Milanese influences and a relaxed atmosphere, BANCO is designed for long lunches, dinners, aperitivo moments and social dining experiences.",
+    "servesCuisine": ["Mediterranean", "European"],
+    "priceRange": "$$$",
+    "acceptsReservations": true,
+    "telephone": "+40773261721",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Strada Barbu Văcărescu 164E, One Verdi Park, Corp A, Parter",
+      "addressLocality": "Bucharest",
+      "addressRegion": "Sector 2",
+      "postalCode": "020285",
+      "addressCountry": "RO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 44.46940,
+      "longitude": 26.11022
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Banco+Restaurant+One+Verdi+Park+Bucuresti",
+    "sameAs": [
+      "https://www.instagram.com/bancorestaurant"
+    ],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:00", "closes": "22:00" }
+    ]
+  }
+  </script>
+
+  <!-- BANCO Analytics — privacy-first, fără cookies (doar un id de sesiune efemer în sessionStorage) -->
+  <script>
+  (function(){
+    try {
+      var SB_URL = "https://uzmfcndntbctuuqnhkpd.supabase.co";
+      var SB_KEY = "sb_publishable_8vbZCx61DS6HbZclLj7bZg_GuImxOj5";
+      if (navigator.webdriver) return; // sari peste boți/prerender
+      var sid = null;
+      try {
+        sid = sessionStorage.getItem('banco_sid');
+        if (!sid) { sid = Date.now().toString(36) + Math.random().toString(36).slice(2,10); sessionStorage.setItem('banco_sid', sid); }
+      } catch(e){}
+      var w = window.innerWidth || (screen && screen.width) || 0;
+      var device = w <= 768 ? 'mobile' : (w <= 1024 ? 'tablet' : 'desktop');
+      var refHost = null;
+      try { if (document.referrer) { var u = new URL(document.referrer); if (u.hostname && u.hostname !== location.hostname) refHost = u.hostname; } } catch(e){}
+      var payload = {
+        path: location.pathname + (location.hash || ''),
+        referrer_host: refHost,
+        device: device,
+        screen_w: w,
+        lang: (navigator.language || '').slice(0,5) || null,
+        tz: null,
+        session_id: sid
+      };
+      try { payload.tz = Intl.DateTimeFormat().resolvedOptions().timeZone || null; } catch(e){}
+      fetch(SB_URL + "/rest/v1/banco_pageviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Prefer": "return=minimal" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(function(){});
+
+      /* ── Evenimente (rezervări, tel, direcții) ─────────────── */
+      window.bancoTrack = function(type, meta){
+        try {
+          fetch(SB_URL + "/rest/v1/banco_events", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Prefer": "return=minimal" },
+            body: JSON.stringify({ type: type, session_id: sid, device: device, meta: meta || null }),
+            keepalive: true
+          }).catch(function(){});
+          if (typeof window.gtag === 'function') window.gtag('event', type);
+        } catch(e){}
+      };
+      document.addEventListener('click', function(e){
+        try {
+          var el = e.target && e.target.closest ? e.target.closest('a,button') : null;
+          if (!el) return;
+          if (el.id === 'ialocGuard') window.bancoTrack('reserve_widget_tap');
+          else if (el.classList.contains('map-directions')) window.bancoTrack('directions_click');
+          else if (el.classList.contains('nav-reserve') || el.classList.contains('mobile-reserve')) window.bancoTrack('reserve_nav_click');
+          else if ((el.getAttribute('href') || '').indexOf('tel:') === 0) window.bancoTrack('phone_click');
+        } catch(e){}
+      }, true);
+    } catch(e){}
+  })();
+  </script>
+</body>
+</html>
