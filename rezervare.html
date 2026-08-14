@@ -64,6 +64,9 @@
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body:    'Manrope', sans-serif;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+      /* Hard ceiling for the booking widget; see .ialoc-shell */
+      --widget-max-h: 680px;
     }
 
     /* ─── RESET ──────────────────────────────────────────────── */
@@ -219,8 +222,22 @@
     }
     iframe[src*="ialoc.ro"] { max-width: 100% !important; }
 
-    /* Transparent scroll guard: page scroll passes over the widget until tapped */
-    .ialoc-shell { position: relative; width: 100%; max-width: 100%; }
+    /* Transparent scroll guard: page scroll passes over the widget until tapped.
+       The shell is also height-capped: iAloc resizes its iframe to its own content,
+       and an over-tall (or runaway) widget would otherwise stretch the page so far
+       that the visitor can never scroll past the booking card. Capped + clipped
+       while armed, so the wheel/touch goes to the page; once the visitor taps to
+       book, the shell itself scrolls and the whole widget stays reachable. */
+    .ialoc-shell {
+      position: relative; width: 100%; max-width: 100%;
+      max-height: var(--widget-max-h, 680px);
+      overflow: hidden;
+    }
+    .ialoc-shell.active {
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
     .ialoc-guard {
       position: absolute; inset: 0; z-index: 5;
       background: transparent; border: 0; padding: 0;
@@ -373,6 +390,7 @@
       .hero-points { gap: 11px; margin-bottom: 26px; }
       .hero-alt { display: none; }
       .booking-card { padding: 20px 16px 18px; }
+      :root { --widget-max-h: 560px; }
       .why, .faq { padding: 60px 0; }
       .dishes { padding-bottom: 60px; }
       .location { padding-top: 60px; }
@@ -628,7 +646,7 @@
         </div>
       </div>
       <div class="f-bottom">
-        <span>&copy; 2024 BANCO</span>
+        <span>&copy; 2026 BANCO</span>
         <span data-i18n="foot.hours">Deschis zilnic 10:00 — 22:00</span>
       </div>
     </div>
@@ -826,16 +844,22 @@
     mountWidget(document.documentElement.lang === 'en' ? 'en' : 'ro');
 
     /* Scroll-guard: the page scrolls freely over the widget until the user taps it.
-       Re-arms when the pointer leaves or the widget scrolls out of view. */
+       Re-arms when the pointer leaves, when the visitor touches anything outside the
+       widget (the mobile equivalent of mouseleave), or when it scrolls out of view. */
     (function () {
       var shell = document.getElementById('ialocShell');
       var guard = document.getElementById('ialocGuard');
       if (!shell || !guard) return;
-      guard.addEventListener('click', function () { shell.classList.add('active'); });
-      shell.addEventListener('mouseleave', function () { shell.classList.remove('active'); });
+      function arm()    { shell.classList.remove('active'); }
+      function unlock() { shell.classList.add('active'); }
+      guard.addEventListener('click', unlock);
+      shell.addEventListener('mouseleave', arm);
+      document.addEventListener('touchstart', function (e) {
+        if (shell.classList.contains('active') && !shell.contains(e.target)) arm();
+      }, { passive: true });
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) { if (en.intersectionRatio < 0.6) shell.classList.remove('active'); });
+          entries.forEach(function (en) { if (en.intersectionRatio < 0.6) arm(); });
         }, { threshold: [0, 0.6, 1] }).observe(shell);
       }
     })();
