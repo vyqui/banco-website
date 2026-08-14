@@ -114,96 +114,225 @@
       .fade-in { opacity: 1; transform: none; transition: none; }
     }
 
-    /* ─── HEADER (minimal — landing pages keep exits low) ─────── */
+    /* ─── HEADER — transparent over the hero, solid once past it ── */
     header.lp-nav {
-      position: sticky; top: 0; z-index: 90;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 90;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 48px;
-      background: rgba(234,231,225,0.94);
+      padding: 20px 48px;
+      transition: background 0.45s var(--ease), padding 0.45s var(--ease), border-color 0.45s;
+      border-bottom: 1px solid transparent;
+      color: var(--ivory);
+    }
+    header.lp-nav.solid {
+      background: rgba(234,231,225,0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--sand);
+      border-bottom-color: var(--sand);
+      color: var(--charcoal);
+      padding: 12px 48px;
     }
     .lp-logo {
       font-family: var(--font-display);
-      font-weight: 500; font-size: 1.05rem; letter-spacing: 0.25em;
+      font-weight: 500; font-size: 1.15rem; letter-spacing: 0.28em;
+      color: currentColor;
     }
-    .lp-nav-right { display: flex; align-items: center; gap: 14px; }
+    .lp-nav-right { display: flex; align-items: center; gap: 16px; }
 
-    .lang-switch { display: flex; border: 1px solid rgba(43,43,43,0.25); }
+    /* Hamburger — square outline, as on the reference */
+    .burger {
+      width: 46px; height: 46px; flex: none;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      background: none; border: 1px solid currentColor; color: currentColor;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .burger span {
+      display: block; width: 20px; height: 1.5px; background: currentColor;
+      transition: transform 0.35s var(--ease), opacity 0.25s;
+    }
+    .burger:hover { background: currentColor; }
+    .burger:hover span { background: var(--charcoal); }
+    header.lp-nav.solid .burger:hover span { background: var(--ivory); }
+    .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .lang-switch { display: flex; border: 1px solid currentColor; }
     .lang-switch button {
       background: none; border: 0; padding: 7px 12px;
       font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(43,43,43,0.55); transition: all 0.25s;
+      color: currentColor; opacity: 0.6; transition: all 0.25s;
     }
-    .lang-switch button[aria-pressed="true"] { background: var(--charcoal); color: var(--ivory); }
+    /* Explicit pair, not currentColor — setting both from currentColor makes the
+       active label the same colour as its own background. */
+    .lang-switch button[aria-pressed="true"] { background: var(--ivory); color: var(--charcoal); opacity: 1; }
+    header.lp-nav.solid .lang-switch button[aria-pressed="true"] { background: var(--charcoal); color: var(--ivory); }
 
-    .lp-phone {
-      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
-      border: 1px solid rgba(43,43,43,0.35); padding: 9px 20px; transition: all 0.3s;
-      white-space: nowrap;
+    /* ─── FULL-SCREEN MENU OVERLAY ───────────────────────────── */
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 89;
+      background: var(--charcoal);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 110px 48px 44px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.5s var(--ease), visibility 0.5s;
     }
-    .lp-phone:hover { background: var(--charcoal); color: var(--ivory); border-color: var(--charcoal); }
+    .menu-overlay.open { opacity: 1; visibility: visible; }
+    .menu-overlay nav { display: flex; flex-direction: column; gap: 6px; }
+    .menu-overlay nav a {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      line-height: 1.25;
+      color: rgba(234,231,225,0.45);
+      transform: translateY(18px); opacity: 0;
+      transition: color 0.3s, transform 0.6s var(--ease), opacity 0.6s var(--ease);
+    }
+    .menu-overlay.open nav a { transform: translateY(0); opacity: 1; }
+    .menu-overlay nav a:hover, .menu-overlay nav a.is-primary { color: var(--ivory); }
+    .menu-foot {
+      margin-top: auto; padding-top: 44px;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.6s var(--ease) 0.25s, transform 0.6s var(--ease) 0.25s;
+    }
+    .menu-overlay.open .menu-foot { opacity: 1; transform: translateY(0); }
+    .menu-hours .k {
+      display: block; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--bronze); margin-bottom: 8px;
+    }
+    .menu-hours .v { font-size: 0.85rem; color: rgba(234,231,225,0.8); }
+    .menu-hours .v a { border-bottom: 1px solid rgba(198,169,107,0.6); }
 
-    /* ─── HERO ───────────────────────────────────────────────── */
+    /* ─── HERO — full-screen slideshow ───────────────────────── */
     .hero {
       position: relative;
-      background: var(--charcoal);
+      height: 100vh; height: 100svh;
+      min-height: 560px;
       color: var(--ivory);
-      padding: 72px 0 80px;
+      background: var(--charcoal);
       overflow: hidden;
+      display: flex; align-items: flex-end;
+      padding: 0 0 clamp(28px, 5vh, 56px);
     }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: url('img/hero_poster_desktop.jpg') center/cover no-repeat;
-      opacity: 0.28;
+    .hero-slides { position: absolute; inset: 0; z-index: 0; }
+    .hero-slide {
+      position: absolute; inset: 0;
+      background-position: center; background-size: cover; background-repeat: no-repeat;
+      opacity: 0;
+      transform: scale(1.06);
+      transition: opacity 1.4s var(--ease);
+      will-change: opacity, transform;
     }
+    .hero-slide.is-active {
+      opacity: 1;
+      animation: kenburns 9s linear forwards;
+    }
+    @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12); } }
+    /* Two scrims: vertical for the header and the bottom block, horizontal so the
+       headline stays legible when a slide is bright on the left. */
     .hero::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(43,43,43,0.92) 0%, rgba(43,43,43,0.78) 45%, rgba(43,43,43,0.6) 100%);
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(43,43,43,0.72) 0%, rgba(43,43,43,0.30) 45%, rgba(43,43,43,0.10) 75%),
+        linear-gradient(180deg, rgba(43,43,43,0.70) 0%, rgba(43,43,43,0.30) 30%, rgba(43,43,43,0.78) 76%, rgba(43,43,43,0.94) 100%);
     }
-    .hero > * { position: relative; z-index: 2; }
+    .hero > .container { position: relative; z-index: 2; width: 100%; }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
+    /* Quick links row (→ Meniu · Locație) */
+    .hero-quick { display: flex; align-items: center; gap: 22px; margin-bottom: 26px; }
+    .hero-quick .dot-arrow {
+      width: 34px; height: 34px; flex: none; border-radius: 50%;
+      border: 1px solid rgba(234,231,225,0.55);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; color: var(--ivory);
+      transition: background 0.3s, color 0.3s;
     }
-    .hero-copy .section-label { color: var(--bronze); }
-    .hero-copy h1 {
+    .hero-quick .dot-arrow:hover { background: var(--ivory); color: var(--charcoal); }
+    .hero-quick a.q {
+      font-size: 0.82rem; letter-spacing: 0.02em; color: var(--bronze);
+      border-bottom: 1px solid transparent; transition: border-color 0.3s;
+    }
+    .hero-quick a.q:hover { border-bottom-color: var(--bronze); }
+
+    .hero h1 {
       font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(2.1rem, 3.6vw, 3.1rem);
-      line-height: 1.2;
-      margin-bottom: 20px;
+      font-weight: 500;
+      font-size: clamp(2.6rem, 7.4vw, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+      max-width: 16ch;
     }
-    .hero-copy .lede {
-      font-size: 0.95rem; line-height: 1.85;
-      color: rgba(234,231,225,0.72);
-      max-width: 44ch;
-      margin-bottom: 32px;
+    .hero .hero-sub {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      line-height: 1.6;
+      color: rgba(234,231,225,0.82);
+      max-width: 46ch;
+      margin-bottom: clamp(26px, 5vh, 44px);
     }
-    .hero-points { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 34px; }
-    .hero-points li {
+
+    /* Slide dots */
+    .hero-dots { display: flex; gap: 10px; margin-bottom: clamp(26px, 5vh, 46px); }
+    .hero-dots button {
+      width: 8px; height: 8px; border-radius: 50%; padding: 0;
+      border: 0; background: rgba(234,231,225,0.35);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hero-dots button[aria-current="true"] { background: var(--bronze); transform: scale(1.25); }
+
+    /* Hours + reservation CTA, pinned to the bottom of the hero */
+    .hero-foot { display: flex; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
+    .hero-hours .k {
+      display: block; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--bronze); margin-bottom: 8px;
+    }
+    .hero-hours .v { font-size: 0.9rem; color: rgba(234,231,225,0.9); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 16px;
+      border: 1px solid rgba(234,231,225,0.6);
+      color: var(--ivory);
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 18px 30px; transition: all 0.35s var(--ease);
+    }
+    .btn-ghost:hover { background: var(--ivory); color: var(--charcoal); border-color: var(--ivory); }
+    .btn-ghost .arr { transition: transform 0.35s var(--ease); }
+    .btn-ghost:hover .arr { transform: translateX(5px); }
+
+    /* Staggered entrance for the hero copy */
+    .hero-reveal > * { opacity: 0; transform: translateY(26px); }
+    .hero-reveal.in > * { opacity: 1; transform: translateY(0); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .hero-reveal.in > *:nth-child(1) { transition-delay: 0.10s; }
+    .hero-reveal.in > *:nth-child(2) { transition-delay: 0.20s; }
+    .hero-reveal.in > *:nth-child(3) { transition-delay: 0.30s; }
+    .hero-reveal.in > *:nth-child(4) { transition-delay: 0.40s; }
+    .hero-reveal.in > *:nth-child(5) { transition-delay: 0.50s; }
+
+    /* ─── BOOKING SECTION (directly under the hero) ──────────── */
+    .booking { padding: 88px 0; }
+    .booking-grid {
+      display: grid; grid-template-columns: 0.85fr 1fr; gap: 56px; align-items: start;
+    }
+    .booking-info h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.25; margin-bottom: 18px;
+    }
+    .booking-points { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+    .booking-points li {
       display: flex; gap: 12px; align-items: flex-start;
-      font-size: 0.85rem; line-height: 1.6; color: rgba(234,231,225,0.85);
+      font-size: 0.86rem; line-height: 1.7; color: rgba(43,43,43,0.7);
     }
-    .hero-points li::before {
-      content: '—'; color: var(--bronze); flex: none; line-height: 1.6;
+    .booking-points li::before { content: '—'; color: var(--bronze); flex: none; }
+    .booking-alt {
+      border-top: 1px solid var(--sand); padding-top: 22px;
+      font-size: 0.82rem; line-height: 1.9; color: rgba(43,43,43,0.6);
     }
-    .hero-alt {
-      border-top: 1px solid rgba(234,231,225,0.18);
-      padding-top: 24px;
-      font-size: 0.8rem; line-height: 1.8; color: rgba(234,231,225,0.6);
-    }
-    .hero-alt a { color: var(--ivory); border-bottom: 1px solid var(--bronze); padding-bottom: 1px; }
+    .booking-alt a { border-bottom: 1px solid var(--bronze); }
 
     /* ─── WIDGET CARD ────────────────────────────────────────── */
     .booking-card {
       background: var(--ivory);
       color: var(--charcoal);
       padding: 28px 28px 24px;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+      border: 1px solid var(--sand);
+      box-shadow: 0 24px 60px rgba(43,43,43,0.10);
       width: 100%; max-width: 100%;
     }
     .booking-card h2 {
@@ -358,13 +487,18 @@
     }
 
     /* ─── STICKY MOBILE CTA ──────────────────────────────────── */
+    /* Slides up only once the hero is behind you — inside the hero it would sit on
+       top of the hero's own reservation button and say the same thing twice. */
     .sticky-cta {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 95;
       display: none; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
       background: rgba(234,231,225,0.97);
       border-top: 1px solid var(--sand);
       backdrop-filter: blur(12px);
+      transform: translateY(110%);
+      transition: transform 0.4s var(--ease);
     }
+    .sticky-cta.show { transform: translateY(0); }
     .sticky-cta a {
       flex: 1; text-align: center; padding: 15px 10px;
       font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -374,21 +508,23 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .hero-grid { gap: 40px; }
+      .booking-grid { gap: 40px; }
       .why-grid { grid-template-columns: 1fr; gap: 40px; }
       .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     }
     @media (max-width: 900px) {
       .container { padding: 0 20px; }
-      header.lp-nav { padding: 12px 20px; }
-      .lp-phone { display: none; }
-      .hero { padding: 40px 0 48px; }
-      .hero::before { background-image: url('img/hero_poster.jpg'); }
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-copy h1 { font-size: clamp(1.85rem, 7vw, 2.3rem); }
-      .hero-copy .lede { margin-bottom: 24px; font-size: 0.9rem; }
-      .hero-points { gap: 11px; margin-bottom: 26px; }
-      .hero-alt { display: none; }
+      header.lp-nav, header.lp-nav.solid { padding: 12px 20px; }
+      .menu-overlay { padding: 96px 20px 32px; }
+      .hero { min-height: 520px; padding-bottom: 34px; }
+      .hero-quick { gap: 16px; margin-bottom: 20px; }
+      .hero h1 { max-width: 12ch; }
+      .hero-foot { gap: 22px; }
+      .hero-foot .btn-ghost { width: 100%; justify-content: space-between; }
+      .booking { padding: 56px 0; }
+      .booking-grid { grid-template-columns: 1fr; gap: 34px; }
+      .booking-points { gap: 11px; margin-bottom: 22px; }
+      .booking-alt { display: none; }
       .booking-card { padding: 20px 16px 18px; }
       :root { --widget-max-h: 560px; }
       .why, .faq { padding: 60px 0; }
@@ -410,36 +546,86 @@
 <body>
 
   <!-- ─── HEADER ──────────────────────────────────── -->
-  <header class="lp-nav">
-    <a href="index.html" class="lp-logo" translate="no" aria-label="BANCO">BANCO</a>
+  <header class="lp-nav" id="lpNav">
+    <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menuOverlay"
+            data-i18n-aria="nav.menuAria" aria-label="Deschide meniul">
+      <span></span><span></span><span></span>
+    </button>
     <div class="lp-nav-right">
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang-btn="ro" aria-pressed="true">RO</button>
         <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
       </div>
-      <a class="lp-phone" href="tel:+40773261721" data-i18n="nav.phone">Sună: +40 773 261 721</a>
+      <a href="index.html" class="lp-logo" translate="no" aria-label="BANCO">BANCO</a>
     </div>
   </header>
 
-  <!-- ─── HERO + BOOKING WIDGET ───────────────────── -->
-  <section class="hero" id="rezerva">
-    <div class="container">
-      <div class="hero-grid">
+  <!-- ─── FULL-SCREEN MENU ────────────────────────── -->
+  <div class="menu-overlay" id="menuOverlay" hidden>
+    <nav aria-label="Meniu principal">
+      <a href="#rezerva" class="is-primary" data-menu-link data-cta="menu" data-i18n="menu.book">Rezervă o masă</a>
+      <a href="index.html#menu" data-menu-link data-i18n="menu.menu">Meniu</a>
+      <a href="index.html#atmosphere" data-menu-link data-i18n="menu.space">Spațiul</a>
+      <a href="#location" data-menu-link data-i18n="menu.location">Locație</a>
+      <a href="index.html" data-menu-link data-i18n="menu.site">Site-ul BANCO</a>
+    </nav>
+    <div class="menu-foot">
+      <div class="menu-hours">
+        <span class="k" data-i18n="hero.hoursLabel">Program</span>
+        <span class="v" data-i18n-html="menu.contact">Zilnic: 10:00 — 22:00<br/><a href="tel:+40773261721">+40 773 261 721</a></span>
+      </div>
+      <a href="#rezerva" class="btn-ghost" data-menu-link data-cta="menu-btn">
+        <span data-i18n="hero.cta">Rezervare</span><span class="arr">→</span>
+      </a>
+    </div>
+  </div>
 
-        <div class="hero-copy">
-          <span class="section-label" data-i18n="hero.label">Rezervări</span>
-          <h1 data-i18n="hero.h1">Rezervă o masă la BANCO</h1>
-          <p class="lede" data-i18n="hero.lede">
-            Bucătărie mediteraneană reinterpretată și cocktailuri de autor, într-un spațiu cu
-            influențe milaneze. În One Verdi Park, Barbu Văcărescu.
-          </p>
-          <ul class="hero-points">
+  <!-- ─── HERO — full-screen slideshow ────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-slides" id="heroSlides" aria-hidden="true">
+      <div class="hero-slide is-active" style="background-image:url('img/loc2.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('img/dish_signature.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('img/drink_pornstar.jpg')"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-reveal" id="heroReveal">
+        <div class="hero-quick">
+          <a href="#rezerva" class="dot-arrow" aria-hidden="true" tabindex="-1">→</a>
+          <a href="index.html#menu" class="q" data-i18n="hero.q1">Meniu</a>
+          <a href="#location" class="q" data-i18n="hero.q2">Locație</a>
+        </div>
+        <h1 data-i18n-html="hero.h1">Rezervă<br/>masa ta</h1>
+        <p class="hero-sub" data-i18n="hero.sub">Bucătărie mediteraneană reinterpretată și cocktailuri de autor, în One Verdi Park.</p>
+        <div class="hero-dots" id="heroDots" role="tablist" aria-label="Imagini"></div>
+        <div class="hero-foot">
+          <div class="hero-hours">
+            <span class="k" data-i18n="hero.hoursLabel">Program</span>
+            <span class="v" data-i18n="hero.hoursValue">Luni–Duminică: 10:00 — 22:00</span>
+          </div>
+          <a href="#rezerva" class="btn-ghost" data-cta="hero">
+            <span data-i18n="hero.cta">Rezervare</span><span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BOOKING (immediately under the hero) ────── -->
+  <section class="booking texture-paper" id="rezerva">
+    <div class="container">
+      <div class="booking-grid">
+
+        <div class="booking-info fade-in">
+          <span class="section-label" data-i18n="booking.label">Rezervări</span>
+          <h2 data-i18n="booking.h2">Alege data și ora</h2>
+          <ul class="booking-points">
             <li data-i18n="hero.p1">Deschis zilnic, 10:00 — 22:00: mic dejun, prânz, aperitivo și cină.</li>
             <li data-i18n="hero.p2">Rezervări online cu până la 30 de zile în avans.</li>
             <li data-i18n="hero.p3">Grupuri de 8 persoane sau mai mari: te rugăm să ne contactezi direct.</li>
             <li data-i18n="hero.p4">One Verdi Park, Corp A, Parter — Sector 2, București.</li>
           </ul>
-          <p class="hero-alt" data-i18n-html="hero.alt">
+          <p class="booking-alt" data-i18n-html="hero.alt">
             Preferi să vorbești cu noi? Sună la <a href="tel:+40773261721">+40 773 261 721</a>
             sau scrie-ne la <a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a>.
           </p>
@@ -566,7 +752,7 @@
   </section>
 
   <!-- ─── LOCATION ────────────────────────────────── -->
-  <section class="location texture-paper">
+  <section class="location texture-paper" id="location">
     <div class="container">
       <span class="section-label" data-i18n="loc.label">Unde ne găsești</span>
       <h2 class="sec-head" style="margin:0 auto 12px;font-family:var(--font-display);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);" data-i18n="loc.h2">One Verdi Park, București</h2>
@@ -664,10 +850,22 @@
      Order of precedence for the initial language: ?lang= → localStorage → browser language. */
   var I18N = {
     en: {
-      "nav.phone": "Call: +40 773 261 721",
-      "hero.label": "Reservations",
-      "hero.h1": "Book a table at BANCO",
-      "hero.lede": "Reinterpreted Mediterranean cooking and signature cocktails, in a space with contemporary Milanese influences. At One Verdi Park, Barbu Văcărescu.",
+      "nav.menuAria": "Open the menu",
+      "menu.book": "Book a table",
+      "menu.menu": "Menu",
+      "menu.space": "The space",
+      "menu.location": "Location",
+      "menu.site": "BANCO website",
+      "menu.contact": "Every day: 10:00 — 22:00<br/><a href=\"tel:+40773261721\">+40 773 261 721</a>",
+      "hero.h1": "Book<br/>your table",
+      "hero.sub": "Reinterpreted Mediterranean cooking and signature cocktails, at One Verdi Park.",
+      "hero.q1": "Menu",
+      "hero.q2": "Location",
+      "hero.hoursLabel": "Opening hours",
+      "hero.hoursValue": "Monday–Sunday: 10:00 — 22:00",
+      "hero.cta": "Reservation",
+      "booking.label": "Reservations",
+      "booking.h2": "Pick a date and time",
       "hero.p1": "Open daily, 10:00 — 22:00: breakfast, lunch, aperitivo and dinner.",
       "hero.p2": "Online reservations up to 30 days in advance.",
       "hero.p3": "Parties of 8 or more: please contact us directly.",
@@ -867,6 +1065,104 @@
 
   <!-- ─── PAGE JS ─────────────────────────────────── -->
   <script>
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ── Hero slideshow: crossfade + slow zoom, with dot controls ── */
+    (function () {
+      var slides = [].slice.call(document.querySelectorAll('.hero-slide'));
+      var dotsBox = document.getElementById('heroDots');
+      if (!slides.length || !dotsBox) return;
+      var i = 0, timer = null, DUR = 6500;
+
+      slides.forEach(function (s, n) {
+        var d = document.createElement('button');
+        d.type = 'button';
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Slide ' + (n + 1));
+        d.setAttribute('aria-current', n === 0 ? 'true' : 'false');
+        d.addEventListener('click', function () { go(n); restart(); });
+        dotsBox.appendChild(d);
+      });
+      var dots = [].slice.call(dotsBox.children);
+
+      function go(n) {
+        slides[i].classList.remove('is-active');
+        dots[i].setAttribute('aria-current', 'false');
+        i = (n + slides.length) % slides.length;
+        // Re-trigger the ken-burns animation on the incoming slide
+        var el = slides[i];
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = '';
+        el.classList.add('is-active');
+        dots[i].setAttribute('aria-current', 'true');
+      }
+      function restart() { if (timer) clearInterval(timer); if (!reduceMotion) timer = setInterval(function () { go(i + 1); }, DUR); }
+
+      if (!reduceMotion) restart();
+      // Don't burn cycles (or data) while the tab is hidden
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) { if (timer) clearInterval(timer); timer = null; }
+        else restart();
+      });
+    })();
+
+    /* ── Hero copy entrance ── */
+    requestAnimationFrame(function () {
+      var hr = document.getElementById('heroReveal');
+      if (hr) hr.classList.add('in');
+    });
+
+    /* ── Header goes solid once the hero is behind you ── */
+    (function () {
+      var nav = document.getElementById('lpNav');
+      var hero = document.getElementById('hero');
+      var bar = document.querySelector('.sticky-cta');
+      if (!nav || !hero) return;
+      var ticking = false;
+      function update() {
+        /* -140 so the switch has happened by the time an in-page anchor
+           (which lands 84px down, per scroll-padding-top) settles. */
+        var past = window.scrollY > hero.offsetHeight - 140;
+        nav.classList.toggle('solid', past);
+        if (bar) bar.classList.toggle('show', past);
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+      update();
+    })();
+
+    /* ── Full-screen menu ── */
+    (function () {
+      var burger  = document.getElementById('burger');
+      var overlay = document.getElementById('menuOverlay');
+      if (!burger || !overlay) return;
+      var open = false;
+
+      function setOpen(next) {
+        open = next;
+        burger.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', String(open));
+        if (open) {
+          overlay.hidden = false;
+          requestAnimationFrame(function () { overlay.classList.add('open'); });
+          document.body.style.overflow = 'hidden';
+          try { window.bancoTrack && window.bancoTrack('lp_menu_open'); } catch (e) {}
+        } else {
+          overlay.classList.remove('open');
+          document.body.style.overflow = '';
+          setTimeout(function () { if (!open) overlay.hidden = true; }, 500);
+        }
+      }
+      burger.addEventListener('click', function () { setOpen(!open); });
+      overlay.querySelectorAll('[data-menu-link]').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) setOpen(false); });
+    })();
+
     // Fade-ins
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry, i) {
