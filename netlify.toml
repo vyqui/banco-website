@@ -1,60 +1,61 @@
-functionsDirectory = "/Users/rares/Documents/Claude/banco/netlify/functions"
-functionsDirectoryOrigin = "config-v1"
-redirectsOrigin = "config"
-plugins = []
-headers = []
+# BANCO — static site, no build step.
+# Every path here is relative to the repository root (Netlify resolves them from
+# the repo, never from a local machine path).
 
 [build]
-publish = "/Users/rares/Documents/Claude/banco/_publish"
-publishOrigin = "config"
-functions = "/Users/rares/Documents/Claude/banco/netlify/functions"
+  # The site is served straight from the repo root: index.html, rezervare.html,
+  # admin.html, img/, favicons, robots.txt, sitemap.xml.
+  publish = "."
 
-  [build.environment]
+  # Nothing to compile. Set explicitly so a leftover build command in the
+  # Netlify UI cannot override this file.
+  command = "echo 'Static site — no build step.'"
 
-  [build.processing]
+# Functions are intentionally not configured here. Netlify auto-detects
+# "netlify/functions" if that folder is ever committed, and admin.html expects
+# ga-stats and gmb-stats to live there.
 
-    [build.processing.css]
-
-    [build.processing.html]
-
-    [build.processing.images]
-
-    [build.processing.js]
-
-  [build.services]
-
-[functions]
-
-  [functions."*"]
-  node_bundler = "esbuild"
+# ─── Pretty URLs ──────────────────────────────────────────────────────────
+# Rewrites (status 200), so the address bar keeps the short URL.
 
 [[redirects]]
-from = "/admin"
-to = "/admin.html"
-status = 200
-force = false
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
 
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
-# Reservation landing page (bilingual RO/EN) — pretty URLs for ads & QR codes
+# Reservation landing page — short URLs for ads, QR codes and print.
 [[redirects]]
-from = "/rezervare"
-to = "/rezervare.html"
-status = 200
-force = false
+  from = "/rezervare"
+  to = "/rezervare.html"
+  status = 200
 
 [[redirects]]
-from = "/reserve"
-to = "/rezervare.html"
-status = 200
-force = false
+  from = "/reserve"
+  to = "/rezervare.html"
+  status = 200
 
 [[redirects]]
-from = "/book"
-to = "/rezervare.html"
-status = 200
-force = false
+  from = "/book"
+  to = "/rezervare.html"
+  status = 200
+
+# ─── Headers ──────────────────────────────────────────────────────────────
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Photography and video are large and their filenames are stable.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# The admin dashboard must never be cached or indexed.
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Robots-Tag = "noindex, nofollow"
