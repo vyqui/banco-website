@@ -326,6 +326,14 @@
     }
     .booking-alt a { border-bottom: 1px solid var(--bronze); }
 
+    /* The evocative line pulled up from the "why" section, so the one bit of copy
+       that isn't purely transactional sits near the CTA instead of buried below it. */
+    .booking-lede {
+      font-family: var(--font-display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.25rem, 2.1vw, 1.55rem); line-height: 1.4;
+      color: var(--charcoal); margin-bottom: 26px;
+    }
+
     /* ─── WIDGET CARD ────────────────────────────────────────── */
     .booking-card {
       background: var(--ivory);
@@ -342,6 +350,12 @@
     .booking-card .card-sub {
       font-size: 0.76rem; line-height: 1.7; color: rgba(43,43,43,0.6);
       margin-bottom: 20px;
+    }
+    /* Reassurance directly under the widget — only what's actually true:
+       iAloc confirms on submission, no phone call needed. */
+    .widget-reassure {
+      margin-top: 14px; font-size: 0.74rem; letter-spacing: 0.03em;
+      color: var(--bronze); text-align: center;
     }
     .reserve-widget { width: 100%; max-width: 100%; overflow: hidden; min-height: 480px; }
     .reserve-widget #ialocWidgetContainer { width: 100%; max-width: 100%; }
@@ -563,7 +577,7 @@
   <!-- ─── FULL-SCREEN MENU ────────────────────────── -->
   <div class="menu-overlay" id="menuOverlay" hidden>
     <nav aria-label="Meniu principal">
-      <a href="#rezerva" class="is-primary" data-menu-link data-cta="menu" data-i18n="menu.book">Rezervă o masă</a>
+      <a href="#rezerva" class="is-primary" data-menu-link data-cta="menu" data-i18n="menu.book">Rezervă masa</a>
       <a href="index.html#menu" data-menu-link data-i18n="menu.menu">Meniu</a>
       <a href="index.html#atmosphere" data-menu-link data-i18n="menu.space">Spațiul</a>
       <a href="#location" data-menu-link data-i18n="menu.location">Locație</a>
@@ -575,7 +589,7 @@
         <span class="v" data-i18n-html="menu.contact">Zilnic: 10:00 — 22:00<br/><a href="tel:+40773261721">+40 773 261 721</a></span>
       </div>
       <a href="#rezerva" class="btn-ghost" data-menu-link data-cta="menu-btn">
-        <span data-i18n="hero.cta">Rezervare</span><span class="arr">→</span>
+        <span data-i18n="hero.cta">Rezervă masa</span><span class="arr">→</span>
       </a>
     </div>
   </div>
@@ -595,7 +609,7 @@
           <a href="index.html#menu" class="q" data-i18n="hero.q1">Meniu</a>
           <a href="#location" class="q" data-i18n="hero.q2">Locație</a>
         </div>
-        <h1 data-i18n-html="hero.h1">Rezervă<br/>masa ta</h1>
+        <h1 data-i18n-html="hero.h1">Rezervă-ți<br/>masa</h1>
         <p class="hero-sub" data-i18n="hero.sub">Bucătărie mediteraneană reinterpretată și cocktailuri de autor, în One Verdi Park.</p>
         <div class="hero-dots" id="heroDots" role="tablist" aria-label="Imagini"></div>
         <div class="hero-foot">
@@ -604,7 +618,7 @@
             <span class="v" data-i18n="hero.hoursValue">Luni–Duminică: 10:00 — 22:00</span>
           </div>
           <a href="#rezerva" class="btn-ghost" data-cta="hero">
-            <span data-i18n="hero.cta">Rezervare</span><span class="arr">→</span>
+            <span data-i18n="hero.cta">Rezervă masa</span><span class="arr">→</span>
           </a>
         </div>
       </div>
@@ -618,12 +632,12 @@
 
         <div class="booking-info fade-in">
           <span class="section-label" data-i18n="booking.label">Rezervări</span>
-          <h2 data-i18n="booking.h2">Alege data și ora</h2>
+          <p class="booking-lede" data-i18n="booking.lede">Un prânz lung, un aperitivo, o cină care nu se grăbește.</p>
           <ul class="booking-points">
-            <li data-i18n="hero.p1">Deschis zilnic, 10:00 — 22:00: mic dejun, prânz, aperitivo și cină.</li>
-            <li data-i18n="hero.p2">Rezervări online cu până la 30 de zile în avans.</li>
-            <li data-i18n="hero.p3">Grupuri de 8 persoane sau mai mari: te rugăm să ne contactezi direct.</li>
-            <li data-i18n="hero.p4">One Verdi Park, Corp A, Parter — Sector 2, București.</li>
+            <li data-i18n="booking.p1">Rezervări online cu până la 30 de zile în avans.</li>
+            <li data-i18n="booking.p2">Grupuri de 8 persoane sau mai mari: te rugăm să ne contactezi direct.</li>
+            <li data-i18n="booking.p3">Avem și terasă — menționează la rezervare dacă preferi să stai afară.</li>
+            <li data-i18n="booking.p4">One Verdi Park, Corp A, Parter — Sector 2, București.</li>
           </ul>
           <p class="booking-alt" data-i18n-html="hero.alt">
             Preferi să vorbești cu noi? Sună la <a href="tel:+40773261721">+40 773 261 721</a>
@@ -633,19 +647,22 @@
 
         <div class="booking-card">
           <h2 data-i18n="card.h2">Rezervare online</h2>
-          <p class="card-sub" data-i18n="card.sub">Alege data, ora și numărul de persoane. Rezervarea ajunge direct la noi.</p>
+          <p class="card-sub" data-i18n="card.sub">Alege data, ora și numărul de persoane — primești confirmarea pe loc.</p>
 
           <!-- iAloc reservation widget (venue 4575) — inline; bookings go straight to the iAloc app -->
           <div class="reserve-widget">
             <!-- ialoc-shell: a transparent "scroll guard" sits over the widget so page scroll passes
-                 through and the widget's internal scroll never hijacks it. Tap/click to interact. -->
+                 through and the widget's internal scroll never hijacks it. Tap/click to interact.
+                 Skipped entirely on mouse/trackpad devices — see mountWidget()'s pointer check —
+                 since the scroll-jacking risk this guards against only exists on touchscreens. -->
             <div class="ialoc-shell" id="ialocShell">
               <div id="ialocWidgetContainer"></div>
               <button type="button" class="ialoc-guard" id="ialocGuard" data-i18n-aria="widget.guardAria" aria-label="Activează widget-ul de rezervare">
-                <span class="ialoc-guard-hint" data-i18n="widget.guardHint">Apasă pentru a rezerva</span>
+                <span class="ialoc-guard-hint" data-i18n="widget.guardHint">Rezervă masa</span>
               </button>
             </div>
           </div>
+          <p class="widget-reassure" data-i18n="widget.reassure">Confirmare instant, fără telefon.</p>
 
           <!-- Shown only if the iAloc widget fails to render (blocked script, offline, ad-blocker) -->
           <div class="widget-fallback" id="widgetFallback" hidden data-i18n-html="widget.fallback">
@@ -737,7 +754,7 @@
         <div class="dish-card"><img src="img/menu_arancini.jpg" alt="Arancini" loading="lazy" /><span>Arancini</span></div>
         <div class="dish-card"><img src="img/menu_dessert.jpg" alt="Tarte tatin" loading="lazy" /><span>Tarte Tatin</span></div>
       </div>
-      <a class="menu-link" href="index.html#menu" data-i18n="dish.link">Vezi meniul complet →</a>
+      <a class="menu-link" href="index.html#menu" target="_blank" rel="noopener" data-i18n="dish.link">Vezi meniul complet →</a>
     </div>
   </section>
 
@@ -746,7 +763,7 @@
     <div class="container">
       <h2 data-i18n="mid.h2">Masa ta te așteaptă</h2>
       <p data-i18n="mid.p">Rezervă în câțiva pași, cu până la 30 de zile în avans. Pentru grupuri de 8 persoane sau mai mari, sună-ne și organizăm împreună.</p>
-      <a href="#rezerva" class="btn-solid" data-cta="mid" data-i18n="mid.btn">Rezervă o masă</a>
+      <a href="#rezerva" class="btn-solid" data-cta="mid" data-i18n="mid.btn">Rezervă masa</a>
       <span class="sub-link" data-i18n-html="mid.sub">Sau sună la <a href="tel:+40773261721">+40 773 261 721</a></span>
     </div>
   </section>
@@ -780,6 +797,10 @@
           <div class="faq-a" data-i18n="faq.a1">Primim rezervări cu până la 30 de zile în avans. Pentru aceeași zi, îți recomandăm să rezervi online cât mai devreme sau să ne suni.</div>
         </div>
         <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q7">Cum primesc confirmarea rezervării?</button>
+          <div class="faq-a" data-i18n="faq.a7">Instant, în momentul trimiterii — vezi confirmarea pe loc, fără să mai aștepți un telefon sau un email de la noi.</div>
+        </div>
+        <div class="faq-item">
           <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q2">Care este programul?</button>
           <div class="faq-a" data-i18n="faq.a2">Suntem deschiși în fiecare zi, între 10:00 și 22:00 — pentru mic dejun, prânz, aperitivo și cină.</div>
         </div>
@@ -788,12 +809,16 @@
           <div class="faq-a" data-i18n-html="faq.a3">Pentru grupuri de 8 persoane sau mai mari, te rugăm să ne contactezi direct la <a href="tel:+40773261721">+40 773 261 721</a> sau la <a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a>, ca să găsim cea mai bună variantă de așezare.</div>
         </div>
         <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q8">Aveți și terasă?</button>
+          <div class="faq-a" data-i18n="faq.a8">Da — BANCO are terasă. Dacă preferi să stai afară, menționează asta la rezervare și facem tot posibilul să te așezăm acolo, în funcție de vreme și disponibilitate.</div>
+        </div>
+        <div class="faq-item">
           <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q4">Pot modifica sau anula rezervarea?</button>
           <div class="faq-a" data-i18n-html="faq.a4">Da. Sună-ne la <a href="tel:+40773261721">+40 773 261 721</a> sau scrie-ne la <a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a> și ne ocupăm noi de modificare.</div>
         </div>
         <div class="faq-item">
           <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q5">Ce fel de bucătărie serviți?</button>
-          <div class="faq-a" data-i18n-html="faq.a5">Bucătărie mediteraneană și europeană contemporană — clasice reinterpretate, cu influențe milaneze — alături de cocktailuri de autor și o carte de vinuri europene. <a href="index.html#menu">Vezi meniul complet</a>.</div>
+          <div class="faq-a" data-i18n-html="faq.a5">Bucătărie mediteraneană și europeană contemporană — clasice reinterpretate, cu influențe milaneze — alături de cocktailuri de autor și o carte de vinuri europene. <a href="index.html#menu" target="_blank" rel="noopener">Vezi meniul complet</a>.</div>
         </div>
         <div class="faq-item">
           <button type="button" class="faq-q" aria-expanded="false" data-i18n="faq.q6">Unde vă aflați exact?</button>
@@ -826,7 +851,7 @@
           <ul>
             <li><a href="index.html" data-i18n="foot.site">Site-ul BANCO</a></li>
             <li><a href="index.html#menu" data-i18n="foot.menu">Meniu</a></li>
-            <li><a href="#rezerva" data-i18n="foot.book">Rezervă o masă</a></li>
+            <li><a href="#rezerva" data-i18n="foot.book">Rezervă masa</a></li>
             <li><a href="https://www.instagram.com/bancorestaurant" target="_blank" rel="noopener">Instagram</a></li>
           </ul>
         </div>
@@ -840,7 +865,7 @@
 
   <!-- ─── STICKY MOBILE CTA ───────────────────────── -->
   <div class="sticky-cta">
-    <a class="s-book" href="#rezerva" data-cta="sticky" data-i18n="sticky.book">Rezervă masă</a>
+    <a class="s-book" href="#rezerva" data-cta="sticky" data-i18n="sticky.book">Rezervă masa</a>
     <a class="s-call" href="tel:+40773261721" data-i18n="sticky.call">Sună</a>
   </div>
 
@@ -863,18 +888,19 @@
       "hero.q2": "Location",
       "hero.hoursLabel": "Opening hours",
       "hero.hoursValue": "Monday–Sunday: 10:00 — 22:00",
-      "hero.cta": "Reservation",
+      "hero.cta": "Book a table",
       "booking.label": "Reservations",
-      "booking.h2": "Pick a date and time",
-      "hero.p1": "Open daily, 10:00 — 22:00: breakfast, lunch, aperitivo and dinner.",
-      "hero.p2": "Online reservations up to 30 days in advance.",
-      "hero.p3": "Parties of 8 or more: please contact us directly.",
-      "hero.p4": "One Verdi Park, Corp A, ground floor — Sector 2, Bucharest.",
+      "booking.lede": "A long lunch, an aperitivo, a dinner that takes its time.",
+      "booking.p1": "Online reservations up to 30 days in advance.",
+      "booking.p2": "Parties of 8 or more: please contact us directly.",
+      "booking.p3": "We also have a terrace — mention it when you book if you'd rather sit outside.",
+      "booking.p4": "One Verdi Park, Corp A, ground floor — Sector 2, Bucharest.",
       "hero.alt": "Rather talk to us? Call <a href=\"tel:+40773261721\">+40 773 261 721</a> or write to <a href=\"mailto:contact@banco-restaurant.ro\">contact@banco-restaurant.ro</a>.",
       "card.h2": "Book online",
-      "card.sub": "Pick a date, a time and the number of guests. Your reservation comes straight to us.",
-      "widget.guardHint": "Tap to book",
+      "card.sub": "Pick a date, a time and the number of guests — get confirmed on the spot.",
+      "widget.guardHint": "Book a table",
       "widget.guardAria": "Activate the reservation widget",
+      "widget.reassure": "Instant confirmation, no phone call needed.",
       "widget.fallback": "Online booking can't load right now. Call us at <a href=\"tel:+40773261721\">+40 773 261 721</a> and we'll book your table.",
       "trust.hours.k": "Hours",
       "trust.hours.v": "Every day, 10:00 — 22:00",
@@ -910,14 +936,18 @@
       "faq.h2": "Good to know before you book",
       "faq.q1": "How far ahead can I book?",
       "faq.a1": "We take reservations up to 30 days in advance. For same-day tables, book online as early as you can or give us a call.",
+      "faq.q7": "How do I get my reservation confirmed?",
+      "faq.a7": "Instantly, the moment you submit it — you'll see the confirmation right there, no need to wait for a call or an email from us.",
       "faq.q2": "What are your opening hours?",
       "faq.a2": "We are open every day between 10:00 and 22:00 — for breakfast, lunch, aperitivo and dinner.",
       "faq.q3": "How do I book for a large group?",
       "faq.a3": "For parties of 8 or more, please contact us directly at <a href=\"tel:+40773261721\">+40 773 261 721</a> or <a href=\"mailto:contact@banco-restaurant.ro\">contact@banco-restaurant.ro</a> so we can find the best seating for you.",
+      "faq.q8": "Do you have a terrace?",
+      "faq.a8": "Yes — BANCO has a terrace. If you'd rather sit outside, mention it when you book and we'll do our best to seat you there, weather and availability permitting.",
       "faq.q4": "Can I change or cancel my reservation?",
       "faq.a4": "Yes. Call us at <a href=\"tel:+40773261721\">+40 773 261 721</a> or write to <a href=\"mailto:contact@banco-restaurant.ro\">contact@banco-restaurant.ro</a> and we'll take care of it.",
       "faq.q5": "What kind of cuisine do you serve?",
-      "faq.a5": "Mediterranean and contemporary European cooking — reinterpreted classics with Milanese influences — alongside signature cocktails and a European wine list. <a href=\"index.html#menu\">See the full menu</a>.",
+      "faq.a5": "Mediterranean and contemporary European cooking — reinterpreted classics with Milanese influences — alongside signature cocktails and a European wine list. <a href=\"index.html#menu\" target=\"_blank\" rel=\"noopener\">See the full menu</a>.",
       "faq.q6": "Where exactly are you?",
       "faq.a6": "At One Verdi Park, Strada Barbu Văcărescu 164E, Corp A, ground floor, Sector 2, Bucharest. <a href=\"https://www.google.com/maps/search/?api=1&amp;query=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest\" target=\"_blank\" rel=\"noopener\">Open directions in Google Maps</a>.",
       "foot.tag": "Contemporary Mediterranean dining.<br/>A balance of taste, atmosphere and design.",
@@ -1041,13 +1071,25 @@
     }
     mountWidget(document.documentElement.lang === 'en' ? 'en' : 'ro');
 
-    /* Scroll-guard: the page scrolls freely over the widget until the user taps it.
-       Re-arms when the pointer leaves, when the visitor touches anything outside the
-       widget (the mobile equivalent of mouseleave), or when it scrolls out of view. */
+    /* Scroll-guard exists for one reason: on a touchscreen, the widget's own internal
+       scroll can hijack the page's scroll. A mouse/trackpad has no such conflict — the
+       wheel scrolls the (capped, overflow:auto) widget box like any embedded panel and
+       chains to the page at its edge, same as a map or a comment thread. So on a
+       fine-pointer device we skip the tap-to-unlock step entirely: the widget is live
+       and visible on load, no extra click standing between the visitor and the form.
+       Touchscreens keep the guard, armed/disarmed as before. */
     (function () {
       var shell = document.getElementById('ialocShell');
       var guard = document.getElementById('ialocGuard');
       if (!shell || !guard) return;
+
+      var isPointerDevice = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (isPointerDevice) {
+        shell.classList.add('active');
+        guard.style.display = 'none';
+        return;
+      }
+
       function arm()    { shell.classList.remove('active'); }
       function unlock() { shell.classList.add('active'); }
       guard.addEventListener('click', unlock);
@@ -1221,8 +1263,10 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "Cu cât timp înainte pot rezerva?", "acceptedAnswer": { "@type": "Answer", "text": "Primim rezervări cu până la 30 de zile în avans. Pentru aceeași zi, îți recomandăm să rezervi online cât mai devreme sau să ne suni la +40 773 261 721." } },
+      { "@type": "Question", "name": "Cum primesc confirmarea rezervării?", "acceptedAnswer": { "@type": "Answer", "text": "Instant, în momentul trimiterii — vezi confirmarea pe loc, fără să mai aștepți un telefon sau un email de la noi." } },
       { "@type": "Question", "name": "Care este programul BANCO?", "acceptedAnswer": { "@type": "Answer", "text": "Suntem deschiși în fiecare zi, între 10:00 și 22:00 — pentru mic dejun, prânz, aperitivo și cină." } },
       { "@type": "Question", "name": "Cum rezerv pentru un grup mare?", "acceptedAnswer": { "@type": "Answer", "text": "Pentru grupuri de 8 persoane sau mai mari, te rugăm să ne contactezi direct la +40 773 261 721 sau la contact@banco-restaurant.ro." } },
+      { "@type": "Question", "name": "Aveți și terasă?", "acceptedAnswer": { "@type": "Answer", "text": "Da — BANCO are terasă. Dacă preferi să stai afară, menționează asta la rezervare și facem tot posibilul să te așezăm acolo, în funcție de vreme și disponibilitate." } },
       { "@type": "Question", "name": "Pot modifica sau anula rezervarea?", "acceptedAnswer": { "@type": "Answer", "text": "Da. Sună la +40 773 261 721 sau scrie la contact@banco-restaurant.ro și ne ocupăm noi de modificare." } },
       { "@type": "Question", "name": "Ce fel de bucătărie serviți?", "acceptedAnswer": { "@type": "Answer", "text": "Bucătărie mediteraneană și europeană contemporană — clasice reinterpretate, cu influențe milaneze — alături de cocktailuri de autor și o carte de vinuri europene." } },
       { "@type": "Question", "name": "Unde se află BANCO?", "acceptedAnswer": { "@type": "Answer", "text": "În One Verdi Park, Strada Barbu Văcărescu 164E, Corp A, Parter, Sector 2, 020285, București." } }
