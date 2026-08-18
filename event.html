@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L22DR3ZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X1L22DR3ZF');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title id="pageTitle">Event — BANCO</title>
+  <meta id="metaDesc" name="description" content="Events at BANCO, One Verdi Park, Bucharest." />
+  <link id="canonicalLink" rel="canonical" href="https://banco-restaurant.ro/events" />
+  <meta name="theme-color" content="#2B2B2B" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <meta id="ogTitle" property="og:type" content="website" />
+  <meta property="og:site_name" content="BANCO" />
+  <meta id="ogTitleTag" property="og:title" content="Event — BANCO" />
+  <meta id="ogDesc" property="og:description" content="Events at BANCO, One Verdi Park, Bucharest." />
+  <meta id="ogUrl" property="og:url" content="https://banco-restaurant.ro/events" />
+  <meta id="ogImage" property="og:image" content="https://banco-restaurant.ro/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta id="twTitle" name="twitter:title" content="Event — BANCO" />
+  <meta id="twDesc" name="twitter:description" content="Events at BANCO, One Verdi Park, Bucharest." />
+  <meta id="twImage" name="twitter:image" content="https://banco-restaurant.ro/img/og.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ivory:   #EAE7E1;
+      --charcoal:#2B2B2B;
+      --sand:    #D8D2C8;
+      --bronze:  #C6A96B;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Manrope', sans-serif;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100%; }
+    body {
+      background: var(--ivory); color: var(--charcoal);
+      font-family: var(--font-body); font-weight: 300;
+      overflow-x: hidden; max-width: 100%; width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 48px; }
+    .section-label { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--bronze); margin-bottom: 16px; display: block; }
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(234,231,225,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand);
+    }
+    .nav-logo { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; letter-spacing: 0.25em; color: var(--charcoal); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(43,42,40,0.5); transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.is-current { color: var(--charcoal); }
+    .nav-reserve {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal);
+      border: 1px solid rgba(43,42,40,0.35); padding: 10px 22px; transition: all 0.3s;
+    }
+    .nav-reserve:hover { background: var(--charcoal); color: var(--ivory); border-color: var(--charcoal); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; z-index: 200; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); transition: all 0.3s var(--ease); }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--ivory); z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+      opacity: 0; transition: opacity 0.3s var(--ease);
+    }
+    .mobile-menu.open { opacity: 1; }
+    .mobile-menu a { font-family: var(--font-display); font-size: 1.9rem; font-weight: 300; color: var(--charcoal); letter-spacing: 0.06em; }
+    .mobile-menu .mobile-reserve { font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; border: 1px solid var(--charcoal); padding: 14px 36px; margin-top: 10px; }
+
+    /* ─── BACK LINK ──────────────────────────────────────────── */
+    .back-row { padding: 128px 0 0; }
+    .back-link { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(43,43,43,0.55); transition: color 0.3s; }
+    .back-link:hover { color: var(--charcoal); }
+
+    /* ─── EVENT HEADER ───────────────────────────────────────── */
+    .event-header { padding: 24px 0 40px; }
+    .ev-tag {
+      display: inline-block; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--bronze); border: 1px solid var(--bronze); padding: 6px 14px; margin-bottom: 20px;
+    }
+    .event-header h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.15; margin-bottom: 22px; }
+    .ev-meta { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+    .ev-meta-item { font-size: 0.86rem; color: rgba(43,43,43,0.65); }
+    .ev-meta-item strong { display: block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(43,43,43,0.4); margin-bottom: 4px; font-weight: 500; }
+
+    /* ─── GALLERY ────────────────────────────────────────────── */
+    .ev-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 44px; }
+    .ev-gallery img { aspect-ratio: 4/3; }
+    .ev-gallery.count-1 img { aspect-ratio: 16/9; }
+
+    /* ─── VIDEO ──────────────────────────────────────────────── */
+    .ev-video { position: relative; width: 100%; aspect-ratio: 16/9; margin-bottom: 44px; background: var(--charcoal); }
+    .ev-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    /* ─── DESCRIPTION ────────────────────────────────────────── */
+    .ev-description { font-size: 0.94rem; line-height: 1.95; color: rgba(43,43,43,0.75); max-width: 68ch; margin-bottom: 56px; }
+    .ev-description p + p { margin-top: 1.4em; }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    .ev-contact { background: var(--charcoal); color: var(--ivory); padding: 44px; margin-bottom: 80px; }
+    .ev-contact h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; margin-bottom: 10px; }
+    .ev-contact p { font-size: 0.86rem; line-height: 1.8; color: rgba(234,231,225,0.7); margin-bottom: 26px; max-width: 50ch; }
+    .ev-contact-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .ev-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 15px 26px; transition: all 0.3s;
+    }
+    .ev-btn.is-primary { background: var(--bronze); color: var(--charcoal); }
+    .ev-btn.is-primary:hover { background: var(--ivory); }
+    .ev-btn.is-outline { border: 1px solid rgba(234,231,225,0.5); color: var(--ivory); }
+    .ev-btn.is-outline:hover { background: var(--ivory); color: var(--charcoal); }
+
+    /* ─── NOT FOUND ──────────────────────────────────────────── */
+    .not-found { padding: 220px 0 140px; text-align: center; }
+    .not-found h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px; }
+    .not-found p { font-size: 0.9rem; color: rgba(43,43,43,0.6); margin-bottom: 28px; }
+    .not-found .btn-outline {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      border: 1px solid var(--charcoal); padding: 14px 30px; transition: all 0.3s;
+    }
+    .not-found .btn-outline:hover { background: var(--charcoal); color: var(--ivory); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer { background: var(--charcoal); padding: 56px 0 40px; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(244,241,234,0.08); margin-bottom: 40px; max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 48px; padding-right: 48px; }
+    .footer-brand .f-logo { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; letter-spacing: 0.25em; color: var(--ivory); margin-bottom: 16px; display: block; }
+    .footer-brand p { font-size: 0.78rem; line-height: 1.8; color: rgba(244,241,234,0.35); }
+    .footer-col h5 { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(176,141,87,0.6); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { font-size: 0.78rem; color: rgba(244,241,234,0.4); margin-bottom: 10px; line-height: 1.5; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: rgba(244,241,234,0.7); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .footer-bottom p { font-size: 0.68rem; color: rgba(244,241,234,0.2); letter-spacing: 0.05em; }
+    .social-links { display: flex; gap: 24px; }
+    .social-links a { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,241,234,0.25); transition: color 0.3s; }
+    .social-links a:hover { color: rgba(244,241,234,0.6); }
+
+    @media (max-width: 1024px) {
+      .container { padding: 0 36px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; padding-left: 36px; padding-right: 36px; }
+      .footer-brand { grid-column: 1 / 3; }
+      .footer-bottom { padding: 0 36px; }
+    }
+    @media (max-width: 900px) {
+      .container { padding: 0 20px; }
+      nav { padding: 14px 20px; }
+      .nav-links, .nav-reserve { display: none; }
+      .nav-hamburger { display: flex; }
+      .back-row { padding-top: 100px; }
+      .ev-contact { padding: 30px 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; padding-left: 20px; padding-right: 20px; }
+      .footer-brand { grid-column: auto; text-align: center; }
+      .footer-brand p { margin: 0 auto; }
+      .footer-bottom { flex-direction: column; text-align: center; padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#menu" onclick="closeMenu()">Menu</a>
+    <a href="index.html#atmosphere" onclick="closeMenu()">Atmosphere</a>
+    <a href="events.html" onclick="closeMenu()">Events</a>
+    <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+    <a href="rezervare.html" class="mobile-reserve" onclick="closeMenu()">Make a Reservation</a>
+  </div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" translate="no">BANCO</a>
+    <ul class="nav-links">
+      <li><a href="index.html#menu">Menu</a></li>
+      <li><a href="index.html#atmosphere">Atmosphere</a></li>
+      <li><a href="events.html" class="is-current">Events</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="rezervare.html" class="nav-reserve">Reservation</a>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <main id="eventMain">
+    <!-- Filled in by JS from events-data.js, based on ?slug= -->
+  </main>
+
+  <footer id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="f-logo" translate="no">BANCO</span>
+        <p>Contemporary European dining.<br/>A balance of taste, atmosphere,<br/>and design.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <ul>
+          <li>Strada Barbu Văcărescu 164E</li>
+          <li>One Verdi Park, Corp A, Parter</li>
+          <li>Sector 2, 020285, Bucharest</li>
+          <li style="margin-top:16px"><a href="tel:+40773261721">+40 773 261 721</a></li>
+          <li><a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a></li>
+          <li>banco-restaurant.ro</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Hours</h5>
+        <ul>
+          <li>Every day</li>
+          <li>10:00 – 22:00</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html#menu">Menu</a></li>
+          <li><a href="index.html#atmosphere">The Space</a></li>
+          <li><a href="rezervare.html">Reserve</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li>Private Events</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BANCO All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/bancorestaurant" target="_blank" rel="noopener">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TripAdvisor</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="events-data.js"></script>
+  <script>
+    var mobileMenu = document.getElementById('mobileMenu');
+    var hamburger  = document.getElementById('hamburger');
+    function toggleMenu() {
+      var open = mobileMenu.style.display === 'flex' && mobileMenu.classList.contains('open');
+      if (open) { closeMenu(); }
+      else {
+        mobileMenu.style.display = 'flex';
+        requestAnimationFrame(function () { mobileMenu.classList.add('open'); });
+        hamburger.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(function () { mobileMenu.style.display = 'none'; }, 300);
+    }
+
+    function esc(s) {
+      var d = document.createElement('div');
+      d.textContent = s == null ? '' : s;
+      return d.innerHTML;
+    }
+
+    function findEvent(slug) {
+      return (window.BANCO_EVENTS || []).filter(function (e) { return e.slug === slug; })[0] || null;
+    }
+
+    function renderNotFound() {
+      document.getElementById('eventMain').innerHTML =
+        '<div class="not-found container">' +
+          '<h1>Event not found</h1>' +
+          '<p>This event may have been removed, or the link is out of date.</p>' +
+          '<a class="btn-outline" href="events.html">See all events</a>' +
+        '</div>';
+    }
+
+    function renderEvent(ev) {
+      var main = document.getElementById('eventMain');
+      var photos = (ev.photos && ev.photos.length ? ev.photos : (ev.cover ? [ev.cover] : [])).slice(0, 3);
+      var dateText = window.bancoFormatEventDate(ev);
+      var location = window.bancoEventLocation(ev);
+      var waText = encodeURIComponent('Hi! I\'d like to find out more about "' + ev.title + '".');
+
+      var galleryHTML = photos.length
+        ? '<div class="ev-gallery fade-in count-' + photos.length + '">' +
+            photos.map(function (src) { return '<img src="' + src + '" alt="' + esc(ev.title) + '" loading="lazy" />'; }).join('') +
+          '</div>'
+        : '';
+
+      var videoHTML = ev.youtubeId
+        ? '<div class="ev-video fade-in"><iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(ev.youtubeId) +
+            '" title="' + esc(ev.title) + ' — video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+        : '';
+
+      var descHTML = (ev.description || '').split(/\n\s*\n/).map(function (p) { return '<p>' + esc(p).replace(/\n/g, '<br/>') + '</p>'; }).join('');
+
+      main.innerHTML =
+        '<div class="back-row container"><a class="back-link" href="events.html">← All events</a></div>' +
+        '<div class="event-header container fade-in">' +
+          (ev.tag ? '<span class="ev-tag">' + esc(ev.tag) + '</span>' : '') +
+          '<h1>' + esc(ev.title) + '</h1>' +
+          '<div class="ev-meta">' +
+            '<div class="ev-meta-item"><strong>Date</strong>' + dateText + '</div>' +
+            '<div class="ev-meta-item"><strong>Location</strong>' + esc(location) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="container">' +
+          galleryHTML +
+          videoHTML +
+          (ev.description ? '<div class="ev-description fade-in">' + descHTML + '</div>' : '') +
+          '<div class="ev-contact fade-in">' +
+            '<h2>Interested in this event?</h2>' +
+            '<p>Call or message us on WhatsApp and we\'ll help you with a spot, group bookings, or any questions about the evening.</p>' +
+            '<div class="ev-contact-actions">' +
+              '<a class="ev-btn is-primary" href="https://wa.me/40773261721?text=' + waText + '" target="_blank" rel="noopener">WhatsApp us</a>' +
+              '<a class="ev-btn is-outline" href="tel:+40773261721">Call +40 773 261 721</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      // Head metadata — this page is one template shared by every event, so
+      // title/description/OG tags are only known once the event is found.
+      var title = ev.title + ' — Events at BANCO';
+      var desc = ev.excerpt || ('Join us for ' + ev.title + ' at BANCO, One Verdi Park, Bucharest.');
+      var url = 'https://banco-restaurant.ro/events/' + ev.slug;
+      var img = photos[0] ? 'https://banco-restaurant.ro/' + photos[0].replace(/^\.?\//, '') : 'https://banco-restaurant.ro/img/og.jpg';
+      document.title = title;
+      document.getElementById('pageTitle').textContent = title;
+      document.getElementById('metaDesc').setAttribute('content', desc);
+      document.getElementById('canonicalLink').setAttribute('href', url);
+      document.getElementById('ogTitleTag').setAttribute('content', title);
+      document.getElementById('ogDesc').setAttribute('content', desc);
+      document.getElementById('ogUrl').setAttribute('content', url);
+      document.getElementById('ogImage').setAttribute('content', img);
+      document.getElementById('twTitle').setAttribute('content', title);
+      document.getElementById('twDesc').setAttribute('content', desc);
+      document.getElementById('twImage').setAttribute('content', img);
+
+      var ld = document.createElement('script');
+      ld.type = 'application/ld+json';
+      ld.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": ev.title,
+        "startDate": ev.dateStart,
+        "endDate": ev.dateEnd || undefined,
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "description": ev.excerpt || ev.description || undefined,
+        "image": photos.length ? photos.map(function (p) { return 'https://banco-restaurant.ro/' + p.replace(/^\.?\//, ''); }) : undefined,
+        "location": {
+          "@type": "Place",
+          "name": "BANCO",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Strada Barbu Văcărescu 164E, One Verdi Park, Corp A, Parter",
+            "addressLocality": "Bucharest",
+            "addressRegion": "Sector 2",
+            "postalCode": "020285",
+            "addressCountry": "RO"
+          }
+        },
+        "organizer": { "@type": "Organization", "name": "BANCO", "url": "https://banco-restaurant.ro/" }
+      });
+      document.head.appendChild(ld);
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, i) {
+          if (entry.isIntersecting) {
+            entry.target.style.transitionDelay = (i % 3) * 0.08 + 's';
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+      document.querySelectorAll('.fade-in').forEach(function (el) { io.observe(el); });
+    }
+
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var slug = params.get('slug');
+      var ev = slug ? findEvent(slug) : null;
+      if (ev) renderEvent(ev); else renderNotFound();
+    })();
+  </script>
+</body>
+</html>
