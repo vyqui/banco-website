@@ -65,8 +65,11 @@
       --font-body:    'Manrope', sans-serif;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-      /* Hard ceiling for the booking widget; see .ialoc-shell */
-      --widget-max-h: 680px;
+      /* Hard ceiling for the booking widget; see .ialoc-shell. iAloc's own
+         layout reacts to how much room it's given — too tight a ceiling and
+         its internal "book" button ends up pinned over its own form steps
+         instead of below them, so this stays generous. */
+      --widget-max-h: 800px;
     }
 
     /* ─── RESET ──────────────────────────────────────────────── */
@@ -540,7 +543,11 @@
       .booking-points { gap: 11px; margin-bottom: 22px; }
       .booking-alt { display: none; }
       .booking-card { padding: 20px 16px 18px; }
-      :root { --widget-max-h: 560px; }
+      /* Was 560px — too tight for iAloc's own multi-step layout on phones,
+         which pinned its "Rezervă masa" button over the form instead of
+         under it. Kept below the desktop 800px since phone viewports are
+         shorter, but wide enough that the widget lays itself out properly. */
+      :root { --widget-max-h: 740px; }
       .why, .faq { padding: 60px 0; }
       .dishes { padding-bottom: 60px; }
       .location { padding-top: 60px; }
