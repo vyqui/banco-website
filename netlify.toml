@@ -40,6 +40,19 @@
   to = "/rezervare.html"
   status = 200
 
+# Events — listing page, plus one template (event.html) shared by every
+# individual event via a ?slug= query param. Netlify substitutes :slug into
+# the destination on the way through.
+[[redirects]]
+  from = "/events"
+  to = "/events.html"
+  status = 200
+
+[[redirects]]
+  from = "/events/:slug"
+  to = "/event.html?slug=:slug"
+  status = 200
+
 # ─── Headers ──────────────────────────────────────────────────────────────
 
 [[headers]]
