@@ -365,6 +365,15 @@
     .reserve-widget iframe {
       width: 100% !important; max-width: 100% !important; border: 0;
       -webkit-user-select: none; user-select: none;
+      /* Forced, not just capped: iAloc's own script sets this iframe's
+         height dynamically (likely from the device's own viewport height,
+         not from anything on our side), and its internal "Rezervă masa"
+         button appears to be pinned to the bottom of THAT box rather than
+         to the end of the form. !important keeps this value even if their
+         script tries to reassert its own — a plain CSS rule can't lose
+         that fight to an inline style. .ialoc-shell below still scrolls
+         the surplus, so nothing is cut off. */
+      min-height: 950px !important;
     }
     iframe[src*="ialoc.ro"] { max-width: 100% !important; }
 
