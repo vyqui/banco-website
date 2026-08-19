@@ -309,7 +309,7 @@
     .hp-rating { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
     /* 4.8 of 5 drawn as a partially filled star row: the muted row is the
        track, the bronze copy on top is clipped to 96% (4.8 / 5). */
-    .hp-stars { position: relative; display: inline-block; font-size: 0.85rem; line-height: 1; letter-spacing: 1px; flex: none; }
+    .hp-stars { position: relative; display: inline-block; font-size: 1.7rem; line-height: 1; letter-spacing: 2px; flex: none; }
     .hp-stars::before, .hp-stars::after { content: '★★★★★'; }
     .hp-stars::before { color: rgba(234,231,225,0.28); }
     .hp-stars::after {
@@ -317,7 +317,7 @@
       width: 96%; overflow: hidden; white-space: nowrap;
       color: var(--bronze);
     }
-    .hp-score { font-family: var(--font-display); font-size: 1.05rem; color: var(--ivory); line-height: 1; }
+    .hp-score { font-family: var(--font-display); font-size: 2.1rem; color: var(--ivory); line-height: 1; }
     .hp-source { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(234,231,225,0.5); }
 
     /* All quotes share one grid cell, so the box is as tall as the longest
@@ -348,6 +348,19 @@
         position: absolute; right: 48px; bottom: 0;
         width: min(330px, 30vw);
       }
+    }
+
+    /* Short phones (iPhone SE and friends): the hero is bottom-aligned, so
+       the taller rating block pushes the top of the copy up under the fixed
+       header. Reclaim the room from decoration rather than from the rating
+       or the review text — the slideshow still rotates without its dots. */
+    @media (max-width: 900px) and (max-height: 720px) {
+      .hero-dots { display: none; }
+      .hero-quick { margin-bottom: 14px; }
+      .hero h1 { margin-bottom: 12px; }
+      .hero .hero-sub { margin-bottom: 18px; }
+      .hero-proof { padding: 16px 18px; }
+      .hp-rating { margin-bottom: 10px; }
     }
 
     /* Staggered entrance for the hero copy */
