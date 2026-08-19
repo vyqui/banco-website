@@ -350,6 +350,15 @@
       }
     }
 
+    /* On phones the panel competes with the CTA for vertical space, so the
+       quote runs smaller and tighter here than on desktop. The rating keeps
+       its full size — it's the part that has to carry across the room. */
+    @media (max-width: 900px) {
+      .hero-proof { padding: 15px 16px; }
+      .hp-rating { margin-bottom: 10px; }
+      .hp-quote { font-size: 0.72rem; line-height: 1.55; }
+    }
+
     /* Short phones (iPhone SE and friends): the hero is bottom-aligned, so
        the taller rating block pushes the top of the copy up under the fixed
        header. Reclaim the room from decoration rather than from the rating
