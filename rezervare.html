@@ -519,24 +519,46 @@
     .why-card h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; margin-bottom: 10px; }
     .why-card p { font-size: 0.84rem; line-height: 1.85; color: rgba(43,43,43,0.62); }
 
-    /* ─── DISH STRIP ─────────────────────────────────────────── */
+    /* ─── MENU PREVIEW (collapsible) ─────────────────────────── */
     .dishes { padding: 0 0 88px; }
-    .dish-rail {
-      display: grid; grid-auto-flow: column; grid-auto-columns: 260px;
-      gap: 16px; overflow-x: auto; padding-bottom: 14px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+
+    .menu-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; background: none; border: 1px solid var(--sand);
+      padding: 20px 26px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--charcoal); transition: border-color 0.3s;
     }
-    .dish-rail::-webkit-scrollbar { height: 4px; }
-    .dish-rail::-webkit-scrollbar-thumb { background: var(--sand); }
-    .dish-card { position: relative; scroll-snap-align: start; }
-    .dish-card img { height: 300px; }
-    .dish-card span {
-      position: absolute; left: 12px; bottom: 12px;
-      background: rgba(43,43,43,0.82); color: var(--ivory);
-      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 7px 12px;
+    .menu-toggle:hover { border-color: var(--bronze); }
+    .mt-label-open { display: none; }
+    .menu-toggle[aria-expanded="true"] .mt-label-closed { display: none; }
+    .menu-toggle[aria-expanded="true"] .mt-label-open { display: inline; }
+    .mt-arrow {
+      flex: none; margin-left: 16px; font-size: 1.1rem; color: var(--bronze); line-height: 1;
+      transition: transform 0.35s var(--ease);
     }
+    .menu-toggle[aria-expanded="true"] .mt-arrow { transform: rotate(45deg); }
+
+    /* Grid-row trick: animates to the content's natural height with no JS
+       measuring. The child needs overflow:hidden so 0fr can reach true
+       zero; padding/margin lives one level deeper for the same reason. */
+    .menu-preview-collapse {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows 0.5s var(--ease);
+    }
+    .menu-preview-collapse.open { grid-template-rows: 1fr; }
+    .menu-preview-inner { overflow: hidden; min-height: 0; }
+
+    .menu-preview-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px;
+      margin-top: 32px;
+    }
+    .mp-card figure { overflow: hidden; margin-bottom: 14px; aspect-ratio: 4/3; }
+    .mp-card img { width: 100%; height: 100%; transition: transform 0.7s var(--ease); }
+    .mp-card:hover img { transform: scale(1.05); }
+    .mp-card h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; margin-bottom: 8px; }
+    .mp-sensory { font-size: 0.82rem; line-height: 1.65; color: rgba(43,43,43,0.62); margin-bottom: 10px; }
+    .mp-price { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--bronze); text-transform: uppercase; }
+
     .menu-link { display: inline-block; margin-top: 28px; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid var(--bronze); padding-bottom: 4px; }
 
     /* ─── MID CTA ────────────────────────────────────────────── */
@@ -653,8 +675,9 @@
       .location { padding-top: 60px; }
       .midcta { padding: 60px 0; }
       .map-wrap iframe { height: 320px; }
-      .dish-rail { grid-auto-columns: 200px; }
-      .dish-card img, .why-card img { height: 230px; }
+      .menu-preview-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 26px; }
+      .why-card img { height: 230px; }
+      .menu-toggle { padding: 17px 18px; font-size: 0.66rem; }
       .f-grid { grid-template-columns: 1fr; gap: 28px; }
       .sticky-cta { display: flex; }
       body { padding-bottom: 74px; }
@@ -868,22 +891,51 @@
     </div>
   </section>
 
-  <!-- ─── DISH RAIL ───────────────────────────────── -->
+  <!-- ─── MENU PREVIEW (collapsible) ──────────────── -->
   <section class="dishes texture-paper">
     <div class="container">
       <div class="sec-head fade-in">
         <span class="section-label" data-i18n="dish.label">Din bucătărie</span>
         <h2 data-i18n="dish.h2">Preparate selectate</h2>
       </div>
-      <div class="dish-rail fade-in">
-        <div class="dish-card"><img src="img/menu_tartufo.jpg" alt="Paccheri al tartufo" loading="lazy" /><span>Paccheri al Tartufo</span></div>
-        <div class="dish-card"><img src="img/menu_tartare.jpg" alt="Tartar de vită" loading="lazy" /><span data-i18n="dish.tartare">Tartar de Vită</span></div>
-        <div class="dish-card"><img src="img/menu_burrata.jpg" alt="Legume coapte și burrata" loading="lazy" /><span data-i18n="dish.burrata">Legume &amp; Burrata</span></div>
-        <div class="dish-card"><img src="img/menu_gamberi.jpg" alt="Paste cu creveți" loading="lazy" /><span>Gamberi</span></div>
-        <div class="dish-card"><img src="img/menu_cacio.jpg" alt="Cacio e pepe" loading="lazy" /><span>Cacio e Pepe</span></div>
-        <div class="dish-card"><img src="img/menu_arancini.jpg" alt="Arancini" loading="lazy" /><span>Arancini</span></div>
-        <div class="dish-card"><img src="img/menu_dessert.jpg" alt="Tarte tatin" loading="lazy" /><span>Tarte Tatin</span></div>
+
+      <button type="button" class="menu-toggle fade-in" id="menuToggle" aria-expanded="false" aria-controls="menuPreviewPanel">
+        <span class="mt-label-closed" data-i18n="dish.toggleShow">Vezi 4 preparate din meniu</span>
+        <span class="mt-label-open" data-i18n="dish.toggleHide">Ascunde preparatele</span>
+        <span class="mt-arrow" aria-hidden="true">+</span>
+      </button>
+
+      <div class="menu-preview-collapse" id="menuPreviewPanel">
+        <div class="menu-preview-inner">
+          <div class="menu-preview-grid">
+            <article class="mp-card">
+              <figure><img src="img/menu_tartufo.jpg" alt="Paccheri al tartufo" loading="lazy" /></figure>
+              <h3>Paccheri al Tartufo</h3>
+              <p class="mp-sensory" data-i18n="dish.d1">Paste artizanale înecate în sos de trufe neagră, cu parmezan proaspăt ras.</p>
+              <span class="mp-price">98 lei</span>
+            </article>
+            <article class="mp-card">
+              <figure><img src="img/menu_tartare.jpg" alt="Tartar de vită" loading="lazy" /></figure>
+              <h3 data-i18n="dish.d2name">Tartar de Vită</h3>
+              <p class="mp-sensory" data-i18n="dish.d2">Vrăbioară de vită tocată fin, capere, șalotă, muștar Dijon și gălbenuș confiat, cu focaccia caldă.</p>
+              <span class="mp-price">88 lei</span>
+            </article>
+            <article class="mp-card">
+              <figure><img src="img/dish_branzino.jpg" alt="Branzino la grătar" loading="lazy" /></figure>
+              <h3>Branzino</h3>
+              <p class="mp-sensory" data-i18n="dish.d3">Fileu de branzino la grătar, broccolini opărit și un beurre blanc fin de lămâie.</p>
+              <span class="mp-price">106 lei</span>
+            </article>
+            <article class="mp-card">
+              <figure><img src="img/menu_dessert.jpg" alt="Tarta cu pere" loading="lazy" /></figure>
+              <h3 data-i18n="dish.d4name">Tarta cu Pere</h3>
+              <p class="mp-sensory" data-i18n="dish.d4">Pere caramelizate, caramel sărat și înghețată de vanilie Bourbon — finalul dulce al serii.</p>
+              <span class="mp-price">58 lei</span>
+            </article>
+          </div>
+        </div>
       </div>
+
       <a class="menu-link" href="index.html#menu" target="_blank" rel="noopener" data-i18n="dish.link">Vezi meniul complet →</a>
     </div>
   </section>
@@ -1058,8 +1110,14 @@
       "why.c3.p": "Signature cocktails, our own takes on the classics, a European wine list and champagne by the glass — from early evening into the night.",
       "dish.label": "From the kitchen",
       "dish.h2": "Selected dishes",
-      "dish.tartare": "Beef Tartare",
-      "dish.burrata": "Roasted Veg &amp; Burrata",
+      "dish.toggleShow": "See 4 dishes from the menu",
+      "dish.toggleHide": "Hide the dishes",
+      "dish.d1": "Artisanal paccheri drenched in black truffle sauce, finished with fresh parmesan.",
+      "dish.d2name": "Beef Tartare",
+      "dish.d2": "Finely hand-cut beef tenderloin, capers, shallots, Dijon, confit egg yolk, warm focaccia.",
+      "dish.d3": "Grilled branzino fillet, charred broccolini and a light lemon beurre blanc.",
+      "dish.d4name": "Pear Tarte Tatin",
+      "dish.d4": "Caramelized pear, salted caramel and Bourbon vanilla ice cream — the evening's sweet close.",
       "dish.link": "See the full menu →",
       "mid.h2": "Your table is waiting",
       "mid.p": "Book in a few steps, up to 30 days in advance. For parties of 8 or more, call us and we'll arrange it together.",
@@ -1419,6 +1477,18 @@
         if (open) { try { window.bancoTrack && window.bancoTrack('lp_faq_open'); } catch (e) {} }
       });
     });
+
+    // Menu preview dropdown
+    (function () {
+      var toggle = document.getElementById('menuToggle');
+      var panel = document.getElementById('menuPreviewPanel');
+      if (!toggle || !panel) return;
+      toggle.addEventListener('click', function () {
+        var open = panel.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        if (open) { try { window.bancoTrack && window.bancoTrack('lp_menu_preview_open'); } catch (e) {} }
+      });
+    })();
   </script>
 
   <!-- Structured data: Restaurant + FAQ -->
