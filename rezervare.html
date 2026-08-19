@@ -265,6 +265,19 @@
       margin-bottom: 18px;
       max-width: 16ch;
     }
+    /* Second line of the H1 alternates between two words. Both occupy the
+       same grid cell, so the box is sized to the wider of the two and the
+       swap never reflows the line — only opacity moves. */
+    .hero-word-rotate { display: inline-grid; }
+    .hwr-item {
+      grid-area: 1 / 1;
+      opacity: 0;
+      transition: opacity 1s var(--ease);
+    }
+    .hwr-item.is-active { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .hwr-item { transition: none; }
+    }
     .hero .hero-sub {
       font-size: clamp(0.9rem, 1.5vw, 1.05rem);
       line-height: 1.6;
@@ -708,7 +721,7 @@
           <a href="index.html#menu" class="q" data-i18n="hero.q1">Meniu</a>
           <a href="#location" class="q" data-i18n="hero.q2">Locație</a>
         </div>
-        <h1 data-i18n-html="hero.h1">Rezervă-ți<br/>masa</h1>
+        <h1><span data-i18n="hero.h1prefix">Rezervă-ți</span><br/><span class="hero-word-rotate" id="heroWordRotate"><span class="hwr-item is-active" data-i18n="hero.h1w1">masa</span><span class="hwr-item" data-i18n="hero.h1w2">experiența</span></span></h1>
         <p class="hero-sub" data-i18n="hero.sub">Bucătărie mediteraneană reinterpretată și cocktailuri de autor, în One Verdi Park.</p>
 
         <!-- Social proof: real Google rating + real guest reviews -->
@@ -996,7 +1009,9 @@
       "menu.location": "Location",
       "menu.site": "BANCO website",
       "menu.contact": "Every day: 10:00 — 22:00<br/><a href=\"tel:+40773261721\">+40 773 261 721</a>",
-      "hero.h1": "Book<br/>your table",
+      "hero.h1prefix": "Book your",
+      "hero.h1w1": "table",
+      "hero.h1w2": "experience",
       "hero.sub": "Reinterpreted Mediterranean cooking and signature cocktails, at One Verdi Park.",
       "hero.q1": "Menu",
       "hero.q2": "Location",
@@ -1280,6 +1295,20 @@
         if (document.hidden) { if (timer) clearInterval(timer); timer = null; }
         else restart();
       });
+    })();
+
+    /* ── H1 word swap: "masa" / "experiența" alternate by simple crossfade ── */
+    (function () {
+      var box = document.getElementById('heroWordRotate');
+      if (!box || reduceMotion) return;
+      var words = [].slice.call(box.querySelectorAll('.hwr-item'));
+      if (words.length < 2) return;
+      var i = 0;
+      setInterval(function () {
+        words[i].classList.remove('is-active');
+        i = (i + 1) % words.length;
+        words[i].classList.add('is-active');
+      }, 3200);
     })();
 
     /* ── Review carousel: each quote slides in from the right, out to the left ── */
