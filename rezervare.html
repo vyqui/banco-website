@@ -299,6 +299,57 @@
     .btn-ghost .arr { transition: transform 0.35s var(--ease); }
     .btn-ghost:hover .arr { transform: translateX(5px); }
 
+    /* ─── SOCIAL PROOF OVERLAY (Google rating + review carousel) ── */
+    .hero-proof {
+      background: rgba(43,43,43,0.42);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(234,231,225,0.16);
+      padding: 20px 22px;
+    }
+    .hp-rating { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+    /* 4.8 of 5 drawn as a partially filled star row: the muted row is the
+       track, the bronze copy on top is clipped to 96% (4.8 / 5). */
+    .hp-stars { position: relative; display: inline-block; font-size: 0.85rem; line-height: 1; letter-spacing: 1px; flex: none; }
+    .hp-stars::before, .hp-stars::after { content: '★★★★★'; }
+    .hp-stars::before { color: rgba(234,231,225,0.28); }
+    .hp-stars::after {
+      position: absolute; left: 0; top: 0;
+      width: 96%; overflow: hidden; white-space: nowrap;
+      color: var(--bronze);
+    }
+    .hp-score { font-family: var(--font-display); font-size: 1.05rem; color: var(--ivory); line-height: 1; }
+    .hp-source { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(234,231,225,0.5); }
+
+    /* All quotes share one grid cell, so the box is as tall as the longest
+       one and never jumps height mid-rotation. */
+    .hp-quotes { display: grid; }
+    .hp-quote {
+      grid-area: 1 / 1;
+      font-size: 0.79rem; line-height: 1.65; font-style: italic;
+      color: rgba(234,231,225,0.86);
+      opacity: 0; transform: translateX(28px);
+    }
+    .hp-quote.is-active {
+      opacity: 1; transform: translateX(0);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    /* Leaves to the left; once the class is dropped it snaps back to the
+       waiting position on the right with no transition, ready to re-enter. */
+    .hp-quote.is-leaving {
+      opacity: 0; transform: translateX(-28px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hp-quote, .hp-quote.is-active, .hp-quote.is-leaving { transform: none; }
+    }
+
+    @media (min-width: 901px) {
+      .hero-proof {
+        position: absolute; right: 48px; bottom: 0;
+        width: min(330px, 30vw);
+      }
+    }
+
     /* Staggered entrance for the hero copy */
     .hero-reveal > * { opacity: 0; transform: translateY(26px); }
     .hero-reveal.in > * { opacity: 1; transform: translateY(0); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
@@ -307,6 +358,7 @@
     .hero-reveal.in > *:nth-child(3) { transition-delay: 0.30s; }
     .hero-reveal.in > *:nth-child(4) { transition-delay: 0.40s; }
     .hero-reveal.in > *:nth-child(5) { transition-delay: 0.50s; }
+    .hero-reveal.in > *:nth-child(6) { transition-delay: 0.60s; }
 
     /* ─── BOOKING SECTION (directly under the hero) ──────────── */
     .booking { padding: 88px 0; }
@@ -627,6 +679,21 @@
         </div>
         <h1 data-i18n-html="hero.h1">Rezervă-ți<br/>masa</h1>
         <p class="hero-sub" data-i18n="hero.sub">Bucătărie mediteraneană reinterpretată și cocktailuri de autor, în One Verdi Park.</p>
+
+        <!-- Social proof: real Google rating + real guest reviews -->
+        <div class="hero-proof">
+          <div class="hp-rating">
+            <span class="hp-stars" aria-hidden="true"></span>
+            <span class="hp-score" data-i18n="proof.score">4,8</span>
+            <span class="hp-source" data-i18n="proof.source">pe Google</span>
+          </div>
+          <div class="hp-quotes" id="hpQuotes">
+            <blockquote class="hp-quote is-active" data-i18n="proof.q1">„Experiența la BANCO a fost impecabilă. Atmosfera elegantă, atenția la detalii și preparatele rafinate creează cadrul perfect pentru o cină specială. Serviciul a fost profesionist, completând o experiență cu adevărat memorabilă. Recomand cu căldură."</blockquote>
+            <blockquote class="hp-quote" data-i18n="proof.q2">„O atmosferă foarte plăcută și mâncare excepțională. Cu siguranță mă voi întoarce!"</blockquote>
+            <blockquote class="hp-quote" data-i18n="proof.q3">„Local excelent, cu o atmosferă relaxantă, mâncarea este de top, cu siguranță ne vom întoarce! Recomand +++"</blockquote>
+          </div>
+        </div>
+
         <div class="hero-dots" id="heroDots" role="tablist" aria-label="Imagini"></div>
         <div class="hero-foot">
           <div class="hero-hours">
@@ -902,6 +969,11 @@
       "hero.sub": "Reinterpreted Mediterranean cooking and signature cocktails, at One Verdi Park.",
       "hero.q1": "Menu",
       "hero.q2": "Location",
+      "proof.score": "4.8",
+      "proof.source": "on Google",
+      "proof.q1": "“The experience at Banco was impeccable. The elegant atmosphere, attention to detail and exquisite dishes create the perfect setting for a special dinner. The service was professional, completing a truly memorable experience. I highly recommend it.”",
+      "proof.q2": "“A very pleasant atmosphere and exceptional food. I will definitely be back!”",
+      "proof.q3": "“Excellent location with a relaxing atmosphere, the food is top notch, we will definitely be back! I recommend +++”",
       "hero.hoursLabel": "Opening hours",
       "hero.hoursValue": "Monday–Sunday: 10:00 — 22:00",
       "hero.cta": "Book a table",
@@ -1162,6 +1234,34 @@
       document.addEventListener('visibilitychange', function () {
         if (document.hidden) { if (timer) clearInterval(timer); timer = null; }
         else restart();
+      });
+    })();
+
+    /* ── Review carousel: each quote slides in from the right, out to the left ── */
+    (function () {
+      var box = document.getElementById('hpQuotes');
+      if (!box) return;
+      var quotes = [].slice.call(box.querySelectorAll('.hp-quote'));
+      if (quotes.length < 2) return;
+      var i = 0, timer = null, HOLD = 7000, SLIDE = 700;
+
+      function advance() {
+        var out = quotes[i];
+        out.classList.remove('is-active');
+        out.classList.add('is-leaving');
+        /* Dropping is-leaving also drops its transition, so the quote snaps
+           back to the waiting position off to the right instead of sliding
+           back across the panel. */
+        setTimeout(function () { out.classList.remove('is-leaving'); }, SLIDE);
+        i = (i + 1) % quotes.length;
+        quotes[i].classList.add('is-active');
+      }
+      function start() { if (timer) clearInterval(timer); timer = setInterval(advance, HOLD); }
+
+      start();
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) { if (timer) clearInterval(timer); timer = null; }
+        else start();
       });
     })();
 
