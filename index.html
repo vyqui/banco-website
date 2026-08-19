@@ -160,6 +160,8 @@
       border-color: var(--charcoal);
     }
 
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+
     /* ─── HERO ───────────────────────────────────────────────── */
     /* Tall scroll track; the hero pins inside it while the camera move scrubs */
     .hero-pin {
@@ -1131,6 +1133,19 @@
     }
     .nav-hamburger span { background: var(--ivory); }
 
+    .lang-switch { display: flex; border: 1px solid rgba(244,241,234,0.45); }
+    .lang-switch button {
+      background: none; border: 0; padding: 6px 11px;
+      font-family: var(--font-body); font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ivory); opacity: 0.6; transition: all 0.25s;
+    }
+    .lang-switch button[aria-pressed="true"] { background: var(--ivory); color: var(--charcoal); opacity: 1; }
+
+    nav.scrolled .lang-switch { border-color: rgba(43,42,40,0.35); }
+    nav.scrolled .lang-switch button { color: var(--charcoal); }
+    nav.scrolled .lang-switch button[aria-pressed="true"] { background: var(--charcoal); color: var(--ivory); }
+
     nav.scrolled .nav-logo,
     nav.scrolled .nav-links a { color: var(--charcoal); }
     nav.scrolled .nav-links a::after { background: var(--charcoal); }
@@ -1151,24 +1166,30 @@
   <!-- ─── NAV ────────────────────────────────────── -->
   <!-- Mobile menu overlay -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#menu"       onclick="closeMenu()">Menu</a>
-    <a href="#atmosphere" onclick="closeMenu()">Atmosphere</a>
-    <a href="events.html" onclick="closeMenu()">Events</a>
+    <a href="#menu"       onclick="closeMenu()" data-i18n="nav.menu">Menu</a>
+    <a href="#atmosphere" onclick="closeMenu()" data-i18n="nav.atmosphere">Atmosphere</a>
+    <a href="events.html" onclick="closeMenu()" data-i18n="nav.events">Events</a>
     <a href="#contact"    onclick="closeMenu()">Contact</a>
-    <a href="rezervare.html" class="mobile-reserve" onclick="closeMenu()">Make a Reservation</a>
+    <a href="rezervare.html" class="mobile-reserve" onclick="closeMenu()" data-i18n="nav.mobileReserve">Make a Reservation</a>
   </div>
 
   <nav id="navbar">
     <a href="#" class="nav-logo" translate="no">BANCO</a>
     <ul class="nav-links">
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#atmosphere">Atmosphere</a></li>
-      <li><a href="events.html">Events</a></li>
+      <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="#atmosphere" data-i18n="nav.atmosphere">Atmosphere</a></li>
+      <li><a href="events.html" data-i18n="nav.events">Events</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="rezervare.html" class="nav-reserve">Reservation</a>
-    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-btn="ro" aria-pressed="false">RO</button>
+      </div>
+      <a href="rezervare.html" class="nav-reserve" data-i18n="nav.reservation">Reservation</a>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </nav>
 
@@ -1180,10 +1201,10 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-logo" translate="no">BANCO</h1>
-      <p class="hero-tagline">Mediterranean Cuisine</p>
+      <p class="hero-tagline" data-i18n="hero.tagline">Mediterranean Cuisine</p>
     </div>
     <div class="hero-scroll" id="heroScroll">
-      <span>Scroll</span>
+      <span data-i18n="hero.scroll">Scroll</span>
       <div class="hero-scroll-line"></div>
     </div>
   </section>
@@ -1191,9 +1212,9 @@
   <!-- ─── INTRO ───────────────────────────────────── -->
   <section class="intro texture-paper">
     <div class="intro-inner">
-      <span class="section-label fade-in">The Restaurant</span>
-      <h2 class="fade-in">An experience<br/>in balance</h2>
-      <p class="fade-in">
+      <span class="section-label fade-in" data-i18n="intro.label">The Restaurant</span>
+      <h2 class="fade-in" data-i18n-html="intro.h2">An experience<br/>in balance</h2>
+      <p class="fade-in" data-i18n="intro.p">
         BANCO is a contemporary restaurant in the casual premium space, built on the
         balance between elegance and comfort. We draw from modern European dining, with
         attention to detail, atmosphere, and the quality of every plate. A refined yet
@@ -1212,21 +1233,21 @@
   <section class="menu-section texture-stone" id="menu">
     <div class="container">
       <div class="menu-header fade-in">
-        <span class="section-label">Bar &amp; Cellar</span>
-        <h2>The Menu</h2>
+        <span class="section-label" data-i18n="menu.label">Bar &amp; Cellar</span>
+        <h2 data-i18n="menu.h2">The Menu</h2>
       </div>
 
       <div class="menu-tabs fade-in">
-        <div class="menu-tab active" data-panel="food">Food</div>
-        <div class="menu-tab" data-panel="cocktails">Cocktails</div>
-        <div class="menu-tab" data-panel="wine">Wine</div>
-        <div class="menu-tab" data-panel="spirits">Spirits</div>
-        <div class="menu-tab" data-panel="more">Coffee &amp; More</div>
+        <div class="menu-tab active" data-panel="food" data-i18n="menu.tabFood">Food</div>
+        <div class="menu-tab" data-panel="cocktails" data-i18n="menu.tabCocktails">Cocktails</div>
+        <div class="menu-tab" data-panel="wine" data-i18n="menu.tabWine">Wine</div>
+        <div class="menu-tab" data-panel="spirits" data-i18n="menu.tabSpirits">Spirits</div>
+        <div class="menu-tab" data-panel="more" data-i18n="menu.tabMore">Coffee &amp; More</div>
       </div>
 
       <div class="menu-panel active" id="panel-food">
         <div class="menu-grid">
-          <div class="menu-sub">Breakfast</div>
+          <div class="menu-sub" data-i18n="sub.breakfast">Breakfast</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Eggs Your Way</h4>
@@ -1255,7 +1276,7 @@
             </div>
             <span class="menu-item-price">98</span>
           </div>
-          <div class="menu-sub">Starters</div>
+          <div class="menu-sub" data-i18n="sub.starters">Starters</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Olives (vg)</h4>
@@ -1312,7 +1333,7 @@
             </div>
             <span class="menu-item-price">84</span>
           </div>
-          <div class="menu-sub">Pasta</div>
+          <div class="menu-sub" data-i18n="sub.pasta">Pasta</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Carbonara Icon</h4>
@@ -1348,7 +1369,7 @@
             </div>
             <span class="menu-item-price">98</span>
           </div>
-          <div class="menu-sub">Special</div>
+          <div class="menu-sub" data-i18n="sub.special">Special</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Truffle Pizza</h4>
@@ -1363,7 +1384,7 @@
             </div>
             <span class="menu-item-price">72</span>
           </div>
-          <div class="menu-sub">Mains</div>
+          <div class="menu-sub" data-i18n="sub.mains">Mains</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Branzino</h4>
@@ -1406,7 +1427,7 @@
             </div>
             <span class="menu-item-price">72</span>
           </div>
-          <div class="menu-sub">Sides</div>
+          <div class="menu-sub" data-i18n="sub.sides">Sides</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Baby Cos Salad</h4>
@@ -1441,7 +1462,7 @@
             </div>
             <span class="menu-item-price">34</span>
           </div>
-          <div class="menu-sub">Dessert</div>
+          <div class="menu-sub" data-i18n="sub.dessert">Dessert</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Chocolate Mousse</h4>
@@ -1475,7 +1496,7 @@
 
       <div class="menu-panel" id="panel-cocktails">
         <div class="menu-grid">
-          <div class="menu-sub">Negroni Selection</div>
+          <div class="menu-sub" data-i18n="sub.negroni">Negroni Selection</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Iris Negroni</h4>
@@ -1497,7 +1518,7 @@
             </div>
             <span class="menu-item-price">45</span>
           </div>
-          <div class="menu-sub">Spritz</div>
+          <div class="menu-sub" data-i18n="sub.spritz">Spritz</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Aperol Spritz</h4>
@@ -1519,7 +1540,7 @@
             </div>
             <span class="menu-item-price">40</span>
           </div>
-          <div class="menu-sub">Classics</div>
+          <div class="menu-sub" data-i18n="sub.classics">Classics</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Pornstar Martini</h4>
@@ -1574,7 +1595,7 @@
 
       <div class="menu-panel" id="panel-wine">
         <div class="menu-grid">
-          <div class="menu-sub">White</div>
+          <div class="menu-sub" data-i18n="sub.white">White</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Davino Ceptura Blanc</h4>
@@ -1645,7 +1666,7 @@
             </div>
             <span class="menu-item-price">160</span>
           </div>
-          <div class="menu-sub">Rosé</div>
+          <div class="menu-sub" data-i18n="sub.rose">Rosé</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Minuty</h4>
@@ -1660,7 +1681,7 @@
             </div>
             <span class="menu-item-price">180</span>
           </div>
-          <div class="menu-sub">Red</div>
+          <div class="menu-sub" data-i18n="sub.red">Red</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Masi Costasera Amarone Classico</h4>
@@ -1703,7 +1724,7 @@
             </div>
             <span class="menu-item-price">190</span>
           </div>
-          <div class="menu-sub">Sparkling &amp; Champagne</div>
+          <div class="menu-sub" data-i18n="sub.sparkling">Sparkling &amp; Champagne</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Dom Pérignon</h4>
@@ -1753,7 +1774,7 @@
             </div>
             <span class="menu-item-price">160</span>
           </div>
-          <div class="menu-sub">By the Glass</div>
+          <div class="menu-sub" data-i18n="sub.byglass">By the Glass</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Elettra Negroamaro Primitivo</h4>
@@ -1780,7 +1801,7 @@
 
       <div class="menu-panel" id="panel-spirits">
         <div class="menu-grid">
-          <div class="menu-sub">Gin &mdash; 40ml</div>
+          <div class="menu-sub" data-i18n="sub.gin">Gin &mdash; 40ml</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Servaj Iris</h4>
@@ -1799,7 +1820,7 @@
             </div>
             <span class="menu-item-price">38</span>
           </div>
-          <div class="menu-sub">Vodka &mdash; 40ml</div>
+          <div class="menu-sub" data-i18n="sub.vodka">Vodka &mdash; 40ml</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Grey Goose</h4>
@@ -1812,7 +1833,7 @@
             </div>
             <span class="menu-item-price">38</span>
           </div>
-          <div class="menu-sub">Whisky &mdash; 40ml</div>
+          <div class="menu-sub" data-i18n="sub.whisky">Whisky &mdash; 40ml</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Lagavulin 16</h4>
@@ -1837,7 +1858,7 @@
             </div>
             <span class="menu-item-price">34</span>
           </div>
-          <div class="menu-sub">Rum &mdash; 40ml</div>
+          <div class="menu-sub" data-i18n="sub.rum">Rum &mdash; 40ml</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Diplomático Reserva Exclusiva</h4>
@@ -1850,7 +1871,7 @@
             </div>
             <span class="menu-item-price">35</span>
           </div>
-          <div class="menu-sub">Tequila &mdash; 30ml</div>
+          <div class="menu-sub" data-i18n="sub.tequila">Tequila &mdash; 30ml</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Clase Azul Reposado</h4>
@@ -1869,7 +1890,7 @@
             </div>
             <span class="menu-item-price">30</span>
           </div>
-          <div class="menu-sub">Digestifs &mdash; 40ml</div>
+          <div class="menu-sub" data-i18n="sub.digestifs">Digestifs &mdash; 40ml</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Amaro</h4>
@@ -1899,7 +1920,7 @@
 
       <div class="menu-panel" id="panel-more">
         <div class="menu-grid">
-          <div class="menu-sub">Coffee</div>
+          <div class="menu-sub" data-i18n="sub.coffee">Coffee</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Espresso / Doppio</h4>
@@ -1942,7 +1963,7 @@
             </div>
             <span class="menu-item-price">27</span>
           </div>
-          <div class="menu-sub">Tea</div>
+          <div class="menu-sub" data-i18n="sub.tea">Tea</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Black</h4>
@@ -1979,7 +2000,7 @@
             </div>
             <span class="menu-item-price">20</span>
           </div>
-          <div class="menu-sub">Fresh &amp; Lemonade</div>
+          <div class="menu-sub" data-i18n="sub.fresh">Fresh &amp; Lemonade</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Classic / Mint Lemonade</h4>
@@ -1992,7 +2013,7 @@
             </div>
             <span class="menu-item-price">29</span>
           </div>
-          <div class="menu-sub">Beer</div>
+          <div class="menu-sub" data-i18n="sub.beer">Beer</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Baladin Isaac</h4>
@@ -2029,7 +2050,7 @@
             </div>
             <span class="menu-item-price">15</span>
           </div>
-          <div class="menu-sub">Soft Drinks</div>
+          <div class="menu-sub" data-i18n="sub.soft">Soft Drinks</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>Tonica Lemon</h4>
@@ -2073,7 +2094,7 @@
             </div>
             <span class="menu-item-price">18</span>
           </div>
-          <div class="menu-sub">Water</div>
+          <div class="menu-sub" data-i18n="sub.water">Water</div>
           <div class="menu-item fade-in">
             <div class="menu-item-info">
               <h4>San Benedetto / Perrier</h4>
@@ -2091,9 +2112,9 @@
         </div>
       </div>
 
-      <p class="menu-note fade-in">All prices in lei (RON)</p>
+      <p class="menu-note fade-in" data-i18n="menu.note">All prices in lei (RON)</p>
       <div class="menu-cta fade-in">
-        <a href="#reserve" class="btn-outline-light">Reserve a Table</a>
+        <a href="#reserve" class="btn-outline-light" data-i18n="menu.cta">Reserve a Table</a>
       </div>
     </div>
   </section>
@@ -2102,13 +2123,13 @@
   <section class="atmosphere texture-paper" id="atmosphere">
     <div class="container">
       <div class="atmosphere-header fade-in">
-        <span class="section-label">The Experience</span>
-        <h2>The space &amp; the table</h2>
+        <span class="section-label" data-i18n="atm.label">The Experience</span>
+        <h2 data-i18n="atm.h2">The space &amp; the table</h2>
       </div>
       <div class="photo-grid fade-in">
         <div class="photo-item">
           <img src="img/loc2.jpg" alt="The BANCO dining room and bar" loading="lazy" sizes="(max-width:900px) 100vw, 40vw" />
-          <span class="ph-label">The Room</span>
+          <span class="ph-label" data-i18n="atm.roomLabel">The Room</span>
         </div>
         <div class="photo-item">
           <img src="img/dish_branzino.jpg" alt="Branzino, charred broccolini, beurre blanc" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
@@ -2134,8 +2155,8 @@
   <section class="dishes-section texture-paper" id="dishes" aria-label="Selected dishes">
     <div class="container">
       <div class="atmosphere-header fade-in">
-        <span class="section-label">From the kitchen</span>
-        <h2>Selected dishes</h2>
+        <span class="section-label" data-i18n="dishGal.label">From the kitchen</span>
+        <h2 data-i18n="dishGal.h2">Selected dishes</h2>
       </div>
       <div class="dish-grid fade-in">
         <div class="dish-card"><img src="img/menu_arancini.jpg" alt="Arancini" loading="lazy" /><span class="ph-label">Arancini</span></div>
@@ -2158,7 +2179,7 @@
   <!-- ─── PHILOSOPHY ──────────────────────────────── -->
   <section class="philosophy texture-stone">
     <div class="philosophy-inner">
-      <blockquote class="fade-in">
+      <blockquote class="fade-in" data-i18n="phil.quote">
         "A balanced experience between taste, atmosphere, and design."
       </blockquote>
       <cite class="fade-in" translate="no">BANCO</cite>
@@ -2170,48 +2191,65 @@
     <div class="container">
       <div class="reserve-inner">
         <div class="reserve-text fade-in">
-          <span class="section-label">Reservations</span>
-          <h2>Book your<br/>table</h2>
-          <p>
+          <span class="section-label" data-i18n="reserve.label">Reservations</span>
+          <h2 data-i18n-html="reserve.h2">Book your<br/>table</h2>
+          <p data-i18n="reserve.p1">
             We take reservations up to 30 days in advance. For parties of 8 or more,
             please contact us directly.
           </p>
-          <p>Late-brunch breakfast, sharing-style lunch and long evenings, served daily 10:00 — 22:00.</p>
+          <p data-i18n="reserve.p2">Late-brunch breakfast, sharing-style lunch and long evenings, served daily 10:00 — 22:00.</p>
           <div class="info-row">
-            <span class="info-label">Address</span>
-            <span class="info-value">Strada Barbu Văcărescu 164E, One Verdi Park, Corp A, Parter &middot; Sector 2, Bucharest</span>
+            <span class="info-label" data-i18n="reserve.addressLabel">Address</span>
+            <span class="info-value" data-i18n="reserve.addressValue">Strada Barbu Văcărescu 164E, One Verdi Park, Corp A, Parter &middot; Sector 2, Bucharest</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Hours</span>
-            <span class="info-value">Every day &nbsp; 10:00 — 22:00</span>
+            <span class="info-label" data-i18n="reserve.hoursLabel">Hours</span>
+            <span class="info-value" data-i18n-html="reserve.hoursValue">Every day &nbsp; 10:00 — 22:00</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Phone</span>
+            <span class="info-label" data-i18n="reserve.phoneLabel">Phone</span>
             <span class="info-value"><a href="tel:+40773261721" style="color:inherit;text-decoration:none;">+40 773 261 721</a></span>
           </div>
           <div class="info-row">
-            <span class="info-label">Email</span>
+            <span class="info-label" data-i18n="reserve.emailLabel">Email</span>
             <span class="info-value">contact@banco-restaurant.ro</span>
           </div>
         </div>
 
         <!-- iAloc reservation widget (venue 4575) — inline; bookings go straight to your iAloc app -->
         <div class="reserve-widget">
-          <span class="reserve-online">Online reservations</span>
+          <span class="reserve-online" data-i18n="reserve.online">Online reservations</span>
           <!-- ialoc-shell: a transparent "scroll guard" sits over the widget so page scroll passes
                through and the widget's internal scroll never hijacks it. Tap/click to interact. -->
           <div class="ialoc-shell" id="ialocShell">
             <div id="ialocWidgetContainer"></div>
-            <button type="button" class="ialoc-guard" id="ialocGuard" aria-label="Activează widget-ul de rezervare">
-              <span class="ialoc-guard-hint">Apasă pentru a rezerva</span>
+            <button type="button" class="ialoc-guard" id="ialocGuard" data-i18n-aria="reserve.guardAria" aria-label="Activate the reservation widget">
+              <span class="ialoc-guard-hint" data-i18n="reserve.guardHint">Tap to book</span>
             </button>
           </div>
         </div>
         <script type="text/javascript">
           !function(e,t,i,n,s,o,c,a,d,r){if(!e[n]){for(;a<c.length;)s(o,c[a++]);(d=t.createElement(i)).async=1,d.src="https://ialoc.ro/assets/widget-v2/embed.min.js",(r=t.getElementsByTagName(i)[0]).parentNode.insertBefore(d,r),e[n]=o}}(window,document,"script","ialocEmbedWidget",function(e,t){e[t]=function(){e._q.push([t,arguments])}},{_q:[]},"init show hide".split(" "),0);
-          ialocEmbedWidget.init({ source: 'ialoc-widget-embed', locale: 'ro', embedMode: 'inline', venueId: '4575', onWidgetReady: function(){ ialocEmbedWidget.show(); },
-            /* iAloc trimite evenimentul reservationCompleted când o rezervare e finalizată */
-            callback: function(v){ try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch(e){} } });
+
+          /* Mounts (or re-mounts, on a language switch) the iAloc widget for venue 4575
+             in the given locale. Mirrors rezervare.html's mountWidget(). */
+          function mountReserveWidget(locale) {
+            var box = document.getElementById('ialocWidgetContainer');
+            if (!box) return;
+            if (box.children.length > 0) box.innerHTML = '';
+            ialocEmbedWidget.init({
+              source: 'ialoc-widget-embed',
+              locale: locale === 'en' ? 'en' : 'ro',
+              embedMode: 'inline',
+              venueId: '4575',
+              onWidgetReady: function () { ialocEmbedWidget.show(); },
+              /* iAloc fires reservationCompleted when a booking goes through */
+              callback: function (v) {
+                try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch (e) {}
+              }
+            });
+          }
+          mountReserveWidget(document.documentElement.lang === 'ro' ? 'ro' : 'en');
 
           /* Scroll-guard logic: page scrolls freely over the widget until the user taps it.
              Re-arms automatically when the mouse leaves or the section scrolls out of view,
@@ -2238,10 +2276,10 @@
   <!-- ─── LOCATION / MAP ──────────────────────────── -->
   <section class="location" id="location" aria-label="Location">
     <div class="location-head">
-      <span class="section-label">Find us</span>
-      <h2>One Verdi Park, Bucharest</h2>
+      <span class="section-label" data-i18n="loc.label">Find us</span>
+      <h2 data-i18n="loc.h2">One Verdi Park, Bucharest</h2>
       <p>Strada Barbu Văcărescu 164E, Corp A, Parter &middot; Sector 2, 020285</p>
-      <a class="map-directions" href="https://www.google.com/maps/search/?api=1&amp;query=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest" target="_blank" rel="noopener">Get directions →</a>
+      <a class="map-directions" href="https://www.google.com/maps/search/?api=1&amp;query=One%20Verdi%20Park%2C%20Strada%20Barbu%20Vacarescu%20164E%2C%20Bucharest" target="_blank" rel="noopener" data-i18n="loc.directions">Get directions →</a>
     </div>
     <div class="map-wrap">
       <iframe
@@ -2257,40 +2295,40 @@
       <div class="footer-top">
         <div class="footer-brand">
           <span class="f-logo" translate="no">BANCO</span>
-          <p>Contemporary European dining.<br/>A balance of taste, atmosphere,<br/>and design.</p>
+          <p data-i18n-html="footer.tagline">Contemporary European dining.<br/>A balance of taste, atmosphere,<br/>and design.</p>
         </div>
         <div class="footer-col">
-          <h5>Visit</h5>
+          <h5 data-i18n="footer.visitLabel">Visit</h5>
           <ul>
             <li>Strada Barbu Văcărescu 164E</li>
             <li>One Verdi Park, Corp A, Parter</li>
-            <li>Sector 2, 020285, Bucharest</li>
+            <li data-i18n="footer.addressLine3">Sector 2, 020285, Bucharest</li>
             <li style="margin-top:16px">+40 773 261 721</li>
             <li>contact@banco-restaurant.ro</li>
             <li>banco-restaurant.ro</li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Hours</h5>
+          <h5 data-i18n="footer.hoursLabel">Hours</h5>
           <ul>
-            <li>Every day</li>
+            <li data-i18n="footer.everyDay">Every day</li>
             <li>10:00 – 22:00</li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Explore</h5>
+          <h5 data-i18n="footer.exploreLabel">Explore</h5>
           <ul>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#atmosphere">The Space</a></li>
-            <li><a href="#reserve">Reserve</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li>Private Events</li>
-            <li>Press</li>
+            <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="#atmosphere" data-i18n="footer.spaceLink">The Space</a></li>
+            <li><a href="#reserve" data-i18n="footer.reserveLink">Reserve</a></li>
+            <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li data-i18n="footer.privateEvents">Private Events</li>
+            <li data-i18n="footer.press">Press</li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 BANCO All rights reserved.</p>
+        <p data-i18n="footer.copyright">&copy; 2026 BANCO All rights reserved.</p>
         <div class="social-links">
           <a href="https://www.instagram.com/bancorestaurant" target="_blank" rel="noopener">Instagram</a>
           <a href="#">Facebook</a>
@@ -2411,6 +2449,158 @@
         btn.style.background = '';
       }, 3000);
     }
+  </script>
+
+  <!-- ─── i18N (EN baked in; RO applied on demand) ──── -->
+  <script>
+  (function () {
+    /* English is the source of truth in the markup; Romanian lives in this
+       dictionary, applied via the same generic data-i18n mechanism used on
+       rezervare.html. Only structural/marketing copy is translated — the
+       123-item food & drink menu (dish names, ingredient lists, prices)
+       stays English-only by design. */
+    var I18N = { ro: {
+      "nav.menu": "Meniu",
+      "nav.atmosphere": "Atmosferă",
+      "nav.events": "Evenimente",
+      "nav.reservation": "Rezervare",
+      "nav.mobileReserve": "Fă o rezervare",
+      "hero.tagline": "Bucătărie Mediteraneană",
+      "hero.scroll": "Derulează",
+      "intro.label": "Restaurantul",
+      "intro.h2": "O experiență<br/>în echilibru",
+      "intro.p": "BANCO este un restaurant contemporan în segmentul casual premium, construit pe echilibrul dintre eleganță și confort. Ne inspirăm din bucătăria europeană modernă, cu atenție la detalii, atmosferă și calitatea fiecărei farfurii. Un cadru rafinat, dar relaxat, unde te aduni, guști și rămâi o vreme.",
+      "menu.label": "Bar &amp; Cramă",
+      "menu.h2": "Meniul",
+      "menu.tabFood": "Mâncare",
+      "menu.tabCocktails": "Cocktailuri",
+      "menu.tabWine": "Vin",
+      "menu.tabSpirits": "Spirtoase",
+      "menu.tabMore": "Cafea &amp; Altele",
+      "sub.breakfast": "Mic dejun",
+      "sub.starters": "Aperitive",
+      "sub.pasta": "Paste",
+      "sub.special": "Specialități",
+      "sub.mains": "Feluri principale",
+      "sub.sides": "Garnituri",
+      "sub.dessert": "Desert",
+      "sub.negroni": "Selecție Negroni",
+      "sub.spritz": "Spritz",
+      "sub.classics": "Clasice",
+      "sub.white": "Alb",
+      "sub.rose": "Rosé",
+      "sub.red": "Roșu",
+      "sub.sparkling": "Spumante &amp; Șampanie",
+      "sub.byglass": "La pahar",
+      "sub.gin": "Gin &mdash; 40ml",
+      "sub.vodka": "Vodcă &mdash; 40ml",
+      "sub.whisky": "Whisky &mdash; 40ml",
+      "sub.rum": "Rom &mdash; 40ml",
+      "sub.tequila": "Tequila &mdash; 30ml",
+      "sub.digestifs": "Digestive &mdash; 40ml",
+      "sub.coffee": "Cafea",
+      "sub.tea": "Ceai",
+      "sub.fresh": "Fresh &amp; Limonadă",
+      "sub.beer": "Bere",
+      "sub.soft": "Băuturi răcoritoare",
+      "sub.water": "Apă",
+      "menu.note": "Toate prețurile sunt în lei (RON)",
+      "menu.cta": "Rezervă o masă",
+      "atm.label": "Experiența",
+      "atm.h2": "Spațiul &amp; masa",
+      "atm.roomLabel": "Sala",
+      "dishGal.label": "Din bucătărie",
+      "dishGal.h2": "Preparate selectate",
+      "phil.quote": "\"O experiență echilibrată între gust, atmosferă și design.\"",
+      "reserve.label": "Rezervări",
+      "reserve.h2": "Rezervă-ți<br/>masa",
+      "reserve.p1": "Rezervăm mese cu până la 30 de zile în avans. Pentru grupuri de 8 persoane sau mai mari, te rugăm să ne contactezi direct.",
+      "reserve.p2": "Mic dejun tip brunch târziu, prânz gândit pentru împărțit și seri lungi, servite zilnic 10:00 — 22:00.",
+      "reserve.addressLabel": "Adresă",
+      "reserve.addressValue": "Strada Barbu Văcărescu 164E, One Verdi Park, Corp A, Parter &middot; Sector 2, București",
+      "reserve.hoursLabel": "Program",
+      "reserve.hoursValue": "Zilnic &nbsp; 10:00 — 22:00",
+      "reserve.phoneLabel": "Telefon",
+      "reserve.emailLabel": "Email",
+      "reserve.online": "Rezervări online",
+      "reserve.guardHint": "Apasă pentru a rezerva",
+      "reserve.guardAria": "Activează widget-ul de rezervare",
+      "loc.label": "Găsește-ne",
+      "loc.h2": "One Verdi Park, București",
+      "loc.directions": "Vezi traseul →",
+      "footer.tagline": "Bucătărie europeană contemporană.<br/>Un echilibru între gust, atmosferă<br/>și design.",
+      "footer.visitLabel": "Vizitează",
+      "footer.addressLine3": "Sector 2, 020285, București",
+      "footer.hoursLabel": "Program",
+      "footer.everyDay": "Zilnic",
+      "footer.exploreLabel": "Explorează",
+      "footer.spaceLink": "Spațiul",
+      "footer.reserveLink": "Rezervă",
+      "footer.privateEvents": "Evenimente Private",
+      "footer.press": "Presă",
+      "footer.copyright": "&copy; 2026 BANCO Toate drepturile rezervate.",
+      "_title": "BANCO — Restaurant Mediteranean, București",
+      "_desc": "BANCO este un restaurant mediteranean premium casual în One Verdi Park, București — mic dejun tip brunch târziu cu cafea de specialitate, prânzuri gândite pentru împărțit din clasice reinterpretate, și seri cu cocktailuri semnătură și muzică, la o masă care nu se grăbește."
+    } };
+
+    /* English originals are captured from the DOM on first load, so EN stays
+       a single source of truth (same technique as rezervare.html, mirrored). */
+    var EN_SNAPSHOT = null;
+    function snapshotEN() {
+      EN_SNAPSHOT = { _title: document.title, _desc: (document.querySelector('meta[name="description"]') || {}).content };
+      document.querySelectorAll('[data-i18n]').forEach(function (el) { EN_SNAPSHOT[el.dataset.i18n] = el.innerHTML; });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) { EN_SNAPSHOT[el.dataset.i18nHtml] = el.innerHTML; });
+      document.querySelectorAll('[data-i18n-aria]').forEach(function (el) { EN_SNAPSHOT[el.dataset.i18nAria] = el.getAttribute('aria-label'); });
+    }
+
+    function applyLang(lang) {
+      var dict = lang === 'ro' ? I18N.ro : EN_SNAPSHOT;
+      if (!dict) return;
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var v = dict[el.dataset.i18n]; if (v != null) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+        var v = dict[el.dataset.i18nHtml]; if (v != null) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+        var v = dict[el.dataset.i18nAria]; if (v != null) el.setAttribute('aria-label', v);
+      });
+      if (dict._title) document.title = dict._title;
+      var md = document.querySelector('meta[name="description"]');
+      if (md && dict._desc) md.setAttribute('content', dict._desc);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.langBtn === lang));
+      });
+      try { localStorage.setItem('banco_lang', lang); } catch (e) {}
+    }
+
+    function initialLang() {
+      var q = null;
+      try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+      if (q === 'ro' || q === 'en') return q;
+      var stored = null;
+      try { stored = localStorage.getItem('banco_lang'); } catch (e) {}
+      if (stored === 'ro' || stored === 'en') return stored;
+      return (navigator.language || '').toLowerCase().indexOf('ro') === 0 ? 'ro' : 'en';
+    }
+
+    var currentLang = 'en';
+    snapshotEN();
+    currentLang = initialLang();
+    if (currentLang !== 'en') applyLang(currentLang);
+
+    document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.dataset.langBtn;
+        if (lang === currentLang) return;
+        currentLang = lang;
+        applyLang(lang);
+        try { window.bancoTrack && window.bancoTrack('lang_switch', { lang: lang }); } catch (e) {}
+        if (typeof mountReserveWidget === 'function') mountReserveWidget(lang);
+      });
+    });
+  })();
   </script>
 
   <!-- Structured data: Restaurant (Google rich results / local SEO) -->
