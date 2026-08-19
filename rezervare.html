@@ -368,7 +368,11 @@
        quote runs smaller and tighter here than on desktop. The rating keeps
        its full size — it's the part that has to carry across the room. */
     @media (max-width: 900px) {
-      .hero-proof { padding: 15px 16px; }
+      /* On desktop .hero-proof is pinned absolute, so it never touches the
+         dots below it. Below 901px it drops into normal flow right before
+         .hero-dots, so it needs its own gap here — the dots otherwise sit
+         flush against the panel's bottom edge. */
+      .hero-proof { padding: 15px 16px; margin-bottom: 18px; }
       .hp-rating { margin-bottom: 10px; }
       .hp-quote { font-size: 0.72rem; line-height: 1.55; }
     }
