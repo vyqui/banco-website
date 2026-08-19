@@ -519,47 +519,37 @@
     .why-card h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; margin-bottom: 10px; }
     .why-card p { font-size: 0.84rem; line-height: 1.85; color: rgba(43,43,43,0.62); }
 
-    /* ─── MENU PREVIEW (collapsible) ─────────────────────────── */
-    .dishes { padding: 0 0 88px; }
-
-    .menu-toggle {
-      display: flex; align-items: center; justify-content: space-between;
-      width: 100%; background: none; border: 1px solid var(--sand);
-      padding: 20px 26px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--charcoal); transition: border-color 0.3s;
+    /* ─── DISH CAROUSEL (in the booking-info column) ─────────── */
+    .booking-dishes { margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--sand); }
+    .bd-label {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--bronze); display: block; margin-bottom: 18px;
     }
-    .menu-toggle:hover { border-color: var(--bronze); }
-    .mt-label-open { display: none; }
-    .menu-toggle[aria-expanded="true"] .mt-label-closed { display: none; }
-    .menu-toggle[aria-expanded="true"] .mt-label-open { display: inline; }
-    .mt-arrow {
-      flex: none; margin-left: 16px; font-size: 1.1rem; color: var(--bronze); line-height: 1;
-      transition: transform 0.35s var(--ease);
+    .bd-carousel { display: flex; align-items: center; gap: 12px; }
+    .bd-viewport { flex: 1; overflow: hidden; min-width: 0; }
+    .bd-track { display: flex; transition: transform 0.6s var(--ease); }
+    @media (prefers-reduced-motion: reduce) { .bd-track { transition: none; } }
+    .bd-slide { flex: 0 0 100%; min-width: 0; }
+    .bd-slide figure { overflow: hidden; margin-bottom: 14px; aspect-ratio: 4/3; }
+    .bd-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .bd-info h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.1rem; margin-bottom: 8px; }
+    .bd-info p { font-size: 0.84rem; line-height: 1.65; color: rgba(43,43,43,0.62); margin-bottom: 8px; }
+    .bd-price { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--bronze); text-transform: uppercase; }
+    .bd-arrow {
+      flex: none; width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(43,43,43,0.25); background: var(--ivory);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--charcoal); line-height: 1; transition: all 0.3s;
     }
-    .menu-toggle[aria-expanded="true"] .mt-arrow { transform: rotate(45deg); }
-
-    /* Grid-row trick: animates to the content's natural height with no JS
-       measuring. The child needs overflow:hidden so 0fr can reach true
-       zero; padding/margin lives one level deeper for the same reason. */
-    .menu-preview-collapse {
-      display: grid; grid-template-rows: 0fr;
-      transition: grid-template-rows 0.5s var(--ease);
+    .bd-arrow:hover { background: var(--charcoal); color: var(--ivory); border-color: var(--charcoal); }
+    .bd-dots { display: flex; gap: 8px; margin: 16px 0 20px; padding-left: 46px; }
+    .bd-dots button {
+      width: 7px; height: 7px; border-radius: 50%; padding: 0; border: 0;
+      background: rgba(43,43,43,0.2); transition: background 0.3s, transform 0.3s;
     }
-    .menu-preview-collapse.open { grid-template-rows: 1fr; }
-    .menu-preview-inner { overflow: hidden; min-height: 0; }
+    .bd-dots button[aria-current="true"] { background: var(--bronze); transform: scale(1.3); }
 
-    .menu-preview-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px;
-      margin-top: 32px;
-    }
-    .mp-card figure { overflow: hidden; margin-bottom: 14px; aspect-ratio: 4/3; }
-    .mp-card img { width: 100%; height: 100%; transition: transform 0.7s var(--ease); }
-    .mp-card:hover img { transform: scale(1.05); }
-    .mp-card h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; margin-bottom: 8px; }
-    .mp-sensory { font-size: 0.82rem; line-height: 1.65; color: rgba(43,43,43,0.62); margin-bottom: 10px; }
-    .mp-price { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--bronze); text-transform: uppercase; }
-
-    .menu-link { display: inline-block; margin-top: 28px; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid var(--bronze); padding-bottom: 4px; }
+    .menu-link { display: inline-block; margin-top: 4px; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid var(--bronze); padding-bottom: 4px; }
 
     /* ─── MID CTA ────────────────────────────────────────────── */
     .midcta { background: var(--charcoal); color: var(--ivory); padding: 76px 0; text-align: center; }
@@ -671,13 +661,12 @@
          keeps this value even if iAloc's script tries to reassert its own. */
       .reserve-widget iframe { min-height: 950px !important; }
       .why, .faq { padding: 60px 0; }
-      .dishes { padding-bottom: 60px; }
       .location { padding-top: 60px; }
       .midcta { padding: 60px 0; }
       .map-wrap iframe { height: 320px; }
-      .menu-preview-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 26px; }
       .why-card img { height: 230px; }
-      .menu-toggle { padding: 17px 18px; font-size: 0.66rem; }
+      .booking-dishes { margin-top: 26px; padding-top: 22px; }
+      .bd-dots { padding-left: 0; justify-content: center; }
       .f-grid { grid-template-columns: 1fr; gap: 28px; }
       .sticky-cta { display: flex; }
       body { padding-bottom: 74px; }
@@ -796,6 +785,52 @@
             Preferi să vorbești cu noi? Sună la <a href="tel:+40773261721">+40 773 261 721</a>
             sau scrie-ne la <a href="mailto:contact@banco-restaurant.ro">contact@banco-restaurant.ro</a>.
           </p>
+
+          <div class="booking-dishes">
+            <span class="bd-label" data-i18n="dish.label">Din bucătărie</span>
+            <div class="bd-carousel">
+              <button type="button" class="bd-arrow bd-prev" id="bdPrev" data-i18n-aria="dish.prevAria" aria-label="Preparatul anterior">‹</button>
+              <div class="bd-viewport">
+                <div class="bd-track" id="bdTrack">
+                  <article class="bd-slide">
+                    <figure><img src="img/menu_tartufo.jpg" alt="Paccheri al tartufo" loading="lazy" /></figure>
+                    <div class="bd-info">
+                      <h3>Paccheri al Tartufo</h3>
+                      <p data-i18n="dish.d1">Paste artizanale înecate în sos de trufe neagră, cu parmezan proaspăt ras.</p>
+                      <span class="bd-price">98 lei</span>
+                    </div>
+                  </article>
+                  <article class="bd-slide">
+                    <figure><img src="img/menu_tartare.jpg" alt="Tartar de vită" loading="lazy" /></figure>
+                    <div class="bd-info">
+                      <h3 data-i18n="dish.d2name">Tartar de Vită</h3>
+                      <p data-i18n="dish.d2">Vrăbioară de vită tocată fin, capere, șalotă, muștar Dijon și gălbenuș confiat, cu focaccia caldă.</p>
+                      <span class="bd-price">88 lei</span>
+                    </div>
+                  </article>
+                  <article class="bd-slide">
+                    <figure><img src="img/dish_branzino.jpg" alt="Branzino la grătar" loading="lazy" /></figure>
+                    <div class="bd-info">
+                      <h3>Branzino</h3>
+                      <p data-i18n="dish.d3">Fileu de branzino la grătar, broccolini opărit și un beurre blanc fin de lămâie.</p>
+                      <span class="bd-price">106 lei</span>
+                    </div>
+                  </article>
+                  <article class="bd-slide">
+                    <figure><img src="img/menu_dessert.jpg" alt="Tarta cu pere" loading="lazy" /></figure>
+                    <div class="bd-info">
+                      <h3 data-i18n="dish.d4name">Tarta cu Pere</h3>
+                      <p data-i18n="dish.d4">Pere caramelizate, caramel sărat și înghețată de vanilie Bourbon — finalul dulce al serii.</p>
+                      <span class="bd-price">58 lei</span>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button type="button" class="bd-arrow bd-next" id="bdNext" data-i18n-aria="dish.nextAria" aria-label="Preparatul următor">›</button>
+            </div>
+            <div class="bd-dots" id="bdDots" role="tablist" aria-label="Preparate"></div>
+            <a class="menu-link" href="index.html#menu" target="_blank" rel="noopener" data-i18n="dish.link">Vezi meniul complet →</a>
+          </div>
         </div>
 
         <div class="booking-card">
@@ -891,54 +926,6 @@
     </div>
   </section>
 
-  <!-- ─── MENU PREVIEW (collapsible) ──────────────── -->
-  <section class="dishes texture-paper">
-    <div class="container">
-      <div class="sec-head fade-in">
-        <span class="section-label" data-i18n="dish.label">Din bucătărie</span>
-        <h2 data-i18n="dish.h2">Preparate selectate</h2>
-      </div>
-
-      <button type="button" class="menu-toggle fade-in" id="menuToggle" aria-expanded="false" aria-controls="menuPreviewPanel">
-        <span class="mt-label-closed" data-i18n="dish.toggleShow">Vezi 4 preparate din meniu</span>
-        <span class="mt-label-open" data-i18n="dish.toggleHide">Ascunde preparatele</span>
-        <span class="mt-arrow" aria-hidden="true">+</span>
-      </button>
-
-      <div class="menu-preview-collapse" id="menuPreviewPanel">
-        <div class="menu-preview-inner">
-          <div class="menu-preview-grid">
-            <article class="mp-card">
-              <figure><img src="img/menu_tartufo.jpg" alt="Paccheri al tartufo" loading="lazy" /></figure>
-              <h3>Paccheri al Tartufo</h3>
-              <p class="mp-sensory" data-i18n="dish.d1">Paste artizanale înecate în sos de trufe neagră, cu parmezan proaspăt ras.</p>
-              <span class="mp-price">98 lei</span>
-            </article>
-            <article class="mp-card">
-              <figure><img src="img/menu_tartare.jpg" alt="Tartar de vită" loading="lazy" /></figure>
-              <h3 data-i18n="dish.d2name">Tartar de Vită</h3>
-              <p class="mp-sensory" data-i18n="dish.d2">Vrăbioară de vită tocată fin, capere, șalotă, muștar Dijon și gălbenuș confiat, cu focaccia caldă.</p>
-              <span class="mp-price">88 lei</span>
-            </article>
-            <article class="mp-card">
-              <figure><img src="img/dish_branzino.jpg" alt="Branzino la grătar" loading="lazy" /></figure>
-              <h3>Branzino</h3>
-              <p class="mp-sensory" data-i18n="dish.d3">Fileu de branzino la grătar, broccolini opărit și un beurre blanc fin de lămâie.</p>
-              <span class="mp-price">106 lei</span>
-            </article>
-            <article class="mp-card">
-              <figure><img src="img/menu_dessert.jpg" alt="Tarta cu pere" loading="lazy" /></figure>
-              <h3 data-i18n="dish.d4name">Tarta cu Pere</h3>
-              <p class="mp-sensory" data-i18n="dish.d4">Pere caramelizate, caramel sărat și înghețată de vanilie Bourbon — finalul dulce al serii.</p>
-              <span class="mp-price">58 lei</span>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <a class="menu-link" href="index.html#menu" target="_blank" rel="noopener" data-i18n="dish.link">Vezi meniul complet →</a>
-    </div>
-  </section>
 
   <!-- ─── MID CTA ─────────────────────────────────── -->
   <section class="midcta">
@@ -1109,9 +1096,8 @@
       "why.c3.h": "The bar",
       "why.c3.p": "Signature cocktails, our own takes on the classics, a European wine list and champagne by the glass — from early evening into the night.",
       "dish.label": "From the kitchen",
-      "dish.h2": "Selected dishes",
-      "dish.toggleShow": "See 4 dishes from the menu",
-      "dish.toggleHide": "Hide the dishes",
+      "dish.prevAria": "Previous dish",
+      "dish.nextAria": "Next dish",
       "dish.d1": "Artisanal paccheri drenched in black truffle sauce, finished with fresh parmesan.",
       "dish.d2name": "Beef Tartare",
       "dish.d2": "Finely hand-cut beef tenderloin, capers, shallots, Dijon, confit egg yolk, warm focaccia.",
@@ -1478,15 +1464,51 @@
       });
     });
 
-    // Menu preview dropdown
+    // Dish carousel — auto-advances, arrows + dots, pauses on hover/hidden tab
     (function () {
-      var toggle = document.getElementById('menuToggle');
-      var panel = document.getElementById('menuPreviewPanel');
-      if (!toggle || !panel) return;
-      toggle.addEventListener('click', function () {
-        var open = panel.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-        if (open) { try { window.bancoTrack && window.bancoTrack('lp_menu_preview_open'); } catch (e) {} }
+      var track = document.getElementById('bdTrack');
+      var dotsBox = document.getElementById('bdDots');
+      var prevBtn = document.getElementById('bdPrev');
+      var nextBtn = document.getElementById('bdNext');
+      if (!track || !dotsBox) return;
+      var slides = [].slice.call(track.children);
+      if (slides.length < 2) return;
+      var i = 0, timer = null, DUR = 5000;
+
+      slides.forEach(function (s, n) {
+        var d = document.createElement('button');
+        d.type = 'button';
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Preparatul ' + (n + 1));
+        d.setAttribute('aria-current', n === 0 ? 'true' : 'false');
+        d.addEventListener('click', function () { go(n); restart(); });
+        dotsBox.appendChild(d);
+      });
+      var dots = [].slice.call(dotsBox.children);
+
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        dots.forEach(function (d, idx) { d.setAttribute('aria-current', String(idx === i)); });
+      }
+      function restart() {
+        if (timer) clearInterval(timer);
+        if (!reduceMotion) timer = setInterval(function () { go(i + 1); }, DUR);
+      }
+      function stop() { if (timer) clearInterval(timer); timer = null; }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { go(i - 1); restart(); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { go(i + 1); restart(); });
+
+      var carousel = track.closest('.bd-carousel');
+      if (carousel) {
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', restart);
+      }
+
+      restart();
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stop(); else restart();
       });
     })();
   </script>
