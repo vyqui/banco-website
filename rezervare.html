@@ -457,15 +457,6 @@
     .reserve-widget iframe {
       width: 100% !important; max-width: 100% !important; border: 0;
       -webkit-user-select: none; user-select: none;
-      /* Forced, not just capped: iAloc's own script sets this iframe's
-         height dynamically (likely from the device's own viewport height,
-         not from anything on our side), and its internal "Rezervă masa"
-         button appears to be pinned to the bottom of THAT box rather than
-         to the end of the form. !important keeps this value even if their
-         script tries to reassert its own — a plain CSS rule can't lose
-         that fight to an inline style. .ialoc-shell below still scrolls
-         the surplus, so nothing is cut off. */
-      min-height: 950px !important;
     }
     iframe[src*="ialoc.ro"] { max-width: 100% !important; }
 
@@ -649,6 +640,14 @@
          under it. Kept below the desktop 800px since phone viewports are
          shorter, but wide enough that the widget lays itself out properly. */
       :root { --widget-max-h: 740px; }
+      /* Forced, not just capped: iAloc's own script sizes this iframe from
+         the device's own viewport height, and on phones its internal
+         "Rezervă masa" button was pinned to the bottom of that box rather
+         than to the end of the form. Phone-only — on desktop the widget's
+         natural height was already correct, and forcing it here just left
+         a few hundred pixels of dead space under a short form. !important
+         keeps this value even if iAloc's script tries to reassert its own. */
+      .reserve-widget iframe { min-height: 950px !important; }
       .why, .faq { padding: 60px 0; }
       .dishes { padding-bottom: 60px; }
       .location { padding-top: 60px; }
