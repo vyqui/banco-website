@@ -35,6 +35,20 @@ window.BANCO_DEFAULT_EVENT_LOCATION = "One Verdi Park, Barbu Văcărescu 164E, B
 
 window.BANCO_EVENTS = [
 
+  {
+    slug: "vlada-neagu-live",
+    title: "Vlada Neagu — Live at BANCO",
+    tag: "Live Music",
+    dateStart: "2026-08-29T19:00:00+03:00",
+    dateEnd: null,
+    location: null,
+    excerpt: "Piano. Voice. Dinner. An intimate evening of live music from Vlada Neagu, paired with dinner at BANCO. Limited tables available.",
+    description: "Piano. Voice. Dinner.\n\nJoin us for an intimate evening as Vlada Neagu performs live at BANCO — piano and voice woven through a dinner service in One Verdi Park.\n\nLimited tables available. Reserve yours.",
+    cover: "img/events/vlada-neagu-live.jpg",
+    photos: ["img/events/vlada-neagu-live.jpg"],
+    youtubeId: null
+  },
+
   // ── EXAMPLE — copy this block below the line above to add a real event.
   // Currently commented out, so it does not appear on the live site.
   /*
