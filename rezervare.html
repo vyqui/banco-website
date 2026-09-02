@@ -328,14 +328,13 @@
       padding: 20px 22px;
     }
     .hp-rating { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
-    /* 4.8 of 5 drawn as a partially filled star row: the muted row is the
-       track, the bronze copy on top is clipped to 96% (4.8 / 5). */
+    /* 5 of 5: the bronze copy fully covers the muted track row beneath it. */
     .hp-stars { position: relative; display: inline-block; font-size: 1.7rem; line-height: 1; letter-spacing: 2px; flex: none; }
     .hp-stars::before, .hp-stars::after { content: '★★★★★'; }
     .hp-stars::before { color: rgba(234,231,225,0.28); }
     .hp-stars::after {
       position: absolute; left: 0; top: 0;
-      width: 96%; overflow: hidden; white-space: nowrap;
+      width: 100%; overflow: hidden; white-space: nowrap;
       color: var(--bronze);
     }
     .hp-score { font-family: var(--font-display); font-size: 2.1rem; color: var(--ivory); line-height: 1; }
@@ -754,7 +753,7 @@
         <div class="hero-proof">
           <div class="hp-rating">
             <span class="hp-stars" aria-hidden="true"></span>
-            <span class="hp-score" data-i18n="proof.score">4,8</span>
+            <span class="hp-score" data-i18n="proof.score">5</span>
             <span class="hp-source" data-i18n="proof.source">pe Google</span>
           </div>
           <div class="hp-quotes" id="hpQuotes">
@@ -1068,7 +1067,7 @@
       "hero.sub": "Reinterpreted Mediterranean cooking and signature cocktails, at One Verdi Park.",
       "hero.q1": "Menu",
       "hero.q2": "Location",
-      "proof.score": "4.8",
+      "proof.score": "5",
       "proof.source": "on Google",
       "proof.q1": "“The experience at Banco was impeccable. The elegant atmosphere, attention to detail and exquisite dishes create the perfect setting for a special dinner. The service was professional, completing a truly memorable experience. I highly recommend it.”",
       "proof.q2": "“A very pleasant atmosphere and exceptional food. I will definitely be back!”",
