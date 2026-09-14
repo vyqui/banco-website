@@ -44,8 +44,8 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "One week, all across the city. Discover BANCO's special menu created for Bucharest Food Week, 14–20 September.",
     description: "BANCO is part of Bucharest Food Week.\n\nFrom 14 to 20 September, discover our special menu created for the occasion.\n\nA good first visit should feel like the beginning of a habit.\n\nBook your table at www.foodweek.ro or directly with us at +40 773 261 721.",
-    cover: "img/events/bucharest-food-week.jpg",
-    photos: ["img/events/bucharest-food-week.jpg"],
+    cover: "img/events/bucharest-food-week.png",
+    photos: ["img/events/bucharest-food-week.png"],
     youtubeId: null
   },
 
