@@ -36,6 +36,20 @@ window.BANCO_DEFAULT_EVENT_LOCATION = "One Verdi Park, Barbu Văcărescu 164E, B
 window.BANCO_EVENTS = [
 
   {
+    slug: "bucharest-food-week",
+    title: "BANCO is part of Bucharest Food Week",
+    tag: "Food Week",
+    dateStart: "2026-09-14T10:00:00+03:00",
+    dateEnd: "2026-09-20T22:00:00+03:00",
+    location: null,
+    excerpt: "One week, all across the city. Discover BANCO's special menu created for Bucharest Food Week, 14–20 September.",
+    description: "BANCO is part of Bucharest Food Week.\n\nFrom 14 to 20 September, discover our special menu created for the occasion.\n\nA good first visit should feel like the beginning of a habit.\n\nBook your table at www.foodweek.ro or directly with us at +40 773 261 721.",
+    cover: "img/events/bucharest-food-week.jpg",
+    photos: ["img/events/bucharest-food-week.jpg"],
+    youtubeId: null
+  },
+
+  {
     slug: "vlada-neagu-live",
     title: "Vlada Neagu — Live at BANCO",
     tag: "Live Music",
@@ -83,10 +97,22 @@ window.bancoEventLocation = function (ev) {
   return ev.location || window.BANCO_DEFAULT_EVENT_LOCATION;
 };
 
-/* "12 September 2026" / "12 September 2026, 19:00" if a time is present. */
+/* "12 September 2026" / "12 September 2026, 19:00" if a time is present.
+   When dateEnd falls on a different calendar day than dateStart (a
+   multi-day event, e.g. a week-long menu takeover), renders as a range
+   instead: "14 – 20 September 2026". */
 window.bancoFormatEventDate = function (ev, opts) {
   opts = opts || {};
   var start = new Date(ev.dateStart);
+  var end = ev.dateEnd ? new Date(ev.dateEnd) : null;
+
+  if (end && end.toDateString() !== start.toDateString()) {
+    var sameMonth = start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
+    var startPart = start.toLocaleDateString("en-GB", sameMonth ? { day: "numeric" } : { day: "numeric", month: "long" });
+    var endPart = end.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+    return startPart + " – " + endPart;
+  }
+
   var datePart = start.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   if (opts.withTime === false) return datePart;
   var timePart = start.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
