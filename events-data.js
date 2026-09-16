@@ -61,6 +61,20 @@ window.BANCO_EVENTS = [
   },
 
   {
+    slug: "vlada-neagu-returns",
+    title: "Vlada Neagu Returns — Live at BANCO",
+    tag: "Live Music",
+    dateStart: "2026-09-19T18:00:00+03:00",
+    dateEnd: null,
+    location: null,
+    excerpt: "An autumn evening of piano, voice and dinner — Vlada Neagu returns to BANCO. Limited tables available.",
+    description: "An autumn evening at BANCO.\n\nVlada Neagu returns this Saturday for an evening of piano, voice and dinner.\n\n*Some evenings are meant to be lingered over.*\n\nLimited tables available. Reservations at +40 773 261 721.",
+    cover: "/img/events/vlada-neagu-1809.jpeg",
+    photos: ["/img/events/vlada-neagu-1809.jpeg"],
+    youtubeId: null
+  },
+
+  {
     slug: "vlada-neagu-live",
     title: "Vlada Neagu — Live at BANCO",
     tag: "Live Music",
