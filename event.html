@@ -48,7 +48,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Playfair+Display:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -72,20 +72,77 @@
     img { display: block; max-width: 100%; }
     a { text-decoration: none; }
 
-    /* ─── HEADER ─────────────────────────────────────────────── */
-    .ev2-header { border-bottom: 1px solid rgba(11,11,10,0.14); }
-    .ev2-header-inner {
-      max-width: 1240px; margin: 0 auto; padding: 16px 18px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    /* ─── GLOBAL HEADER (same component as index.html / events.html /
+       rezervare.html — Playfair Display + Manrope, ivory/charcoal, not
+       the Cormorant/Jost system used below for the event content) ──── */
+    nav#navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(234,231,225,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #D8D2C8;
+      font-family: 'Manrope', sans-serif;
     }
-    .ev2-wordmark { font-family: var(--font-display); font-size: 21px; letter-spacing: 0.3em; color: var(--ink); }
-    .ev2-alllink { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
-    .ev2-alllink:hover { color: var(--ink); }
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 500;
+      font-size: 1.05rem; letter-spacing: 0.25em; color: #2B2B2B; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(43,42,40,0.5); text-decoration: none; transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.is-current { color: #2B2B2B; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .lang-switch { display: flex; border: 1px solid rgba(43,42,40,0.35); }
+    .lang-switch button {
+      font-family: 'Manrope', sans-serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #2B2B2B; background: none; border: none; padding: 7px 10px; cursor: pointer; opacity: 0.55; transition: all 0.2s;
+    }
+    .lang-switch button[aria-pressed="true"] { background: #2B2B2B; color: #EAE7E1; opacity: 1; }
+    .nav-reserve {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #2B2B2B; border: 1px solid rgba(43,42,40,0.35); text-decoration: none;
+      padding: 10px 22px; transition: all 0.3s;
+    }
+    .nav-reserve:hover { background: #2B2B2B; color: #EAE7E1; border-color: #2B2B2B; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; z-index: 200; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: #2B2B2B; transition: all 0.3s ease; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: #EAE7E1; z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .mobile-menu.open { opacity: 1; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', Georgia, serif; font-size: 1.9rem; font-weight: 300;
+      color: #2B2B2B; letter-spacing: 0.06em; text-decoration: none;
+    }
+    .mobile-menu .mobile-reserve {
+      font-family: 'Manrope', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid #2B2B2B; padding: 14px 36px; margin-top: 10px;
+    }
+    .mobile-menu .mobile-lang-switch { display: flex; gap: 10px; margin-top: -14px; }
+    .mobile-menu .mobile-lang-switch button {
+      font-family: 'Manrope', sans-serif; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #2B2B2B; background: none; border: 1px solid rgba(43,42,40,0.35); padding: 8px 14px; cursor: pointer; opacity: 0.55;
+    }
+    .mobile-menu .mobile-lang-switch button[aria-pressed="true"] { background: #2B2B2B; color: #EAE7E1; opacity: 1; }
+    @media (max-width: 900px) {
+      nav#navbar { padding: 14px 20px; }
+      .nav-links, .nav-reserve { display: none; }
+      .nav-hamburger { display: flex; }
+    }
 
     /* ─── BODY LAYOUT (single wrapping flex row — no breakpoints) ── */
     .ev2-body {
       max-width: 1240px; margin: 0 auto;
-      padding: clamp(16px,2.4vw,36px) clamp(14px,2vw,18px) clamp(48px,6vw,86px);
+      /* Top padding clears the fixed global nav (~62-80px tall). */
+      padding: clamp(96px,14vw,128px) clamp(14px,2vw,18px) clamp(48px,6vw,86px);
       display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(22px,3.4vw,48px);
     }
 
@@ -196,7 +253,7 @@
     .ev2-card-link:hover { color: var(--ink); }
 
     /* ─── NOT FOUND ──────────────────────────────────────────── */
-    .ev2-notfound { max-width: 640px; margin: 0 auto; padding: clamp(80px,14vw,160px) clamp(14px,2vw,18px) clamp(60px,8vw,120px); text-align: center; }
+    .ev2-notfound { max-width: 640px; margin: 0 auto; padding: clamp(96px,16vw,168px) clamp(14px,2vw,18px) clamp(60px,8vw,120px); text-align: center; }
     .ev2-notfound h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem,4vw,2.4rem); margin: 0 0 14px; }
     .ev2-notfound p { font-size: 15px; color: var(--muted); margin: 0 0 26px; }
     .ev2-notfound .ev2-btn-out {
@@ -212,12 +269,37 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <header class="ev2-header">
-    <div class="ev2-header-inner">
-      <a href="/" class="ev2-wordmark" translate="no">BANCO</a>
-      <a href="/events" class="ev2-alllink">All events</a>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/index.html#menu" onclick="closeMenu()" data-i18n="nav.menu">Menu</a>
+    <a href="/index.html#atmosphere" onclick="closeMenu()" data-i18n="nav.atmosphere">Atmosphere</a>
+    <a href="/events.html" onclick="closeMenu()" data-i18n="nav.events">Events</a>
+    <a href="/index.html#contact" onclick="closeMenu()">Contact</a>
+    <a href="/rezervare.html" class="mobile-reserve" onclick="closeMenu()" data-i18n="nav.mobileReserve">Make a Reservation</a>
+    <div class="mobile-lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang-btn="ro" aria-pressed="false">RO</button>
     </div>
-  </header>
+  </div>
+
+  <nav id="navbar">
+    <a href="/index.html" class="nav-logo" translate="no">BANCO</a>
+    <ul class="nav-links">
+      <li><a href="/index.html#menu" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="/index.html#atmosphere" data-i18n="nav.atmosphere">Atmosphere</a></li>
+      <li><a href="/events.html" class="is-current" data-i18n="nav.events">Events</a></li>
+      <li><a href="/index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-btn="ro" aria-pressed="false">RO</button>
+      </div>
+      <a href="/rezervare.html" class="nav-reserve" data-i18n="nav.reservation">Reservation</a>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
 
   <main id="eventMain">
     <!-- Filled in by JS from events-data.js, based on the URL -->
@@ -225,6 +307,63 @@
 
   <script src="/events-data.js"></script>
   <script>
+    var mobileMenu = document.getElementById('mobileMenu');
+    var hamburger  = document.getElementById('hamburger');
+    function toggleMenu() {
+      var open = mobileMenu.style.display === 'flex' && mobileMenu.classList.contains('open');
+      if (open) { closeMenu(); }
+      else {
+        mobileMenu.style.display = 'flex';
+        requestAnimationFrame(function () { mobileMenu.classList.add('open'); });
+        hamburger.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(function () { mobileMenu.style.display = 'none'; }, 300);
+    }
+
+    /* UI strings for the parts of this page that are template chrome, not
+       per-event data. Event data itself (title, tag, description, excerpt)
+       stays English-only, same scope decision as the rest of the site
+       (e.g. the 123 menu items on index.html/rezervare.html). */
+    var UI = {
+      en: {
+        ended: 'Ended',
+        factDate: 'Date & time',
+        factLocation: 'Location',
+        contactHeading: 'Book a table!',
+        contactBody: 'Call or message us on WhatsApp and we\'ll help you with a spot, group bookings, or any questions about the evening.',
+        whatsapp: 'Whatsapp us',
+        call: 'Call',
+        more: 'More at BANCO',
+        seeAll: 'See all events →',
+        details: 'Details →',
+        notFoundTitle: 'Event not found',
+        notFoundBody: 'This event may have been removed, or the link is out of date.',
+        notFoundBtn: 'See all events'
+      },
+      ro: {
+        ended: 'Încheiat',
+        factDate: 'Dată și oră',
+        factLocation: 'Locație',
+        contactHeading: 'Rezervă o masă!',
+        contactBody: 'Sună-ne sau scrie-ne pe WhatsApp și te ajutăm cu un loc, rezervări de grup sau orice întrebare despre seară.',
+        whatsapp: 'Scrie pe WhatsApp',
+        call: 'Sună la',
+        more: 'Mai multe la BANCO',
+        seeAll: 'Vezi toate evenimentele →',
+        details: 'Detalii →',
+        notFoundTitle: 'Evenimentul nu a fost găsit',
+        notFoundBody: 'Este posibil ca acest eveniment să fi fost eliminat, sau linkul nu mai este valabil.',
+        notFoundBtn: 'Vezi toate evenimentele'
+      }
+    };
+    var currentLang = 'en';
+
     function esc(s) {
       var d = document.createElement('div');
       d.textContent = s == null ? '' : s;
@@ -236,15 +375,17 @@
     }
 
     function renderNotFound() {
+      var t = UI[currentLang];
       document.getElementById('eventMain').innerHTML =
         '<div class="ev2-notfound">' +
-          '<h1>Event not found</h1>' +
-          '<p>This event may have been removed, or the link is out of date.</p>' +
-          '<a class="ev2-btn-out" href="/events">See all events</a>' +
+          '<h1>' + esc(t.notFoundTitle) + '</h1>' +
+          '<p>' + esc(t.notFoundBody) + '</p>' +
+          '<a class="ev2-btn-out" href="/events">' + esc(t.notFoundBtn) + '</a>' +
         '</div>';
     }
 
     function eventCardHTML(ev) {
+      var t = UI[currentLang];
       var img = ev.cover || (ev.photos && ev.photos[0]) || '';
       return (
         '<article class="ev2-card">' +
@@ -252,15 +393,16 @@
             (img ? '<img src="' + img + '" alt="' + esc(ev.title) + '" loading="lazy" />' : '') +
             (ev.tag ? '<span class="ev2-card-tag">' + esc(ev.tag) + '</span>' : '') +
           '</a>' +
-          '<span class="ev2-card-date">' + window.bancoFormatEventDate(ev) + '</span>' +
+          '<span class="ev2-card-date">' + window.bancoFormatEventDate(ev, { lang: currentLang }) + '</span>' +
           '<h3><a href="/events/' + ev.slug + '">' + esc(ev.title) + '</a></h3>' +
           (ev.excerpt ? '<p>' + esc(ev.excerpt) + '</p>' : '') +
-          '<a class="ev2-card-link" href="/events/' + ev.slug + '">Details →</a>' +
+          '<a class="ev2-card-link" href="/events/' + ev.slug + '">' + esc(t.details) + '</a>' +
         '</article>'
       );
     }
 
     function moreEventsHTML(currentSlug) {
+      var t = UI[currentLang];
       // Soonest first, left to right — bancoSplitEvents() already sorts
       // .upcoming ascending by dateStart, so no re-sorting needed here.
       var upcoming = window.bancoSplitEvents().upcoming.filter(function (e) { return e.slug !== currentSlug; });
@@ -268,8 +410,8 @@
       return (
         '<div class="ev2-more">' +
           '<div class="ev2-more-head">' +
-            '<h2>More at BANCO</h2>' +
-            '<a class="ev2-more-link" href="/events">See all events →</a>' +
+            '<h2>' + esc(t.more) + '</h2>' +
+            '<a class="ev2-more-link" href="/events">' + esc(t.seeAll) + '</a>' +
           '</div>' +
           '<div class="ev2-carousel">' +
             '<button type="button" class="ev2-car-arrow ev2-car-prev" id="moreCarPrev" aria-label="Previous event">‹</button>' +
@@ -289,7 +431,12 @@
     // at a time -- the same mechanism as the dish carousel on
     // rezervare.html, generalized to a measured pixel step since several
     // cards (not one slide) are visible at once here.
+    var stopCurrentCarousel = null;
     function initMoreEventsCarousel() {
+      // renderEvent() re-runs on every language switch and rebuilds this
+      // markup from scratch -- stop the previous instance's auto-advance
+      // timer first, or it keeps ticking forever against detached nodes.
+      if (stopCurrentCarousel) { stopCurrentCarousel(); stopCurrentCarousel = null; }
       var viewport = document.getElementById('moreCarViewport');
       var track = document.getElementById('moreCarTrack');
       var prevBtn = document.getElementById('moreCarPrev');
@@ -327,6 +474,7 @@
       }
       function restart() { if (timer) clearInterval(timer); if (!reduceMotion) timer = setInterval(function () { step(1); }, DUR); }
       function stop() { if (timer) clearInterval(timer); timer = null; }
+      stopCurrentCarousel = stop;
 
       if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); restart(); });
       if (nextBtn) nextBtn.addEventListener('click', function () { step(1); restart(); });
@@ -350,12 +498,13 @@
     }
 
     function renderEvent(ev) {
+      var t = UI[currentLang];
       var main = document.getElementById('eventMain');
       var photos = (ev.photos && ev.photos.length ? ev.photos : (ev.cover ? [ev.cover] : []));
       var bannerImg = ev.cover || photos[0];
       var isPast = window.bancoEventStatus(ev) === 'past';
-      var dateLine = window.bancoFormatEventDate(ev, { withTime: false });
-      var locationLines = window.bancoEventLocationLines(ev);
+      var dateLine = window.bancoFormatEventDate(ev, { withTime: false, lang: currentLang });
+      var locationLines = window.bancoEventLocationLines(ev, currentLang);
       var waText = encodeURIComponent('Hi! I\'d like to find out more about "' + ev.title + '".');
 
       var videoHTML = ev.youtubeId
@@ -371,7 +520,7 @@
             '<div class="ev2-banner-content">' +
               '<div class="ev2-tagrow">' +
                 (ev.tag ? '<span class="ev2-tag">' + esc(ev.tag) + '</span>' : '') +
-                (isPast ? '<span class="ev2-ended">Ended</span>' : '') +
+                (isPast ? '<span class="ev2-ended">' + esc(t.ended) + '</span>' : '') +
               '</div>' +
               '<h1>' + esc(ev.title) + '</h1>' +
               '<span class="ev2-dateline">' + esc(dateLine) + '</span>' +
@@ -380,22 +529,22 @@
           '<div class="ev2-details">' +
             '<div class="ev2-facts">' +
               '<div class="ev2-fact">' +
-                '<span class="ev2-fact-label">Date &amp; time</span>' +
-                '<span class="ev2-fact-value">' + esc(dateLine) + '<br/>' + esc(window.bancoFormatEventTimeLine(ev)) + '</span>' +
+                '<span class="ev2-fact-label">' + esc(t.factDate) + '</span>' +
+                '<span class="ev2-fact-value">' + esc(dateLine) + '<br/>' + esc(window.bancoFormatEventTimeLine(ev, currentLang)) + '</span>' +
               '</div>' +
               '<div class="ev2-fact">' +
-                '<span class="ev2-fact-label">Location</span>' +
+                '<span class="ev2-fact-label">' + esc(t.factLocation) + '</span>' +
                 '<span class="ev2-fact-value">' + esc(locationLines[0]) + '<br/>' + esc(locationLines[1]) + '</span>' +
               '</div>' +
             '</div>' +
             videoHTML +
             (ev.description ? '<div class="ev2-desc">' + descriptionHTML(ev.description) + '</div>' : '') +
             '<div class="ev2-contact">' +
-              '<h2>Interested in this event?</h2>' +
-              '<p>Call or message us on WhatsApp and we\'ll help you with a spot, group bookings, or any questions about the evening.</p>' +
+              '<h2>' + esc(t.contactHeading) + '</h2>' +
+              '<p>' + esc(t.contactBody) + '</p>' +
               '<div class="ev2-btnrow">' +
-                '<a class="ev2-btn is-primary" href="https://wa.me/40773261721?text=' + waText + '" target="_blank" rel="noopener">Whatsapp us</a>' +
-                '<a class="ev2-btn is-outline" href="tel:+40773261721">Call +40 773 261 721</a>' +
+                '<a class="ev2-btn is-primary" href="https://wa.me/40773261721?text=' + waText + '" target="_blank" rel="noopener">' + esc(t.whatsapp) + '</a>' +
+                '<a class="ev2-btn is-outline" href="tel:+40773261721">' + esc(t.call) + ' +40 773 261 721</a>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -422,7 +571,14 @@
       document.getElementById('twDesc').setAttribute('content', desc);
       document.getElementById('twImage').setAttribute('content', img);
 
+      // renderEvent() re-runs on every language switch (see the i18n
+      // bootstrap below) -- drop any JSON-LD block from a previous render
+      // first, so switching languages back and forth doesn't pile up
+      // duplicate <script> tags in <head>.
+      var oldLd = document.getElementById('eventJsonLd');
+      if (oldLd) oldLd.remove();
       var ld = document.createElement('script');
+      ld.id = 'eventJsonLd';
       ld.type = 'application/ld+json';
       ld.textContent = JSON.stringify({
         "@context": "https://schema.org",
@@ -451,7 +607,7 @@
       document.head.appendChild(ld);
     }
 
-    (function () {
+    var resolvedEvent = (function () {
       var slug = new URLSearchParams(location.search).get('slug');
       if (!slug) {
         // Netlify serves this page for /events/<slug> via a URL rewrite
@@ -461,8 +617,68 @@
         var m = location.pathname.match(/\/events\/([^\/]+)\/?$/);
         slug = m ? decodeURIComponent(m[1]) : null;
       }
-      var ev = slug ? findEvent(slug) : null;
-      if (ev) renderEvent(ev); else renderNotFound();
+      return slug ? findEvent(slug) : null;
+    })();
+
+    function renderCurrent() {
+      if (resolvedEvent) renderEvent(resolvedEvent); else renderNotFound();
+    }
+
+    /* i18n for the global nav + a re-render of the event content on
+       switch. Event data (title, description, tag, excerpt) is not
+       translated -- same "structure only" scope as index.html/
+       rezervare.html, where the 123 menu items also stay English-only;
+       every surrounding label (UI object above) does switch. */
+    (function () {
+      var I18N_RO = {
+        'nav.menu': 'Meniu',
+        'nav.atmosphere': 'Atmosferă',
+        'nav.events': 'Evenimente',
+        'nav.reservation': 'Rezervare',
+        'nav.mobileReserve': 'Fă o rezervare'
+      };
+      var EN_SNAPSHOT = null;
+      function snapshotEN() {
+        EN_SNAPSHOT = {};
+        document.querySelectorAll('[data-i18n]').forEach(function (el) { EN_SNAPSHOT[el.dataset.i18n] = el.innerHTML; });
+      }
+      function applyNavLang(lang) {
+        var dict = lang === 'ro' ? I18N_RO : EN_SNAPSHOT;
+        if (!dict) return;
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var v = dict[el.dataset.i18n]; if (v != null) el.innerHTML = v;
+        });
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.dataset.langBtn === lang));
+        });
+        try { localStorage.setItem('banco_lang', lang); } catch (e) {}
+      }
+      function initialLang() {
+        var q = null;
+        try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+        if (q === 'ro' || q === 'en') return q;
+        var stored = null;
+        try { stored = localStorage.getItem('banco_lang'); } catch (e) {}
+        if (stored === 'ro' || stored === 'en') return stored;
+        return (navigator.language || '').toLowerCase().indexOf('ro') === 0 ? 'ro' : 'en';
+      }
+
+      snapshotEN();
+      currentLang = initialLang();
+      if (currentLang !== 'en') applyNavLang(currentLang);
+
+      renderCurrent();
+
+      document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = btn.dataset.langBtn;
+          if (lang === currentLang) return;
+          currentLang = lang;
+          applyNavLang(lang);
+          renderCurrent();
+        });
+      });
     })();
   </script>
 </body>
