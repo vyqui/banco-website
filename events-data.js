@@ -82,8 +82,44 @@ window.BANCO_EVENTS = [
     tagRo: "Muzică Live",
     excerptRo: "O seară de toamnă cu pian, voce și cină — Vlada Neagu revine la BANCO. Locuri limitate.",
     descriptionRo: "O seară de toamnă la BANCO.\n\nVlada Neagu revine sâmbăta aceasta pentru o seară de pian, voce și cină.\n\n*Sunt seri făcute să fie savurate pe îndelete.*\n\nLocuri limitate. Rezervări la +40 773 261 721.",
-    cover: "/img/events/vlada-neagu-1809.jpeg",
-    photos: ["/img/events/vlada-neagu-1809.jpeg"],
+    cover: "/img/events/vlada-neagu-1909.jpeg",
+    photos: ["/img/events/vlada-neagu-1909.jpeg"],
+    youtubeId: null
+  },
+
+  {
+    slug: "vlada-neagu-0409",
+    title: "Vlada Neagu Returns to BANCO",
+    tag: "Live Music",
+    dateStart: "2026-09-04T19:00:00+03:00",
+    dateEnd: null,
+    location: null,
+    excerpt: "Piano. Voice. Dinner. Vlada Neagu returned to BANCO for a Friday evening at the piano.",
+    description: "Piano. Voice. Dinner.\n\nVlada Neagu returned to BANCO for an evening of piano, voice and dinner.\n\n*Music that lingers longer than the evening itself.*\n\nReservations at +40 773 261 721.",
+    titleRo: "Vlada Neagu Revine la BANCO",
+    tagRo: "Muzică Live",
+    excerptRo: "Pian. Voce. Cină. Vlada Neagu a revenit la BANCO pentru o seară de vineri la pian.",
+    descriptionRo: "Pian. Voce. Cină.\n\nVlada Neagu a revenit la BANCO pentru o seară de pian, voce și cină.\n\n*Muzică ce rămâne cu tine mult după ce se termină seara.*\n\nRezervări la +40 773 261 721.",
+    cover: "/img/events/vlada-neagu-0409.jpeg",
+    photos: ["/img/events/vlada-neagu-0409.jpeg"],
+    youtubeId: null
+  },
+
+  {
+    slug: "just2-0509",
+    title: "JUST2 — Saturday at BANCO",
+    tag: "Live Music",
+    dateStart: "2026-09-05T19:00:00+03:00",
+    dateEnd: null,
+    location: null,
+    excerpt: "Dinner. Drinks. Live music. JUST2 brought a Saturday night to BANCO.",
+    description: "Dinner. Drinks. Live music.\n\nJUST2 brought a Saturday night at BANCO — dinner and drinks carried by live music long past dessert.\n\n*Some nights just don't want to end.*\n\nReservations at +40 773 261 721.",
+    titleRo: "JUST2 — Sâmbătă la BANCO",
+    tagRo: "Muzică Live",
+    excerptRo: "Cină. Băuturi. Muzică live. JUST2 a adus o seară de sâmbătă la BANCO.",
+    descriptionRo: "Cină. Băuturi. Muzică live.\n\nJUST2 a adus o seară de sâmbătă la BANCO — cină și băuturi purtate de muzică live mult după desert.\n\n*Sunt seri care pur și simplu nu vor să se termine.*\n\nRezervări la +40 773 261 721.",
+    cover: "/img/events/just2-0509.jpeg",
+    photos: ["/img/events/just2-0509.jpeg"],
     youtubeId: null
   },
 
@@ -100,8 +136,8 @@ window.BANCO_EVENTS = [
     tagRo: "Muzică Live",
     excerptRo: "Pian. Voce. Cină. O seară intimă de muzică live cu Vlada Neagu, alături de o cină la BANCO. Locuri limitate.",
     descriptionRo: "Pian. Voce. Cină.\n\nAlătură-te unei seri intime în care Vlada Neagu cântă live la BANCO — pian și voce împletite cu o cină în One Verdi Park.\n\nLocuri limitate. Rezervă-ți locul.",
-    cover: "/img/events/vlada-neagu-live.jpg",
-    photos: ["/img/events/vlada-neagu-live.jpg"],
+    cover: "/img/events/vlada-neagu-2908.jpeg",
+    photos: ["/img/events/vlada-neagu-2908.jpeg"],
     youtubeId: null
   },
 
