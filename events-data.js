@@ -24,7 +24,11 @@
    description  the full text shown on the event's own page. Separate
                 paragraphs with a blank line (\n\n).
    cover        path to the main image, used on the card and, if present,
-                first in the gallery — e.g. "img/events/wine-night-1.jpg"
+                first in the gallery — e.g. "/img/events/wine-night-1.jpg".
+                Always start image paths with "/" (root-relative) — event
+                pages live at /events/<slug>, and a path without the
+                leading "/" resolves relative to that nested URL instead
+                of the site root, so the image silently breaks.
    photos       array of 1 to 3 image paths for the event page gallery.
    youtubeId    optional. The part of a YouTube URL after "v=" — for
                 https://www.youtube.com/watch?v=dQw4w9WgXcQ it's
@@ -44,8 +48,8 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "One week, all across the city. Discover BANCO's special menu created for Bucharest Food Week, 14–20 September.",
     description: "BANCO is part of Bucharest Food Week.\n\nFrom 14 to 20 September, discover our special menu created for the occasion.\n\nA good first visit should feel like the beginning of a habit.\n\nBook your table at www.foodweek.ro or directly with us at +40 773 261 721.",
-    cover: "img/events/bucharest-food-week.png",
-    photos: ["img/events/bucharest-food-week.png"],
+    cover: "/img/events/bucharest-food-week.png",
+    photos: ["/img/events/bucharest-food-week.png"],
     youtubeId: null
   },
 
@@ -58,8 +62,8 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "Piano. Voice. Dinner. An intimate evening of live music from Vlada Neagu, paired with dinner at BANCO. Limited tables available.",
     description: "Piano. Voice. Dinner.\n\nJoin us for an intimate evening as Vlada Neagu performs live at BANCO — piano and voice woven through a dinner service in One Verdi Park.\n\nLimited tables available. Reserve yours.",
-    cover: "img/events/vlada-neagu-live.jpg",
-    photos: ["img/events/vlada-neagu-live.jpg"],
+    cover: "/img/events/vlada-neagu-live.jpg",
+    photos: ["/img/events/vlada-neagu-live.jpg"],
     youtubeId: null
   },
 
@@ -75,8 +79,8 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "An evening built around Italian wine, paired with dishes chosen to match.",
     description: "First paragraph...\n\nSecond paragraph...",
-    cover: "img/events/wine-night-1.jpg",
-    photos: ["img/events/wine-night-1.jpg", "img/events/wine-night-2.jpg"],
+    cover: "/img/events/wine-night-1.jpg",
+    photos: ["/img/events/wine-night-1.jpg", "/img/events/wine-night-2.jpg"],
     youtubeId: null
   },
   */
