@@ -22,7 +22,9 @@
                 (One Verdi Park, Barbu Văcărescu 164E, Bucharest).
    excerpt      one or two sentences, shown on the listing card.
    description  the full text shown on the event's own page. Separate
-                paragraphs with a blank line (\n\n).
+                paragraphs with a blank line (\n\n). Wrap one paragraph in
+                asterisks — *like this* — to render it as the italic pull
+                quote instead of a regular paragraph.
    cover        path to the main image, used on the card and, if present,
                 first in the gallery — e.g. "/img/events/wine-night-1.jpg".
                 Always start image paths with "/" (root-relative) — event
@@ -36,6 +38,8 @@
    ──────────────────────────────────────────────────────────────────────── */
 
 window.BANCO_DEFAULT_EVENT_LOCATION = "One Verdi Park, Barbu Văcărescu 164E, Bucharest";
+window.BANCO_DEFAULT_EVENT_LOCATION_LINES = ["BANCO at One Verdi Park", "Barbu Văcărescu 164E, Bucharest"];
+window.BANCO_HOURS_LINE = "10:00 – 22:00, daily";
 
 window.BANCO_EVENTS = [
 
@@ -47,7 +51,7 @@ window.BANCO_EVENTS = [
     dateEnd: "2026-09-20T22:00:00+03:00",
     location: null,
     excerpt: "One week, all across the city. Discover BANCO's special menu created for Bucharest Food Week, 14–20 September.",
-    description: "BANCO is part of Bucharest Food Week.\n\nFrom 14 to 20 September, discover our special menu created for the occasion.\n\nA good first visit should feel like the beginning of a habit.\n\nBook your table at www.foodweek.ro or directly with us at +40 773 261 721.",
+    description: "BANCO is part of Bucharest Food Week.\n\nFrom 14 to 20 September, discover our special menu created for the occasion.\n\n*A good first visit should feel like the beginning of a habit.*\n\nBook your table at www.foodweek.ro or directly with us at +40 773 261 721.",
     cover: "/img/events/bucharest-food-week.png",
     photos: ["/img/events/bucharest-food-week.png"],
     youtubeId: null
@@ -99,6 +103,25 @@ window.bancoEventStatus = function (ev, now) {
 
 window.bancoEventLocation = function (ev) {
   return ev.location || window.BANCO_DEFAULT_EVENT_LOCATION;
+};
+
+/* Two-line address for the event page's facts card: ["BANCO at One Verdi
+   Park", "Barbu Văcărescu 164E, Bucharest"] by default, or ["BANCO",
+   ev.location] when an event overrides the location. */
+window.bancoEventLocationLines = function (ev) {
+  if (ev.location) return ["BANCO", ev.location];
+  return window.BANCO_DEFAULT_EVENT_LOCATION_LINES;
+};
+
+/* Second line of the facts card's "Date & time" cell. Multi-day events
+   (a week-long menu takeover) show the restaurant's standing hours,
+   since visitors can come any time during the run; single-day events
+   show the specific start time. */
+window.bancoFormatEventTimeLine = function (ev) {
+  var start = new Date(ev.dateStart);
+  var end = ev.dateEnd ? new Date(ev.dateEnd) : null;
+  if (end && end.toDateString() !== start.toDateString()) return window.BANCO_HOURS_LINE;
+  return start.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
 };
 
 /* "12 September 2026" / "12 September 2026, 19:00" if a time is present.
