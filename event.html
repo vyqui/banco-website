@@ -213,6 +213,8 @@
       font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 15px 24px;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
+    .ev2-btn.is-gold { background: var(--gold); color: var(--ink); }
+    .ev2-btn.is-gold:hover { background: var(--bg); }
     .ev2-btn.is-primary { background: #25D366; color: #FFFFFF; }
     .ev2-btn.is-primary:hover { background: #1EBE57; }
     .ev2-btn.is-outline { background: var(--bg); border: 1px solid var(--gold); color: var(--ink); }
@@ -346,6 +348,7 @@
         factLocation: 'Location',
         contactHeading: 'Book a table!',
         contactBody: 'Call or message us on WhatsApp and we\'ll help you with a spot, group bookings, or any questions about the evening.',
+        bookNow: 'Book now',
         whatsapp: 'Whatsapp us',
         call: 'Call',
         more: 'More at BANCO',
@@ -361,6 +364,7 @@
         factLocation: 'Locație',
         contactHeading: 'Rezervă o masă!',
         contactBody: 'Sună-ne sau scrie-ne pe WhatsApp și te ajutăm cu un loc, rezervări de grup sau orice întrebare despre seară.',
+        bookNow: 'Rezervă acum',
         whatsapp: 'Scrie pe WhatsApp',
         call: 'Sună la',
         more: 'Mai multe la BANCO',
@@ -562,6 +566,7 @@
               '<h2>' + esc(t.contactHeading) + '</h2>' +
               '<p>' + esc(t.contactBody) + '</p>' +
               '<div class="ev2-btnrow">' +
+                (ev.reservationUrl ? '<a class="ev2-btn is-gold" href="' + esc(ev.reservationUrl) + '" target="_blank" rel="noopener">' + esc(t.bookNow) + '</a>' : '') +
                 '<a class="ev2-btn is-primary" href="https://wa.me/40773261721?text=' + waText + '" target="_blank" rel="noopener">' + esc(t.whatsapp) + '</a>' +
                 '<a class="ev2-btn is-outline" href="tel:+40773261721">' + esc(t.call) + ' +40 773 261 721</a>' +
               '</div>' +

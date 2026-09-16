@@ -41,6 +41,12 @@
    youtubeId    optional. The part of a YouTube URL after "v=" — for
                 https://www.youtube.com/watch?v=dQw4w9WgXcQ it's
                 "dQw4w9WgXcQ". Leave null to skip the video.
+   reservationUrl
+                optional direct booking link (e.g. an iAloc widget URL
+                with defaultDate/utm_campaign set for this event). When
+                present, adds a "Book now" button ahead of WhatsApp/Call
+                on the event page, opened in a new tab. Leave out (or
+                null) to show only WhatsApp/Call, as before.
    ──────────────────────────────────────────────────────────────────────── */
 
 window.BANCO_DEFAULT_EVENT_LOCATION = "One Verdi Park, Barbu Văcărescu 164E, Bucharest";
@@ -84,7 +90,8 @@ window.BANCO_EVENTS = [
     descriptionRo: "O seară de toamnă la BANCO.\n\nVlada Neagu revine sâmbăta aceasta pentru o seară de pian, voce și cină.\n\n*Sunt seri făcute să fie savurate pe îndelete.*\n\nLocuri limitate. Rezervări la +40 773 261 721.",
     cover: "/img/events/vlada-neagu-1909.jpeg",
     photos: ["/img/events/vlada-neagu-1909.jpeg"],
-    youtubeId: null
+    youtubeId: null,
+    reservationUrl: "https://ialoc.ro/restaurante-bucuresti/banco-rezervari-4575?experience=focus&source=cpc&locale=en&defaultDate=2026-09-19&utm_campaign=vlada-neagu-1909"
   },
 
   {
