@@ -26,10 +26,10 @@
   <meta name="theme-color" content="#2B2B2B" />
   <meta name="robots" content="index, follow" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="icon" href="favicon.ico" sizes="any" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <meta id="ogTitle" property="og:type" content="website" />
   <meta property="og:site_name" content="BANCO" />
@@ -242,22 +242,22 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html#menu" onclick="closeMenu()">Menu</a>
-    <a href="index.html#atmosphere" onclick="closeMenu()">Atmosphere</a>
-    <a href="events.html" onclick="closeMenu()">Events</a>
-    <a href="index.html#contact" onclick="closeMenu()">Contact</a>
-    <a href="rezervare.html" class="mobile-reserve" onclick="closeMenu()">Make a Reservation</a>
+    <a href="/index.html#menu" onclick="closeMenu()">Menu</a>
+    <a href="/index.html#atmosphere" onclick="closeMenu()">Atmosphere</a>
+    <a href="/events.html" onclick="closeMenu()">Events</a>
+    <a href="/index.html#contact" onclick="closeMenu()">Contact</a>
+    <a href="/rezervare.html" class="mobile-reserve" onclick="closeMenu()">Make a Reservation</a>
   </div>
 
   <nav id="navbar">
-    <a href="index.html" class="nav-logo" translate="no">BANCO</a>
+    <a href="/index.html" class="nav-logo" translate="no">BANCO</a>
     <ul class="nav-links">
-      <li><a href="index.html#menu">Menu</a></li>
-      <li><a href="index.html#atmosphere">Atmosphere</a></li>
-      <li><a href="events.html" class="is-current">Events</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="/index.html#menu">Menu</a></li>
+      <li><a href="/index.html#atmosphere">Atmosphere</a></li>
+      <li><a href="/events.html" class="is-current">Events</a></li>
+      <li><a href="/index.html#contact">Contact</a></li>
     </ul>
-    <a href="rezervare.html" class="nav-reserve">Reservation</a>
+    <a href="/rezervare.html" class="nav-reserve">Reservation</a>
     <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -294,10 +294,10 @@
       <div class="footer-col">
         <h5>Explore</h5>
         <ul>
-          <li><a href="index.html#menu">Menu</a></li>
-          <li><a href="index.html#atmosphere">The Space</a></li>
-          <li><a href="rezervare.html">Reserve</a></li>
-          <li><a href="events.html">Events</a></li>
+          <li><a href="/index.html#menu">Menu</a></li>
+          <li><a href="/index.html#atmosphere">The Space</a></li>
+          <li><a href="/rezervare.html">Reserve</a></li>
+          <li><a href="/events.html">Events</a></li>
           <li>Private Events</li>
         </ul>
       </div>
@@ -312,7 +312,7 @@
     </div>
   </footer>
 
-  <script src="events-data.js"></script>
+  <script src="/events-data.js"></script>
   <script>
     var mobileMenu = document.getElementById('mobileMenu');
     var hamburger  = document.getElementById('hamburger');
@@ -348,7 +348,7 @@
         '<div class="not-found container">' +
           '<h1>Event not found</h1>' +
           '<p>This event may have been removed, or the link is out of date.</p>' +
-          '<a class="btn-outline" href="events.html">See all events</a>' +
+          '<a class="btn-outline" href="/events.html">See all events</a>' +
         '</div>';
     }
 
@@ -356,14 +356,14 @@
       var img = ev.cover || (ev.photos && ev.photos[0]) || '';
       return (
         '<article class="event-card">' +
-          '<a class="ec-media" href="events/' + ev.slug + '">' +
+          '<a class="ec-media" href="/events/' + ev.slug + '">' +
             (img ? '<img src="' + img + '" alt="' + esc(ev.title) + '" loading="lazy" />' : '') +
             (ev.tag ? '<span class="ec-tag">' + esc(ev.tag) + '</span>' : '') +
           '</a>' +
           '<span class="ec-date">' + window.bancoFormatEventDate(ev) + '</span>' +
-          '<h3><a href="events/' + ev.slug + '">' + esc(ev.title) + '</a></h3>' +
+          '<h3><a href="/events/' + ev.slug + '">' + esc(ev.title) + '</a></h3>' +
           (ev.excerpt ? '<p>' + esc(ev.excerpt) + '</p>' : '') +
-          '<a class="ec-link" href="events/' + ev.slug + '">Details →</a>' +
+          '<a class="ec-link" href="/events/' + ev.slug + '">Details →</a>' +
         '</article>'
       );
     }
@@ -375,7 +375,7 @@
         '<div class="ev-more container fade-in">' +
           '<div class="ev-more-head">' +
             '<h2>More at BANCO</h2>' +
-            '<a class="ev-more-link" href="events.html">See all events →</a>' +
+            '<a class="ev-more-link" href="/events.html">See all events →</a>' +
           '</div>' +
           '<div class="event-grid">' +
             upcoming.slice(0, 3).map(eventCardHTML).join('') +
@@ -411,7 +411,7 @@
       var descHTML = (ev.description || '').split(/\n\s*\n/).map(function (p) { return '<p>' + esc(p).replace(/\n/g, '<br/>') + '</p>'; }).join('');
 
       main.innerHTML =
-        '<div class="back-row container"><a class="back-link" href="events.html">← All events</a></div>' +
+        '<div class="back-row container"><a class="back-link" href="/events.html">← All events</a></div>' +
         bannerHTML +
         '<div class="event-header container fade-in">' +
           (ev.tag ? '<span class="ev-tag">' + esc(ev.tag) + '</span>' : '') +
@@ -495,8 +495,15 @@
     }
 
     (function () {
-      var params = new URLSearchParams(location.search);
-      var slug = params.get('slug');
+      var slug = new URLSearchParams(location.search).get('slug');
+      if (!slug) {
+        // Netlify serves this page for /events/<slug> via a URL rewrite
+        // (status 200), which keeps /events/<slug> in the address bar --
+        // the browser's own location.search never gets a ?slug= param in
+        // that case, so fall back to reading the slug from the path.
+        var m = location.pathname.match(/\/events\/([^\/]+)\/?$/);
+        slug = m ? decodeURIComponent(m[1]) : null;
+      }
       var ev = slug ? findEvent(slug) : null;
       if (ev) renderEvent(ev); else renderNotFound();
     })();
