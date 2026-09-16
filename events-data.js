@@ -25,6 +25,12 @@
                 paragraphs with a blank line (\n\n). Wrap one paragraph in
                 asterisks — *like this* — to render it as the italic pull
                 quote instead of a regular paragraph.
+   titleRo, tagRo, excerptRo, descriptionRo
+                optional Romanian versions of the four fields above, shown
+                on event.html when the visitor switches to RO. Leave any
+                of them out and that field just falls back to the English
+                one while in RO — so a new event with no *Ro fields at all
+                still works, just untranslated.
    cover        path to the main image, used on the card and, if present,
                 first in the gallery — e.g. "/img/events/wine-night-1.jpg".
                 Always start image paths with "/" (root-relative) — event
@@ -55,6 +61,9 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "One week, all across the city. Discover BANCO's special menu created for Bucharest Food Week, 14–20 September.",
     description: "BANCO is part of Bucharest Food Week.\n\nFrom 14 to 20 September, discover our special menu created for the occasion.\n\n*A good first visit should feel like the beginning of a habit.*\n\nBook your table at www.foodweek.ro or directly with us at +40 773 261 721.",
+    titleRo: "BANCO face parte din Bucharest Food Week",
+    excerptRo: "O săptămână, în tot orașul. Descoperă meniul special creat de BANCO pentru Bucharest Food Week, 14–20 septembrie.",
+    descriptionRo: "BANCO face parte din Bucharest Food Week.\n\nÎntre 14 și 20 septembrie, descoperă meniul nostru special creat pentru această ocazie.\n\n*O primă vizită reușită ar trebui să pară începutul unui obicei.*\n\nRezervă la www.foodweek.ro sau direct la noi, la +40 773 261 721.",
     cover: "/img/events/bucharest-food-week.png",
     photos: ["/img/events/bucharest-food-week.png"],
     youtubeId: null
@@ -69,6 +78,10 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "An autumn evening of piano, voice and dinner — Vlada Neagu returns to BANCO. Limited tables available.",
     description: "An autumn evening at BANCO.\n\nVlada Neagu returns this Saturday for an evening of piano, voice and dinner.\n\n*Some evenings are meant to be lingered over.*\n\nLimited tables available. Reservations at +40 773 261 721.",
+    titleRo: "Vlada Neagu Revine — Live la BANCO",
+    tagRo: "Muzică Live",
+    excerptRo: "O seară de toamnă cu pian, voce și cină — Vlada Neagu revine la BANCO. Locuri limitate.",
+    descriptionRo: "O seară de toamnă la BANCO.\n\nVlada Neagu revine sâmbăta aceasta pentru o seară de pian, voce și cină.\n\n*Sunt seri făcute să fie savurate pe îndelete.*\n\nLocuri limitate. Rezervări la +40 773 261 721.",
     cover: "/img/events/vlada-neagu-1809.jpeg",
     photos: ["/img/events/vlada-neagu-1809.jpeg"],
     youtubeId: null
@@ -83,6 +96,10 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "Piano. Voice. Dinner. An intimate evening of live music from Vlada Neagu, paired with dinner at BANCO. Limited tables available.",
     description: "Piano. Voice. Dinner.\n\nJoin us for an intimate evening as Vlada Neagu performs live at BANCO — piano and voice woven through a dinner service in One Verdi Park.\n\nLimited tables available. Reserve yours.",
+    titleRo: "Vlada Neagu — Live la BANCO",
+    tagRo: "Muzică Live",
+    excerptRo: "Pian. Voce. Cină. O seară intimă de muzică live cu Vlada Neagu, alături de o cină la BANCO. Locuri limitate.",
+    descriptionRo: "Pian. Voce. Cină.\n\nAlătură-te unei seri intime în care Vlada Neagu cântă live la BANCO — pian și voce împletite cu o cină în One Verdi Park.\n\nLocuri limitate. Rezervă-ți locul.",
     cover: "/img/events/vlada-neagu-live.jpg",
     photos: ["/img/events/vlada-neagu-live.jpg"],
     youtubeId: null
@@ -100,6 +117,9 @@ window.BANCO_EVENTS = [
     location: null,
     excerpt: "An evening built around Italian wine, paired with dishes chosen to match.",
     description: "First paragraph...\n\nSecond paragraph...",
+    titleRo: "Seară de vinuri italiene",
+    excerptRo: "O seară dedicată vinurilor italiene, alături de preparate alese special.",
+    descriptionRo: "Primul paragraf...\n\nAl doilea paragraf...",
     cover: "/img/events/wine-night-1.jpg",
     photos: ["/img/events/wine-night-1.jpg", "/img/events/wine-night-2.jpg"],
     youtubeId: null

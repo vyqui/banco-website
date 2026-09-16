@@ -379,6 +379,14 @@
       return d.innerHTML;
     }
 
+    /* Reads ev[field], or ev[field + 'Ro'] when currentLang is "ro" and
+       that RO variant was actually provided -- falls back to the English
+       field otherwise, so an event with no *Ro fields still works. */
+    function loc(ev, field) {
+      if (currentLang === 'ro' && ev[field + 'Ro']) return ev[field + 'Ro'];
+      return ev[field];
+    }
+
     function findEvent(slug) {
       return (window.BANCO_EVENTS || []).filter(function (e) { return e.slug === slug; })[0] || null;
     }
@@ -396,15 +404,16 @@
     function eventCardHTML(ev) {
       var t = UI[currentLang];
       var img = ev.cover || (ev.photos && ev.photos[0]) || '';
+      var title = loc(ev, 'title'), tag = loc(ev, 'tag'), excerpt = loc(ev, 'excerpt');
       return (
         '<article class="ev2-card">' +
           '<a class="ev2-card-media" href="/events/' + ev.slug + '">' +
-            (img ? '<img src="' + img + '" alt="' + esc(ev.title) + '" loading="lazy" />' : '') +
-            (ev.tag ? '<span class="ev2-card-tag">' + esc(ev.tag) + '</span>' : '') +
+            (img ? '<img src="' + img + '" alt="' + esc(title) + '" loading="lazy" />' : '') +
+            (tag ? '<span class="ev2-card-tag">' + esc(tag) + '</span>' : '') +
           '</a>' +
           '<span class="ev2-card-date">' + window.bancoFormatEventDate(ev, { lang: currentLang }) + '</span>' +
-          '<h3><a href="/events/' + ev.slug + '">' + esc(ev.title) + '</a></h3>' +
-          (ev.excerpt ? '<p>' + esc(ev.excerpt) + '</p>' : '') +
+          '<h3><a href="/events/' + ev.slug + '">' + esc(title) + '</a></h3>' +
+          (excerpt ? '<p>' + esc(excerpt) + '</p>' : '') +
           '<a class="ev2-card-link" href="/events/' + ev.slug + '">' + esc(t.details) + '</a>' +
         '</article>'
       );
@@ -514,24 +523,25 @@
       var isPast = window.bancoEventStatus(ev) === 'past';
       var dateLine = window.bancoFormatEventDate(ev, { withTime: false, lang: currentLang });
       var locationLines = window.bancoEventLocationLines(ev, currentLang);
-      var waText = encodeURIComponent('Hi! I\'d like to find out more about "' + ev.title + '".');
+      var evTitle = loc(ev, 'title'), evTag = loc(ev, 'tag'), evDescription = loc(ev, 'description'), evExcerpt = loc(ev, 'excerpt');
+      var waText = encodeURIComponent('Hi! I\'d like to find out more about "' + evTitle + '".');
 
       var videoHTML = ev.youtubeId
         ? '<div class="ev2-video"><iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(ev.youtubeId) +
-            '" title="' + esc(ev.title) + ' — video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+            '" title="' + esc(evTitle) + ' — video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
         : '';
 
       main.innerHTML =
         '<div class="ev2-body">' +
           '<div class="ev2-banner">' +
-            (bannerImg ? '<img src="' + bannerImg + '" alt="' + esc(ev.title) + '" />' : '') +
+            (bannerImg ? '<img src="' + bannerImg + '" alt="' + esc(evTitle) + '" />' : '') +
             '<div class="ev2-scrim"></div>' +
             '<div class="ev2-banner-content">' +
               '<div class="ev2-tagrow">' +
-                (ev.tag ? '<span class="ev2-tag">' + esc(ev.tag) + '</span>' : '') +
+                (evTag ? '<span class="ev2-tag">' + esc(evTag) + '</span>' : '') +
                 (isPast ? '<span class="ev2-ended">' + esc(t.ended) + '</span>' : '') +
               '</div>' +
-              '<h1>' + esc(ev.title) + '</h1>' +
+              '<h1>' + esc(evTitle) + '</h1>' +
               '<span class="ev2-dateline">' + esc(dateLine) + '</span>' +
             '</div>' +
           '</div>' +
@@ -547,7 +557,7 @@
               '</div>' +
             '</div>' +
             videoHTML +
-            (ev.description ? '<div class="ev2-desc">' + descriptionHTML(ev.description) + '</div>' : '') +
+            (evDescription ? '<div class="ev2-desc">' + descriptionHTML(evDescription) + '</div>' : '') +
             '<div class="ev2-contact">' +
               '<h2>' + esc(t.contactHeading) + '</h2>' +
               '<p>' + esc(t.contactBody) + '</p>' +
@@ -564,8 +574,10 @@
 
       // Head metadata — this page is one template shared by every event, so
       // title/description/OG tags are only known once the event is found.
-      var title = ev.title + ' — Events at BANCO';
-      var desc = ev.excerpt || ('Join us for ' + ev.title + ' at BANCO, One Verdi Park, Bucharest.');
+      var title = evTitle + (currentLang === 'ro' ? ' — Evenimente la BANCO' : ' — Events at BANCO');
+      var desc = evExcerpt || (currentLang === 'ro'
+        ? ('Te așteptăm la ' + evTitle + ' la BANCO, One Verdi Park, București.')
+        : ('Join us for ' + evTitle + ' at BANCO, One Verdi Park, Bucharest.'));
       var url = 'https://banco-restaurant.ro/events/' + ev.slug;
       var img = photos[0] ? 'https://banco-restaurant.ro/' + photos[0].replace(/^\.?\//, '') : 'https://banco-restaurant.ro/img/og.jpg';
       document.title = title;
@@ -592,12 +604,12 @@
       ld.textContent = JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Event",
-        "name": ev.title,
+        "name": evTitle,
         "startDate": ev.dateStart,
         "endDate": ev.dateEnd || undefined,
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
-        "description": ev.excerpt || ev.description || undefined,
+        "description": evExcerpt || evDescription || undefined,
         "image": photos.length ? photos.map(function (p) { return 'https://banco-restaurant.ro/' + p.replace(/^\.?\//, ''); }) : undefined,
         "location": {
           "@type": "Place",
