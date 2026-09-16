@@ -38,8 +38,11 @@
    ──────────────────────────────────────────────────────────────────────── */
 
 window.BANCO_DEFAULT_EVENT_LOCATION = "One Verdi Park, Barbu Văcărescu 164E, Bucharest";
-window.BANCO_DEFAULT_EVENT_LOCATION_LINES = ["BANCO at One Verdi Park", "Barbu Văcărescu 164E, Bucharest"];
-window.BANCO_HOURS_LINE = "10:00 – 22:00, daily";
+window.BANCO_DEFAULT_EVENT_LOCATION_LINES = {
+  en: ["BANCO at One Verdi Park", "Barbu Văcărescu 164E, Bucharest"],
+  ro: ["BANCO la One Verdi Park", "Barbu Văcărescu 164E, București"]
+};
+window.BANCO_HOURS_LINE = { en: "10:00 – 22:00, daily", ro: "10:00 – 22:00, zilnic" };
 
 window.BANCO_EVENTS = [
 
@@ -107,42 +110,48 @@ window.bancoEventLocation = function (ev) {
 
 /* Two-line address for the event page's facts card: ["BANCO at One Verdi
    Park", "Barbu Văcărescu 164E, Bucharest"] by default, or ["BANCO",
-   ev.location] when an event overrides the location. */
-window.bancoEventLocationLines = function (ev) {
+   ev.location] when an event overrides the location. `lang` is "en" or
+   "ro" (default "en"); a location override is shown as-is regardless of
+   language, since it's free text the event author wrote. */
+window.bancoEventLocationLines = function (ev, lang) {
+  lang = lang === "ro" ? "ro" : "en";
   if (ev.location) return ["BANCO", ev.location];
-  return window.BANCO_DEFAULT_EVENT_LOCATION_LINES;
+  return window.BANCO_DEFAULT_EVENT_LOCATION_LINES[lang];
 };
 
 /* Second line of the facts card's "Date & time" cell. Multi-day events
    (a week-long menu takeover) show the restaurant's standing hours,
    since visitors can come any time during the run; single-day events
-   show the specific start time. */
-window.bancoFormatEventTimeLine = function (ev) {
+   show the specific start time. `lang` is "en" or "ro" (default "en"). */
+window.bancoFormatEventTimeLine = function (ev, lang) {
+  lang = lang === "ro" ? "ro" : "en";
   var start = new Date(ev.dateStart);
   var end = ev.dateEnd ? new Date(ev.dateEnd) : null;
-  if (end && end.toDateString() !== start.toDateString()) return window.BANCO_HOURS_LINE;
-  return start.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+  if (end && end.toDateString() !== start.toDateString()) return window.BANCO_HOURS_LINE[lang];
+  return start.toLocaleTimeString(lang === "ro" ? "ro-RO" : "en-GB", { hour: "2-digit", minute: "2-digit" });
 };
 
 /* "12 September 2026" / "12 September 2026, 19:00" if a time is present.
    When dateEnd falls on a different calendar day than dateStart (a
    multi-day event, e.g. a week-long menu takeover), renders as a range
-   instead: "14 – 20 September 2026". */
+   instead: "14 – 20 September 2026". Pass opts.lang = "ro" for Romanian
+   month names ("12 septembrie 2026"); defaults to English. */
 window.bancoFormatEventDate = function (ev, opts) {
   opts = opts || {};
+  var locale = opts.lang === "ro" ? "ro-RO" : "en-GB";
   var start = new Date(ev.dateStart);
   var end = ev.dateEnd ? new Date(ev.dateEnd) : null;
 
   if (end && end.toDateString() !== start.toDateString()) {
     var sameMonth = start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
-    var startPart = start.toLocaleDateString("en-GB", sameMonth ? { day: "numeric" } : { day: "numeric", month: "long" });
-    var endPart = end.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+    var startPart = start.toLocaleDateString(locale, sameMonth ? { day: "numeric" } : { day: "numeric", month: "long" });
+    var endPart = end.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" });
     return startPart + " – " + endPart;
   }
 
-  var datePart = start.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  var datePart = start.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" });
   if (opts.withTime === false) return datePart;
-  var timePart = start.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+  var timePart = start.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
   return datePart + ", " + timePart;
 };
 
