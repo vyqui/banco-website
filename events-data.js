@@ -91,7 +91,7 @@ window.BANCO_EVENTS = [
     cover: "/img/events/vlada-neagu-1909.jpeg",
     photos: ["/img/events/vlada-neagu-1909.jpeg"],
     youtubeId: null,
-    reservationUrl: "https://banco-restaurant.ro/events/vlada-neagu-1909?bookNow=true&venueId=4575&source=cpc&locale=en&defaultDate=2026-09-19&utm_campaign=vlada-neagu-1909"
+    reservationUrl: "https://ialoc.ro/restaurante-bucuresti/banco-rezervari-4575?experience=focus&source=cpc&locale=en&defaultDate=2026-09-19&utm_campaign=vlada-neagu-1909"
   },
 
   {
