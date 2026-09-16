@@ -61,7 +61,7 @@ window.BANCO_EVENTS = [
   },
 
   {
-    slug: "vlada-neagu-returns",
+    slug: "vlada-neagu-1909",
     title: "Vlada Neagu Returns — Live at BANCO",
     tag: "Live Music",
     dateStart: "2026-09-19T18:00:00+03:00",
