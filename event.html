@@ -66,7 +66,7 @@
     html { font-size: 16px; }
     body {
       margin: 0; background: var(--bg); color: var(--ink);
-      font-family: var(--font-body); font-weight: 300;
+      font-family: var(--font-body); font-weight: 500;
       -webkit-font-smoothing: antialiased;
     }
     img { display: block; max-width: 100%; }
@@ -119,7 +119,7 @@
     }
     .mobile-menu.open { opacity: 1; }
     .mobile-menu a {
-      font-family: 'Playfair Display', Georgia, serif; font-size: 1.9rem; font-weight: 300;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 1.9rem; font-weight: 500;
       color: #2B2B2B; letter-spacing: 0.06em; text-decoration: none;
     }
     .mobile-menu .mobile-reserve {
@@ -217,6 +217,15 @@
     .ev2-btn.is-primary:hover { background: var(--bg); }
     .ev2-btn.is-outline { border: 1px solid rgba(244,242,237,0.42); color: var(--light); }
     .ev2-btn.is-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* On mobile (once the banner+details row has wrapped, ~760px is
+       where banner's and details' flex-basis stop fitting side by
+       side) the contact/booking block jumps to right under the banner,
+       ahead of the facts card and description. Desktop keeps its
+       original order. */
+    @media (max-width: 760px) {
+      .ev2-contact { order: -1; }
+    }
 
     /* ─── MORE EVENTS (not part of the design handoff — kept per a
        standing site requirement that every event page link onward to
