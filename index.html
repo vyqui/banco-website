@@ -2261,7 +2261,30 @@
               }
             });
           }
-          mountReserveWidget(document.documentElement.lang === 'ro' ? 'ro' : 'en');
+
+          /* ?bookNow=true (used by ad/preview links, e.g. reservations-up) opens the
+             iAloc widget straight away as a popup, instead of mounting it inline in
+             the reserve section below — no scrolling or tapping needed. The inline
+             widget is skipped entirely in this case; it only appears once the popup
+             is closed and the visitor reaches #reserve on their own, via the normal
+             mount below on the next page load / language switch. */
+          var bookNow = false;
+          try { bookNow = new URLSearchParams(location.search).get('bookNow') === 'true'; } catch (e) {}
+
+          if (bookNow) {
+            ialocEmbedWidget.init({
+              source: 'ialoc-widget-embed',
+              locale: document.documentElement.lang === 'ro' ? 'ro' : 'en',
+              embedMode: 'popup',
+              venueId: '4575',
+              onWidgetReady: function () { ialocEmbedWidget.show(); },
+              callback: function (v) {
+                try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch (e) {}
+              }
+            });
+          } else {
+            mountReserveWidget(document.documentElement.lang === 'ro' ? 'ro' : 'en');
+          }
 
           /* Scroll-guard logic: page scrolls freely over the widget until the user taps it.
              Re-arms automatically when the mouse leaves or the section scrolls out of view,
@@ -2279,22 +2302,6 @@
                 entries.forEach(function(en){ if(en.intersectionRatio < 0.6) rearm(); });
               }, { threshold: [0, 0.6, 1] }).observe(shell);
             }
-
-            /* ?bookNow=true (used by ad/preview links, e.g. reservations-up)
-               jumps straight to the reservation section and arms the widget,
-               so the visitor doesn't have to scroll and tap themselves.
-               activate() is deliberately called only after the scroll settles:
-               calling it first races the IntersectionObserver above, which
-               sees the section still out of view and immediately re-arms it. */
-            try {
-              if (new URLSearchParams(location.search).get('bookNow') === 'true') {
-                var reserveSection = document.getElementById('reserve');
-                if (reserveSection) {
-                  reserveSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-                setTimeout(activate, 900);
-              }
-            } catch (e) {}
           })();
         </script>
       </div>
