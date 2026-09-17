@@ -274,7 +274,7 @@
               <h2 class="rup-h2">Book your<br />table</h2>
               <div class="rup-rule"></div>
               <p class="rup-body">We take reservations up to 30 days in advance. For parties of 8 or more, please contact us directly. Served daily 10:00 — 22:00.</p>
-              <a href="/rezervare" class="rup-cta-solid" data-ialoc-trigger>Book a table</a>
+              <a href="https://banco-restaurant.ro/?bookNow=true&amp;venueId=4575&amp;source=cpc&amp;locale=en&amp;utm_campaign=reservations-up" class="rup-cta-solid">Book a table</a>
             </div>
 
             <div class="rup-panel">
@@ -304,7 +304,7 @@
               <span class="rup-eyebrow" style="color:rgba(244,240,232,.65)">One Verdi Park · Bucharest</span>
               <div class="rup-rule"></div>
               <span class="rup-eyebrow">Mediterranean Cuisine</span>
-              <a href="/rezervare" class="rup-cta-outline" style="margin-top:14px;padding:15px 32px;letter-spacing:0.26em" data-ialoc-trigger>Book a table</a>
+              <a href="https://banco-restaurant.ro/?bookNow=true&amp;venueId=4575&amp;source=cpc&amp;locale=en&amp;utm_campaign=reservations-up" class="rup-cta-outline" style="margin-top:14px;padding:15px 32px;letter-spacing:0.26em">Book a table</a>
             </div>
 
           </div>
@@ -348,7 +348,7 @@
         <span class="rup-eyebrow">One Verdi Park · Bucharest</span>
         <div class="rup-rule"></div>
         <span class="rup-eyebrow">Mediterranean Cuisine</span>
-        <a href="/rezervare" class="rup-cta-outline" style="margin-top:10px" data-ialoc-trigger>Book a table</a>
+        <a href="https://banco-restaurant.ro/?bookNow=true&amp;venueId=4575&amp;source=cpc&amp;locale=en&amp;utm_campaign=reservations-up" class="rup-cta-outline" style="margin-top:10px">Book a table</a>
       </div>
     </section>
 
@@ -397,7 +397,7 @@
         <h2 class="rup-h2">Book your table</h2>
         <div class="rup-rule"></div>
         <p class="rup-body">We take reservations up to 30 days in advance. For parties of 8 or more, please contact us directly. Served daily 10:00 — 22:00.</p>
-        <a href="/rezervare" class="rup-cta-solid" data-ialoc-trigger>Book a table</a>
+        <a href="https://banco-restaurant.ro/?bookNow=true&amp;venueId=4575&amp;source=cpc&amp;locale=en&amp;utm_campaign=reservations-up" class="rup-cta-solid">Book a table</a>
       </div>
     </section>
 
@@ -545,33 +545,6 @@
 
       apply();
     })();
-  </script>
-
-  <!-- ─── iALOC RESERVATION POPUP (venue 4575) ────────────────────────
-       "Book a table" buttons open the iAloc booking popup directly,
-       instead of navigating away to /rezervare. If the widget script
-       is blocked or fails to load, iAlocReady stays false and the
-       buttons fall back to their normal href (/rezervare, which has
-       its own inline copy of this same widget). -->
-  <script type="text/javascript">
-    !function(e,t,i,n,s,o,c,a,d,r){if(!e[n]){for(;a<c.length;)s(o,c[a++]);(d=t.createElement(i)).async=1,d.src="https://ialoc.ro/assets/widget-v2/embed.min.js",(r=t.getElementsByTagName(i)[0]).parentNode.insertBefore(d,r),e[n]=o}}(window,document,"script","ialocEmbedWidget",function(e,t){e[t]=function(){e._q.push([t,arguments])}},{_q:[]},"init show hide".split(" "),0);
-
-    var iAlocReady = false;
-    ialocEmbedWidget.init({
-      source: 'ialoc-widget-embed',
-      locale: 'en',
-      embedMode: 'popup',
-      venueId: '4575',
-      onWidgetReady: function () { iAlocReady = true; }
-    });
-
-    document.querySelectorAll('[data-ialoc-trigger]').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        if (!iAlocReady) return;
-        e.preventDefault();
-        ialocEmbedWidget.show();
-      });
-    });
   </script>
 </body>
 </html>

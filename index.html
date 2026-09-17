@@ -2279,6 +2279,22 @@
                 entries.forEach(function(en){ if(en.intersectionRatio < 0.6) rearm(); });
               }, { threshold: [0, 0.6, 1] }).observe(shell);
             }
+
+            /* ?bookNow=true (used by ad/preview links, e.g. reservations-up)
+               jumps straight to the reservation section and arms the widget,
+               so the visitor doesn't have to scroll and tap themselves.
+               activate() is deliberately called only after the scroll settles:
+               calling it first races the IntersectionObserver above, which
+               sees the section still out of view and immediately re-arms it. */
+            try {
+              if (new URLSearchParams(location.search).get('bookNow') === 'true') {
+                var reserveSection = document.getElementById('reserve');
+                if (reserveSection) {
+                  reserveSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                setTimeout(activate, 900);
+              }
+            } catch (e) {}
           })();
         </script>
       </div>
@@ -2589,7 +2605,10 @@
 
     function initialLang() {
       var q = null;
-      try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+      try {
+        var params = new URLSearchParams(location.search);
+        q = params.get('lang') || params.get('locale');
+      } catch (e) {}
       if (q === 'ro' || q === 'en') return q;
       var stored = null;
       try { stored = localStorage.getItem('banco_lang'); } catch (e) {}
