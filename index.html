@@ -9,7 +9,7 @@
   })(window,document,'script','dataLayer','GTM-5LSJ3XDS');</script>
   <!-- End Google Tag Manager -->
   <!-- OpenAI Pixel -->
-  <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"75mAbGMXpsE85fNv1kPuqN",debug:true});</script>
+  <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"75mAbGMXpsE85fNv1kPuqN",debug:true});oaiq("measure","page_viewed",{type:"contents"});</script>
   <!-- End OpenAI Pixel -->
   <meta charset="UTF-8" />
   <meta name="facebook-domain-verification" content="thqdxtola262undxlpv79ehv1uivk1" />
@@ -2261,6 +2261,7 @@
               /* iAloc fires reservationCompleted when a booking goes through */
               callback: function (v) {
                 try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch (e) {}
+                try { window.oaiq && window.oaiq('measure', 'appointment_scheduled', { type: 'customer_action' }); } catch (e) {}
               }
             });
           }
@@ -2283,6 +2284,7 @@
               onWidgetReady: function () { ialocEmbedWidget.show(); },
               callback: function (v) {
                 try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch (e) {}
+                try { window.oaiq && window.oaiq('measure', 'appointment_scheduled', { type: 'customer_action' }); } catch (e) {}
               }
             });
           } else {
@@ -2732,7 +2734,10 @@
           if (el.id === 'ialocGuard') window.bancoTrack('reserve_widget_tap');
           else if (el.classList.contains('map-directions')) window.bancoTrack('directions_click');
           else if (el.classList.contains('nav-reserve') || el.classList.contains('mobile-reserve')) window.bancoTrack('reserve_nav_click');
-          else if ((el.getAttribute('href') || '').indexOf('tel:') === 0) window.bancoTrack('phone_click');
+          else if ((el.getAttribute('href') || '').indexOf('tel:') === 0) {
+            window.bancoTrack('phone_click');
+            window.oaiq && window.oaiq('measure', 'custom', { type: 'custom' }, { custom_event_name: 'call_started' });
+          }
         } catch(e){}
       }, true);
     } catch(e){}
