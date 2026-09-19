@@ -73,12 +73,6 @@
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body:    'Manrope', sans-serif;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-      /* Hard ceiling for the booking widget; see .ialoc-shell. iAloc's own
-         layout reacts to how much room it's given — too tight a ceiling and
-         its internal "book" button ends up pinned over its own form steps
-         instead of below them, so this stays generous. */
-      --widget-max-h: 800px;
     }
 
     /* ─── RESET ──────────────────────────────────────────────── */
@@ -459,42 +453,7 @@
       margin-top: 14px; font-size: 0.74rem; letter-spacing: 0.03em;
       color: var(--bronze); text-align: center;
     }
-    .reserve-widget { width: 100%; max-width: 100%; overflow: hidden; min-height: 480px; }
-    .reserve-widget #ialocWidgetContainer { width: 100%; max-width: 100%; }
-    .reserve-widget iframe {
-      width: 100% !important; max-width: 100% !important; border: 0;
-      -webkit-user-select: none; user-select: none;
-    }
-    iframe[src*="ialoc.ro"] { max-width: 100% !important; }
-
-    /* Transparent scroll guard: page scroll passes over the widget until tapped.
-       The shell is also height-capped: iAloc resizes its iframe to its own content,
-       and an over-tall (or runaway) widget would otherwise stretch the page so far
-       that the visitor can never scroll past the booking card. Capped + clipped
-       while armed, so the wheel/touch goes to the page; once the visitor taps to
-       book, the shell itself scrolls and the whole widget stays reachable. */
-    .ialoc-shell {
-      position: relative; width: 100%; max-width: 100%;
-      max-height: var(--widget-max-h, 680px);
-      overflow: hidden;
-    }
-    .ialoc-shell.active {
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
-    .ialoc-guard {
-      position: absolute; inset: 0; z-index: 5;
-      background: transparent; border: 0; padding: 0;
-      display: flex; align-items: flex-end; justify-content: center;
-      transition: opacity 0.25s;
-    }
-    .ialoc-guard-hint {
-      background: var(--charcoal); color: var(--ivory);
-      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 9px 18px; margin-bottom: 10px;
-    }
-    .ialoc-shell.active .ialoc-guard { opacity: 0; pointer-events: none; }
+    .card-book { display: block; width: 100%; text-align: center; }
     .widget-fallback {
       font-size: 0.8rem; line-height: 1.8; color: rgba(43,43,43,0.7);
       border: 1px solid var(--sand); padding: 18px;
@@ -654,19 +613,6 @@
       .booking-points { gap: 11px; margin-bottom: 22px; }
       .booking-alt { display: none; }
       .booking-card { padding: 20px 16px 18px; }
-      /* Was 560px — too tight for iAloc's own multi-step layout on phones,
-         which pinned its "Rezervă masa" button over the form instead of
-         under it. Kept below the desktop 800px since phone viewports are
-         shorter, but wide enough that the widget lays itself out properly. */
-      :root { --widget-max-h: 740px; }
-      /* Forced, not just capped: iAloc's own script sizes this iframe from
-         the device's own viewport height, and on phones its internal
-         "Rezervă masa" button was pinned to the bottom of that box rather
-         than to the end of the form. Phone-only — on desktop the widget's
-         natural height was already correct, and forcing it here just left
-         a few hundred pixels of dead space under a short form. !important
-         keeps this value even if iAloc's script tries to reassert its own. */
-      .reserve-widget iframe { min-height: 950px !important; }
       .why, .faq { padding: 60px 0; }
       .location { padding-top: 60px; }
       .midcta { padding: 60px 0; }
@@ -707,7 +653,7 @@
   <!-- ─── FULL-SCREEN MENU ────────────────────────── -->
   <div class="menu-overlay" id="menuOverlay" hidden>
     <nav aria-label="Meniu principal">
-      <a href="#rezerva" class="is-primary" data-menu-link data-cta="menu" data-i18n="menu.book">Rezervă masa</a>
+      <a href="#rezerva" class="is-primary" data-menu-link data-cta="menu" data-ialoc-trigger data-i18n="menu.book">Rezervă masa</a>
       <a href="index.html#menu" data-menu-link data-i18n="menu.menu">Meniu</a>
       <a href="index.html#atmosphere" data-menu-link data-i18n="menu.space">Spațiul</a>
       <a href="#location" data-menu-link data-i18n="menu.location">Locație</a>
@@ -718,7 +664,7 @@
         <span class="k" data-i18n="hero.hoursLabel">Program</span>
         <span class="v" data-i18n-html="menu.contact">Zilnic: 10:00 — 22:00<br/><a href="tel:+40773261721">+40 773 261 721</a></span>
       </div>
-      <a href="#rezerva" class="btn-ghost" data-menu-link data-cta="menu-btn">
+      <a href="#rezerva" class="btn-ghost" data-menu-link data-cta="menu-btn" data-ialoc-trigger>
         <span data-i18n="hero.cta">Rezervă masa</span><span class="arr">→</span>
       </a>
     </div>
@@ -743,7 +689,7 @@
     <div class="container">
       <div class="hero-reveal" id="heroReveal">
         <div class="hero-quick">
-          <a href="#rezerva" class="dot-arrow" aria-hidden="true" tabindex="-1">→</a>
+          <a href="#rezerva" class="dot-arrow" aria-hidden="true" tabindex="-1" data-ialoc-trigger>→</a>
           <a href="index.html#menu" class="q" data-i18n="hero.q1">Meniu</a>
           <a href="#location" class="q" data-i18n="hero.q2">Locație</a>
         </div>
@@ -770,7 +716,7 @@
             <span class="k" data-i18n="hero.hoursLabel">Program</span>
             <span class="v" data-i18n="hero.hoursValue">Luni–Duminică: 10:00 — 22:00</span>
           </div>
-          <a href="#rezerva" class="btn-ghost" data-cta="hero">
+          <a href="#rezerva" class="btn-ghost" data-cta="hero" data-ialoc-trigger>
             <span data-i18n="hero.cta">Rezervă masa</span><span class="arr">→</span>
           </a>
         </div>
@@ -848,19 +794,8 @@
           <h2 data-i18n="card.h2">Rezervare online</h2>
           <p class="card-sub" data-i18n="card.sub">Alege data, ora și numărul de persoane — primești confirmarea pe loc.</p>
 
-          <!-- iAloc reservation widget (venue 4575) — inline; bookings go straight to the iAloc app -->
-          <div class="reserve-widget">
-            <!-- ialoc-shell: a transparent "scroll guard" sits over the widget so page scroll passes
-                 through and the widget's internal scroll never hijacks it. Tap/click to interact.
-                 Skipped entirely on mouse/trackpad devices — see mountWidget()'s pointer check —
-                 since the scroll-jacking risk this guards against only exists on touchscreens. -->
-            <div class="ialoc-shell" id="ialocShell">
-              <div id="ialocWidgetContainer"></div>
-              <button type="button" class="ialoc-guard" id="ialocGuard" data-i18n-aria="widget.guardAria" aria-label="Activează widget-ul de rezervare">
-                <span class="ialoc-guard-hint" data-i18n="widget.guardHint">Rezervă masa</span>
-              </button>
-            </div>
-          </div>
+          <!-- iAloc reservation widget (venue 4575) — opens as a popup on click -->
+          <a href="https://banco-restaurant.ro/rezervare?bookNow=true&amp;venueId=4575&amp;source=cpc&amp;locale=en&amp;utm_campaign=rezervare-lp" class="btn-solid card-book" data-ialoc-trigger data-i18n="widget.guardHint">Rezervă masa</a>
           <p class="widget-reassure" data-i18n="widget.reassure">Confirmare instant, fără telefon.</p>
 
           <!-- Shown only if the iAloc widget fails to render (blocked script, offline, ad-blocker) -->
@@ -943,7 +878,7 @@
     <div class="container">
       <h2 data-i18n="mid.h2">Masa ta te așteaptă</h2>
       <p data-i18n="mid.p">Rezervă în câțiva pași, cu până la 30 de zile în avans. Pentru grupuri de 8 persoane sau mai mari, sună-ne și organizăm împreună.</p>
-      <a href="#rezerva" class="btn-solid" data-cta="mid" data-i18n="mid.btn">Rezervă masa</a>
+      <a href="#rezerva" class="btn-solid" data-cta="mid" data-ialoc-trigger data-i18n="mid.btn">Rezervă masa</a>
       <span class="sub-link" data-i18n-html="mid.sub">Sau sună la <a href="tel:+40773261721">+40 773 261 721</a></span>
     </div>
   </section>
@@ -1031,7 +966,7 @@
           <ul>
             <li><a href="index.html" data-i18n="foot.site">Site-ul BANCO</a></li>
             <li><a href="index.html#menu" data-i18n="foot.menu">Meniu</a></li>
-            <li><a href="#rezerva" data-i18n="foot.book">Rezervă masa</a></li>
+            <li><a href="#rezerva" data-ialoc-trigger data-i18n="foot.book">Rezervă masa</a></li>
             <li><a href="https://www.instagram.com/bancorestaurant" target="_blank" rel="noopener">Instagram</a></li>
           </ul>
         </div>
@@ -1045,7 +980,7 @@
 
   <!-- ─── STICKY MOBILE CTA ───────────────────────── -->
   <div class="sticky-cta">
-    <a class="s-book" href="#rezerva" data-cta="sticky" data-i18n="sticky.book">Rezervă masa</a>
+    <a class="s-book" href="#rezerva" data-cta="sticky" data-ialoc-trigger data-i18n="sticky.book">Rezervă masa</a>
     <a class="s-call" href="tel:+40773261721" data-i18n="sticky.call">Sună</a>
   </div>
 
@@ -1209,92 +1144,65 @@
       currentLang = lang;
       applyLang(lang);
       try { window.bancoTrack && window.bancoTrack('lp_lang_switch', { lang: lang }); } catch (e) {}
-      mountWidget(lang);
+      if (typeof initWidget === 'function') initWidget(lang);
     });
   });
   </script>
 
-  <!-- ─── iALOC WIDGET ────────────────────────────── -->
+  <!-- ─── iALOC WIDGET (popup) ───────────────────────── -->
   <script type="text/javascript">
     !function(e,t,i,n,s,o,c,a,d,r){if(!e[n]){for(;a<c.length;)s(o,c[a++]);(d=t.createElement(i)).async=1,d.src="https://ialoc.ro/assets/widget-v2/embed.min.js",(r=t.getElementsByTagName(i)[0]).parentNode.insertBefore(d,r),e[n]=o}}(window,document,"script","ialocEmbedWidget",function(e,t){e[t]=function(){e._q.push([t,arguments])}},{_q:[]},"init show hide".split(" "),0);
 
-    /* Mounts (or re-mounts, on a language switch) the iAloc widget for venue 4575.
-       If a re-mount leaves the container empty, we reload with ?lang= so the widget
-       always initialises cleanly in the selected locale. */
-    function mountWidget(locale) {
-      var box = document.getElementById('ialocWidgetContainer');
-      if (!box) return;
-      var remount = box.children.length > 0;
-      if (remount) box.innerHTML = '';
-      try {
-        ialocEmbedWidget.init({
-          source: 'ialoc-widget-embed',
-          locale: locale === 'en' ? 'en' : 'ro',
-          embedMode: 'inline',
-          venueId: '4575',
-          onWidgetReady: function () { ialocEmbedWidget.show(); },
-          /* iAloc fires reservationCompleted when a booking goes through */
-          callback: function (v) {
-            try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch (e) {}
-          }
-        });
-      } catch (e) {
-        if (remount) location.search = 'lang=' + locale;
-        return;
-      }
-      if (remount) {
-        setTimeout(function () {
-          if (box.children.length === 0) location.search = 'lang=' + locale;
-        }, 2500);
-        return;
-      }
-      /* First mount: if nothing rendered, fall back to the phone number rather than
-         leaving the visitor staring at an empty card. */
-      setTimeout(function () {
-        if (box.children.length > 0) return;
-        var fb = document.getElementById('widgetFallback');
-        var guard = document.getElementById('ialocGuard');
-        var wrap = document.querySelector('.reserve-widget');
-        if (fb) fb.hidden = false;
-        if (guard) guard.style.display = 'none';
-        if (wrap) wrap.style.minHeight = '0';
-        try { window.bancoTrack && window.bancoTrack('lp_widget_failed'); } catch (e) {}
-      }, 8000);
+    var widgetReady = false;
+
+    /* (Re)initialises the iAloc popup for venue 4575 in the given locale.
+       Call again on a language switch so the next show() opens in the
+       right language -- the popup itself only renders once shown. */
+    function initWidget(locale) {
+      ialocEmbedWidget.init({
+        source: 'ialoc-widget-embed',
+        locale: locale === 'en' ? 'en' : 'ro',
+        embedMode: 'popup',
+        venueId: '4575',
+        onWidgetReady: function () { widgetReady = true; },
+        /* iAloc fires reservationCompleted when a booking goes through */
+        callback: function (v) {
+          try { window.bancoTrack && window.bancoTrack('reservation_completed', v && typeof v === 'object' ? v : null); } catch (e) {}
+        }
+      });
     }
-    mountWidget(document.documentElement.lang === 'en' ? 'en' : 'ro');
+    initWidget(document.documentElement.lang === 'en' ? 'en' : 'ro');
 
-    /* Scroll-guard exists for one reason: on a touchscreen, the widget's own internal
-       scroll can hijack the page's scroll. A mouse/trackpad has no such conflict — the
-       wheel scrolls the (capped, overflow:auto) widget box like any embedded panel and
-       chains to the page at its edge, same as a map or a comment thread. So on a
-       fine-pointer device we skip the tap-to-unlock step entirely: the widget is live
-       and visible on load, no extra click standing between the visitor and the form.
-       Touchscreens keep the guard, armed/disarmed as before. */
-    (function () {
-      var shell = document.getElementById('ialocShell');
-      var guard = document.getElementById('ialocGuard');
-      if (!shell || !guard) return;
+    /* Every "Rezervă masa" CTA on the page opens the popup directly.
+       show() is safe to call before the widget script has finished loading
+       -- it queues (the snippet's own "_q" array) and the real script
+       drains that queue once it arrives, so no readiness check is needed
+       here for the click to eventually work. */
+    document.querySelectorAll('[data-ialoc-trigger]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        ialocEmbedWidget.show();
+      });
+    });
 
-      var isPointerDevice = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      if (isPointerDevice) {
-        shell.classList.add('active');
-        guard.style.display = 'none';
-        return;
+    /* If the widget script never loads at all (blocked script, offline,
+       ad-blocker), show() just queues forever and nothing visibly happens
+       on click. Surface the phone-number fallback after a grace period so
+       the visitor isn't left assuming the button is simply broken. */
+    setTimeout(function () {
+      if (widgetReady) return;
+      var fb = document.getElementById('widgetFallback');
+      if (fb) fb.hidden = false;
+      try { window.bancoTrack && window.bancoTrack('lp_widget_failed'); } catch (e) {}
+    }, 8000);
+
+    /* ?bookNow=true (used by ad/preview links) opens the popup straight
+       away on load, without waiting for a click. */
+    try {
+      if (new URLSearchParams(location.search).get('bookNow') === 'true') {
+        ialocEmbedWidget.show();
       }
-
-      function arm()    { shell.classList.remove('active'); }
-      function unlock() { shell.classList.add('active'); }
-      guard.addEventListener('click', unlock);
-      shell.addEventListener('mouseleave', arm);
-      document.addEventListener('touchstart', function (e) {
-        if (shell.classList.contains('active') && !shell.contains(e.target)) arm();
-      }, { passive: true });
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) { if (en.intersectionRatio < 0.6) arm(); });
-        }, { threshold: [0, 0.6, 1] }).observe(shell);
-      }
-    })();
+    } catch (e) {}
   </script>
 
   <!-- ─── PAGE JS ─────────────────────────────────── -->
@@ -1619,7 +1527,7 @@
         try {
           var el = e.target && e.target.closest ? e.target.closest('a,button') : null;
           if (!el) return;
-          if (el.id === 'ialocGuard') window.bancoTrack('reserve_widget_tap');
+          if (el.hasAttribute('data-ialoc-trigger') && !el.dataset.cta) window.bancoTrack('reserve_widget_tap');
           else if (el.classList.contains('map-directions')) window.bancoTrack('directions_click');
           else if (el.dataset && el.dataset.cta) window.bancoTrack('lp_reserve_cta_click', { placement: el.dataset.cta });
           else if ((el.getAttribute('href') || '').indexOf('tel:') === 0) window.bancoTrack('phone_click');
