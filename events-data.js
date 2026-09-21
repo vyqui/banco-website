@@ -59,6 +59,24 @@ window.BANCO_HOURS_LINE = { en: "10:00 – 22:00, daily", ro: "10:00 – 22:00, 
 window.BANCO_EVENTS = [
 
   {
+    slug: "just2-2609",
+    title: "JUST2 Return to BANCO",
+    tag: "Live Music",
+    dateStart: "2026-09-26T18:00:00+03:00",
+    dateEnd: null,
+    location: null,
+    excerpt: "Dinner. Drinks. Live music. JUST2 return to BANCO for a Saturday evening. Limited tables available.",
+    description: "JUST2 return to BANCO.\n\nDinner. Drinks. Live music.\n\n*Some nights just don't want to end.*\n\nLimited tables available. Reservations at +40 773 261 721.",
+    titleRo: "JUST2 Revine la BANCO",
+    tagRo: "Muzică Live",
+    excerptRo: "Cină. Băuturi. Muzică live. JUST2 revine la BANCO pentru o seară de sâmbătă. Locuri limitate.",
+    descriptionRo: "JUST2 revine la BANCO.\n\nCină. Băuturi. Muzică live.\n\n*Sunt seri care pur și simplu nu vor să se termine.*\n\nLocuri limitate. Rezervări la +40 773 261 721.",
+    cover: "/img/events/just2-2609.webp",
+    photos: ["/img/events/just2-2609.webp"],
+    youtubeId: null
+  },
+
+  {
     slug: "bucharest-food-week",
     title: "BANCO is part of Bucharest Food Week",
     tag: "Food Week",
@@ -205,7 +223,7 @@ window.bancoFormatEventTimeLine = function (ev, lang) {
   var start = new Date(ev.dateStart);
   var end = ev.dateEnd ? new Date(ev.dateEnd) : null;
   if (end && end.toDateString() !== start.toDateString()) return window.BANCO_HOURS_LINE[lang];
-  return start.toLocaleTimeString(lang === "ro" ? "ro-RO" : "en-GB", { hour: "2-digit", minute: "2-digit" });
+  return start.toLocaleTimeString(lang === "ro" ? "ro-RO" : "en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Bucharest" });
 };
 
 /* "12 September 2026" / "12 September 2026, 19:00" if a time is present.
@@ -221,14 +239,14 @@ window.bancoFormatEventDate = function (ev, opts) {
 
   if (end && end.toDateString() !== start.toDateString()) {
     var sameMonth = start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
-    var startPart = start.toLocaleDateString(locale, sameMonth ? { day: "numeric" } : { day: "numeric", month: "long" });
-    var endPart = end.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" });
+    var startPart = start.toLocaleDateString(locale, sameMonth ? { day: "numeric", timeZone: "Europe/Bucharest" } : { day: "numeric", month: "long", timeZone: "Europe/Bucharest" });
+    var endPart = end.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Bucharest" });
     return startPart + " – " + endPart;
   }
 
-  var datePart = start.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" });
+  var datePart = start.toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Bucharest" });
   if (opts.withTime === false) return datePart;
-  var timePart = start.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
+  var timePart = start.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Bucharest" });
   return datePart + ", " + timePart;
 };
 
