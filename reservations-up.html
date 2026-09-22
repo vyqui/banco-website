@@ -274,7 +274,7 @@
               <h2 class="rup-h2">Book your<br />table</h2>
               <div class="rup-rule"></div>
               <p class="rup-body">We take reservations up to 30 days in advance. For parties of 8 or more, please contact us directly. Served daily 10:00 — 22:00.</p>
-              <a href="/rezervare" class="rup-cta-solid" data-ialoc-trigger>Book a table</a>
+              <a href="https://banco-restaurant.ro/reservations-up?bookNow=true&amp;venueId=4575" class="rup-cta-solid" data-ialoc-trigger>Book a table</a>
             </div>
 
             <div class="rup-panel">
@@ -304,7 +304,7 @@
               <span class="rup-eyebrow" style="color:rgba(244,240,232,.65)">One Verdi Park · Bucharest</span>
               <div class="rup-rule"></div>
               <span class="rup-eyebrow">Mediterranean Cuisine</span>
-              <a href="/rezervare" class="rup-cta-outline" style="margin-top:14px;padding:15px 32px;letter-spacing:0.26em" data-ialoc-trigger>Book a table</a>
+              <a href="https://banco-restaurant.ro/reservations-up?bookNow=true&amp;venueId=4575" class="rup-cta-outline" style="margin-top:14px;padding:15px 32px;letter-spacing:0.26em" data-ialoc-trigger>Book a table</a>
             </div>
 
           </div>
@@ -348,7 +348,7 @@
         <span class="rup-eyebrow">One Verdi Park · Bucharest</span>
         <div class="rup-rule"></div>
         <span class="rup-eyebrow">Mediterranean Cuisine</span>
-        <a href="/rezervare" class="rup-cta-outline" style="margin-top:10px" data-ialoc-trigger>Book a table</a>
+        <a href="https://banco-restaurant.ro/reservations-up?bookNow=true&amp;venueId=4575" class="rup-cta-outline" style="margin-top:10px" data-ialoc-trigger>Book a table</a>
       </div>
     </section>
 
@@ -397,7 +397,7 @@
         <h2 class="rup-h2">Book your table</h2>
         <div class="rup-rule"></div>
         <p class="rup-body">We take reservations up to 30 days in advance. For parties of 8 or more, please contact us directly. Served daily 10:00 — 22:00.</p>
-        <a href="/rezervare" class="rup-cta-solid" data-ialoc-trigger>Book a table</a>
+        <a href="https://banco-restaurant.ro/reservations-up?bookNow=true&amp;venueId=4575" class="rup-cta-solid" data-ialoc-trigger>Book a table</a>
       </div>
     </section>
 
@@ -552,10 +552,7 @@
        is safe to call before the widget script has finished loading -- the
        snippet below queues it (the "_q" array) and the real script drains
        that queue once it arrives, so no readiness flag is needed here.
-       iAloc's own snippets (both inline and popup) always pair the init
-       script with this container div -- even in popup mode, the SDK
-       appears to need it present in the DOM to mount into. -->
-  <div id="ialocWidgetContainer"></div>
+       No container div here -- that's only needed for embedMode: 'inline'. -->
   <script type="text/javascript">
     !function(e,t,i,n,s,o,c,a,d,r){if(!e[n]){for(;a<c.length;)s(o,c[a++]);(d=t.createElement(i)).async=1,d.src="https://ialoc.ro/assets/widget-v2/embed.min.js",(r=t.getElementsByTagName(i)[0]).parentNode.insertBefore(d,r),e[n]=o}}(window,document,"script","ialocEmbedWidget",function(e,t){e[t]=function(){e._q.push([t,arguments])}},{_q:[]},"init show hide".split(" "),0);
     var widgetOptions = {
@@ -572,6 +569,14 @@
         ialocEmbedWidget.show();
       });
     });
+
+    /* ?bookNow=true (used by ad/preview links) opens the popup straight
+       away on load, without waiting for a click. */
+    try {
+      if (new URLSearchParams(location.search).get('bookNow') === 'true') {
+        ialocEmbedWidget.show();
+      }
+    } catch (e) {}
   </script>
 </body>
 </html>
