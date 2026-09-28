@@ -201,17 +201,15 @@
       display: block;
       filter: saturate(1.0) brightness(0.97) contrast(1.0);
     }
-    /* YouTube iframe "cover" hack: iframes don't honor object-fit, so the
-       frame itself is oversized (as if it were a 16:9 video) and centered,
-       cropping the overflow the same way object-fit:cover would. */
+    /* YouTube iframe "cover": the source is a 9:16 (portrait) Short, so the
+       player pillarboxes it inside whatever frame we give it. Sizing the
+       iframe itself to the source's real 9:16 shape (computed in JS, see
+       sizeHeroIframe below) removes those bars; a plain CSS vw/vh min/max
+       trick can't hold the 9:16 ratio once either axis' fallback kicks in. */
     .hero-media iframe {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vw;
-      height: 56.25vw;   /* 16:9 by width */
-      min-height: 100%;
-      min-width: 177.78vh; /* 16:9 by height */
       transform: translate(-50%, -50%);
       border: 0;
       pointer-events: none;
@@ -2382,6 +2380,24 @@
       document.body.style.overflow = '';
       setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
     }
+
+    // Hero YouTube iframe: sized to the source's actual 9:16 shape so the
+    // player fills the frame with no pillarbox bars, then cropped to cover
+    // the hero like object-fit:cover would (which iframes don't support).
+    (function () {
+      var iframe = document.querySelector('.hero-video');
+      var media  = document.querySelector('.hero-media');
+      if (!iframe || !media) return;
+      var SRC_W = 9, SRC_H = 16;
+      function sizeHeroIframe() {
+        var w = media.clientWidth, h = media.clientHeight;
+        var k = Math.max(w / SRC_W, h / SRC_H);
+        iframe.style.width  = Math.ceil(k * SRC_W) + 'px';
+        iframe.style.height = Math.ceil(k * SRC_H) + 'px';
+      }
+      sizeHeroIframe();
+      window.addEventListener('resize', sizeHeroIframe);
+    })();
 
     // Nav state
     const navbar     = document.getElementById('navbar');
