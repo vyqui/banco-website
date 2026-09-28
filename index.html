@@ -201,6 +201,22 @@
       display: block;
       filter: saturate(1.0) brightness(0.97) contrast(1.0);
     }
+    /* YouTube iframe "cover" hack: iframes don't honor object-fit, so the
+       frame itself is oversized (as if it were a 16:9 video) and centered,
+       cropping the overflow the same way object-fit:cover would. */
+    .hero-media iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 56.25vw;   /* 16:9 by width */
+      min-height: 100%;
+      min-width: 177.78vh; /* 16:9 by height */
+      transform: translate(-50%, -50%);
+      border: 0;
+      pointer-events: none;
+      filter: saturate(1.0) brightness(0.97) contrast(1.0);
+    }
 
     /* ~18-20% dark gradient wash over the whole clip (legibility for the watermark) */
     .hero-overlay {
@@ -1158,7 +1174,7 @@
   <!-- ─── HERO (autoplay loop; BANCO watermark + slogan + scroll cue) ─────── -->
   <section class="hero">
     <div class="hero-media">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero_poster.jpg"></video>
+      <iframe class="hero-video" src="https://www.youtube-nocookie.com/embed/GHKMaQAiLP8?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=GHKMaQAiLP8&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;rel=0&amp;playsinline=1&amp;iv_load_policy=3&amp;disablekb=1" title="BANCO" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -2367,40 +2383,9 @@
       setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
     }
 
-    // Nav state + hero video (autoplay loop, plays normally)
+    // Nav state
     const navbar     = document.getElementById('navbar');
-    const heroVideo  = document.querySelector('.hero-video');
     const heroScroll = document.getElementById('heroScroll');
-    const isMob = window.matchMedia('(max-width: 900px)').matches;
-
-    if (heroVideo) {
-      // Mobile → vertical montage; desktop → horizontal camera-move through the venue.
-      heroVideo.poster = isMob ? 'img/hero_poster.jpg' : 'img/hero_poster_desktop.jpg';
-      const s = document.createElement('source');
-      s.src  = isMob ? 'img/hero.mp4' : 'img/hero_desktop.mp4';
-      s.type = 'video/mp4';
-      heroVideo.appendChild(s);
-      heroVideo.loop = true;
-      heroVideo.load();
-      const playIt = () => heroVideo.play().catch(() => {});
-      heroVideo.addEventListener('loadeddata', playIt);
-      playIt();
-
-      // Bulletproof un-freeze on return: try play, and if it's still paused or the
-      // playhead hasn't advanced shortly after, hard-reset the element (load + play).
-      let kicking = false;
-      const hardReset = () => { try { heroVideo.load(); heroVideo.play().catch(() => {}); } catch (e) {} };
-      const resumeHero = () => {
-        if (kicking) return; kicking = true;
-        const t0 = heroVideo.currentTime;
-        const p = heroVideo.play();
-        if (p && p.catch) p.catch(hardReset);
-        setTimeout(() => { if (heroVideo.paused || heroVideo.currentTime === t0) hardReset(); kicking = false; }, 500);
-      };
-      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') resumeHero(); });
-      window.addEventListener('pageshow', (e) => { if (e.persisted) hardReset(); else resumeHero(); });
-      window.addEventListener('focus', resumeHero);
-    }
 
     let ticking = false;
     function onScroll() {
