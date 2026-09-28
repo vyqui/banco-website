@@ -630,11 +630,8 @@
       border-color: rgba(244,241,234,0.5);
     }
 
-    /* ─── ATMOSPHERE ─────────────────────────────────────────── */
-    .atmosphere {
-      padding: 72px 0;
-      background: var(--ivory);
-    }
+    /* .atmosphere-header is also reused by the Dishes Gallery section's
+       heading, and .ph-label by its dish-card photo captions. */
     .atmosphere-header {
       text-align: center;
       margin-bottom: 40px;
@@ -644,34 +641,6 @@
       font-weight: 300;
       font-size: clamp(2rem, 4vw, 2.6rem);
       color: var(--charcoal);
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      grid-template-rows: 340px 240px;
-      gap: 12px;
-    }
-
-    .photo-item {
-      overflow: hidden;
-      background: var(--sand);
-      position: relative;
-    }
-    .photo-item:first-child {
-      grid-row: 1 / 3;
-    }
-
-    .photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.7s var(--ease);
-      filter: saturate(0.88) brightness(0.97);
-    }
-    .photo-item:hover img {
-      transform: scale(1.04);
     }
 
     .ph-label {
@@ -1013,10 +982,6 @@
     /* ─── TABLET 768–1024 ────────────────────────────────────── */
     @media (max-width: 1024px) {
       .container { padding: 0 36px; }
-      .photo-grid {
-        grid-template-columns: 1.2fr 1fr 1fr;
-        grid-template-rows: 280px 200px;
-      }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
       .footer-brand { grid-column: 1 / 3; }
     }
@@ -1068,16 +1033,9 @@
       .menu-item-price { font-size: 0.9rem; flex-shrink: 0; }
       .menu-cta { margin-top: 40px; }
 
-      /* Atmosphere */
-      .atmosphere { padding: 56px 0 52px; }
+      /* Atmosphere header (shared with the Dishes Gallery heading) */
       .atmosphere-header { text-align: center; margin-bottom: 24px; }
       .atmosphere-header h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
-      .photo-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 52vw 38vw 38vw;
-        gap: 6px;
-      }
-      .photo-item:first-child { grid-row: 1 / 2; grid-column: 1 / 3; }
 
       /* Philosophy */
       .philosophy { padding: 64px 0; }
@@ -1116,12 +1074,6 @@
     /* ─── SMALL MOBILE ≤ 390 ─────────────────────────────────── */
     @media (max-width: 390px) {
       .hero-logo { font-size: 14vw; }
-      .photo-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: 70vw 52vw 52vw 52vw 52vw;
-        gap: 6px;
-      }
-      .photo-item:first-child { grid-row: auto; grid-column: auto; }
       .menu-item { flex-direction: column; gap: 4px; align-items: flex-start; }
     }
     /* ─── NAV OVER DARK HERO ─────────────────────────────────── */
@@ -1179,7 +1131,6 @@
   <!-- Mobile menu overlay -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#menu"       onclick="closeMenu()" data-i18n="nav.menu">Menu</a>
-    <a href="#atmosphere" onclick="closeMenu()" data-i18n="nav.atmosphere">Atmosphere</a>
     <a href="events.html" onclick="closeMenu()" data-i18n="nav.events">Events</a>
     <a href="#contact"    onclick="closeMenu()">Contact</a>
     <a href="rezervare.html" class="mobile-reserve" onclick="closeMenu()" data-i18n="nav.mobileReserve">Make a Reservation</a>
@@ -1189,7 +1140,6 @@
     <a href="#" class="nav-logo" translate="no">BANCO</a>
     <ul class="nav-links">
       <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
-      <li><a href="#atmosphere" data-i18n="nav.atmosphere">Atmosphere</a></li>
       <li><a href="events.html" data-i18n="nav.events">Events</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -2184,38 +2134,6 @@
     </div>
   </section>
 
-  <!-- ─── ATMOSPHERE ───────────────────────────────── -->
-  <section class="atmosphere texture-paper" id="atmosphere">
-    <div class="container">
-      <div class="atmosphere-header fade-in">
-        <span class="section-label" data-i18n="atm.label">The Experience</span>
-        <h2 data-i18n="atm.h2">The space &amp; the table</h2>
-      </div>
-      <div class="photo-grid fade-in">
-        <div class="photo-item">
-          <img src="img/loc2.jpg" alt="The BANCO dining room and bar" loading="lazy" sizes="(max-width:900px) 100vw, 40vw" />
-          <span class="ph-label" data-i18n="atm.roomLabel">The Room</span>
-        </div>
-        <div class="photo-item">
-          <img src="img/dish_branzino.jpg" alt="Branzino, charred broccolini, beurre blanc" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
-          <span class="ph-label">Branzino</span>
-        </div>
-        <div class="photo-item">
-          <img src="img/dish_cottoletta.jpg" alt="Cottoletta di Maiale" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
-          <span class="ph-label">Cottoletta di Maiale</span>
-        </div>
-        <div class="photo-item">
-          <img src="img/dish_eggs.jpg" alt="Calabrian Eggs with burrata and grilled sourdough" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
-          <span class="ph-label">Calabrian Eggs</span>
-        </div>
-        <div class="photo-item">
-          <img src="img/drink_pornstar.jpg" alt="Pornstar Martini" loading="lazy" sizes="(max-width:900px) 50vw, 30vw" />
-          <span class="ph-label">Pornstar Martini</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ─── DISHES GALLERY ──────────────────────────── -->
   <section class="dishes-section texture-paper" id="dishes" aria-label="Selected dishes">
     <div class="container">
@@ -2407,7 +2325,6 @@
           <h5 data-i18n="footer.exploreLabel">Explore</h5>
           <ul>
             <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
-            <li><a href="#atmosphere" data-i18n="footer.spaceLink">The Space</a></li>
             <li><a href="#reserve" data-i18n="footer.reserveLink">Reserve</a></li>
             <li><a href="events.html" data-i18n="nav.events">Events</a></li>
             <li data-i18n="footer.privateEvents">Private Events</li>
@@ -2549,7 +2466,6 @@
        stays English-only by design. */
     var I18N = { ro: {
       "nav.menu": "Meniu",
-      "nav.atmosphere": "Atmosferă",
       "nav.events": "Evenimente",
       "nav.reservation": "Rezervare",
       "nav.mobileReserve": "Fă o rezervare",
@@ -2594,9 +2510,6 @@
       "sub.water": "Apă",
       "menu.note": "Toate prețurile sunt în lei (RON)",
       "menu.cta": "Rezervă o masă",
-      "atm.label": "Experiența",
-      "atm.h2": "Spațiul &amp; masa",
-      "atm.roomLabel": "Sala",
       "dishGal.label": "Din bucătărie",
       "dishGal.h2": "Preparate selectate",
       "phil.quote": "\"O experiență echilibrată între gust, atmosferă și design.\"",
@@ -2622,7 +2535,6 @@
       "footer.hoursLabel": "Program",
       "footer.everyDay": "Zilnic",
       "footer.exploreLabel": "Explorează",
-      "footer.spaceLink": "Spațiul",
       "footer.reserveLink": "Rezervă",
       "footer.privateEvents": "Evenimente Private",
       "footer.press": "Presă",
