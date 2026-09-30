@@ -201,21 +201,6 @@
       display: block;
       filter: saturate(1.0) brightness(0.97) contrast(1.0);
     }
-    /* YouTube iframe "cover": the source is a 9:16 (portrait) Short, so the
-       player pillarboxes it inside whatever frame we give it. Sizing the
-       iframe itself to the source's real 9:16 shape (computed in JS, see
-       sizeHeroIframe below) removes those bars; a plain CSS vw/vh min/max
-       trick can't hold the 9:16 ratio once either axis' fallback kicks in. */
-    .hero-media iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 0;
-      pointer-events: none;
-      filter: saturate(1.0) brightness(0.97) contrast(1.0);
-    }
-
     /* ~18-20% dark gradient wash over the whole clip (legibility for the watermark) */
     .hero-overlay {
       position: absolute;
@@ -1172,7 +1157,7 @@
   <!-- ─── HERO (autoplay loop; BANCO watermark + slogan + scroll cue) ─────── -->
   <section class="hero">
     <div class="hero-media">
-      <iframe class="hero-video" src="https://www.youtube.com/embed/GHKMaQAiLP8?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=GHKMaQAiLP8&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;playsinline=1&amp;iv_load_policy=3&amp;disablekb=1" title="Banco Ambient Piano" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero_poster.jpg"></video>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -2381,22 +2366,35 @@
       setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
     }
 
-    // Hero YouTube iframe: sized to the source's actual 9:16 shape so the
-    // player fills the frame with no pillarbox bars, then cropped to cover
-    // the hero like object-fit:cover would (which iframes don't support).
+    // Hero video (self-hosted, autoplay loop; reliable on iOS unlike a
+    // cross-origin YouTube iframe, which Safari can refuse to autoplay).
     (function () {
-      var iframe = document.querySelector('.hero-video');
-      var media  = document.querySelector('.hero-media');
-      if (!iframe || !media) return;
-      var SRC_W = 9, SRC_H = 16;
-      function sizeHeroIframe() {
-        var w = media.clientWidth, h = media.clientHeight;
-        var k = Math.max(w / SRC_W, h / SRC_H);
-        iframe.style.width  = Math.ceil(k * SRC_W) + 'px';
-        iframe.style.height = Math.ceil(k * SRC_H) + 'px';
-      }
-      sizeHeroIframe();
-      window.addEventListener('resize', sizeHeroIframe);
+      var heroVideo = document.querySelector('.hero-video');
+      if (!heroVideo) return;
+      var s = document.createElement('source');
+      s.src  = 'img/hero.mp4';
+      s.type = 'video/mp4';
+      heroVideo.appendChild(s);
+      heroVideo.loop = true;
+      heroVideo.load();
+      var playIt = () => heroVideo.play().catch(() => {});
+      heroVideo.addEventListener('loadeddata', playIt);
+      playIt();
+
+      // Bulletproof un-freeze on return: try play, and if it's still paused or the
+      // playhead hasn't advanced shortly after, hard-reset the element (load + play).
+      var kicking = false;
+      var hardReset = () => { try { heroVideo.load(); heroVideo.play().catch(() => {}); } catch (e) {} };
+      var resumeHero = () => {
+        if (kicking) return; kicking = true;
+        var t0 = heroVideo.currentTime;
+        var p = heroVideo.play();
+        if (p && p.catch) p.catch(hardReset);
+        setTimeout(() => { if (heroVideo.paused || heroVideo.currentTime === t0) hardReset(); kicking = false; }, 500);
+      };
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') resumeHero(); });
+      window.addEventListener('pageshow', (e) => { if (e.persisted) hardReset(); else resumeHero(); });
+      window.addEventListener('focus', resumeHero);
     })();
 
     // Nav state
